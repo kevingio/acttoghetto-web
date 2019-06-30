@@ -19,4 +19,22 @@ class Product extends Model
         'qty',
         'description',
     ];
+
+    /**
+     * Relation to Brand
+     *
+     */
+    public function brand()
+    {
+        return $this->belongsTo('App\Models\Brand');
+    }
+
+    /**
+     * Relation to Brand
+     *
+     */
+    public function category()
+    {
+        return $this->belongsTo('App\Models\Category');
+    }
 }

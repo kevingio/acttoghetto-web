@@ -15,12 +15,31 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = $this->product->all();
-        return $products;
+        $products = $this->product->with(['category', 'brand']);
+        if(!empty($request->brand)) {
+            $products = $products->whereHas('brand', function ($query) use ($request) {
+                $query->where('name', $request->brand);
+            });
+        }
+        if(!empty($request->category)) {
+            $products = $products->whereHas('category', function ($query) use ($request) {
+                $query->where('name', $request->category);
+            });
+        }
+        if(!empty($request->q)) {
+            $products = $products->where('name', 'like', "%{$request->q}%");
+        }
+        if(!empty($request->sort) && in_array(strtolower($request->sort), ['asc', 'desc'])) {
+            $products = $products->orderBy('price', strtolower($request->sort));
+        } else if(empty($request->sort)) {
+            $products = $products->latest();
+        }
+        return $products->get();
     }
 
     /**
