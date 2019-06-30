@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
+
+    function __construct(Product $product) {
+        $this->product = $product;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = $this->product->all();
+        return $products;
     }
 
     /**
@@ -35,7 +41,9 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $this->product->create($data);
+        return 'sukses';
     }
 
     /**
@@ -46,7 +54,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return $product;
     }
 
     /**
@@ -69,7 +77,9 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->all();
+        $product->update($data);
+        return 'sukses';
     }
 
     /**
@@ -80,6 +90,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return 'sukses';
     }
 }
