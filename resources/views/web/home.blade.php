@@ -162,7 +162,7 @@
     <div class="container">
         <div class="sec-title p-b-22">
             <h3 class="m-text5 t-center">
-                Our Products
+                Our Brands
             </h3>
         </div>
 
