@@ -6,7 +6,7 @@
 
         /*[ Slick1 ]
         ===========================================================*/
-        var itemSlick1 = $('.slick1-promo').find('.item-slick1-promo');
+        var itemSlick1 = $('.slick1').find('.item-slick1');
         var action1 = [];
         var action2 = [];
         var action3 = [];
@@ -21,7 +21,7 @@
         }
 
 
-        $('.slick1-promo').on('init', function(){
+        $('.slick1').on('init', function(){
 
             action1[0] = setTimeout(function(){
                 $(cap1Slide1[0]).addClass($(cap1Slide1[0]).data('appear') + ' visible-true');
@@ -37,7 +37,7 @@
         });
 
 
-        $('.slick1-promo').slick({
+        $('.slick1').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             fade: true,
@@ -53,7 +53,7 @@
             nextArrow:'<button class="arrow-slick1 next-slick1"><i class="fa  fa-angle-right" aria-hidden="true"></i></button>',  
         });
 
-        $('.slick1-promo').on('afterChange', function(event, slick, currentSlide){ 
+        $('.slick1').on('afterChange', function(event, slick, currentSlide){ 
             for(var i=0; i<itemSlick1.length; i++) {
 
               clearTimeout(action1[i]);
@@ -145,5 +145,7 @@
                 return '<img src=" ' + portrait + ' "/><div class="slick3-dot-overlay"></div>';
             },  
         });
+
+        
 
 })(jQuery);

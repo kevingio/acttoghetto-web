@@ -26,7 +26,7 @@
                 <!-- Login Form -->
                 <form method="POST" action="{{ route('login') }}">
                     {{ csrf_field() }}
-                    <input type="email" id="login" class="fadeIn second" name="email" autocomplete="off" placeholder="email" required>
+                    <input type="text" id="login" class="fadeIn second" name="email" autocomplete="off" placeholder="email" required>
                     <input type="password" id="password" class="fadeIn third" name="password" autocomplete="off" placeholder="password" required>
                     <button type="submit" class="fadeIn fourth">Log In</button>
                     <br>
