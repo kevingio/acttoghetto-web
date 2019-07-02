@@ -76,31 +76,31 @@
             <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ URL::asset('assets/images/banner-02.jpg') }}" alt="IMG-BENNER">
+                    <img src="https://images.unsplash.com/photo-1505632958218-4f23394784a6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80" alt="IMG-BENNER">
                 </div>
 
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ URL::asset('assets/images/banner-05.jpg') }}" alt="IMG-BENNER">
-                </div>
-            </div>
-
-            <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ URL::asset('assets/images/banner-03.jpg') }}" alt="IMG-BENNER">
-                </div>
-
-                <!-- block1 -->
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ URL::asset('assets/images/banner-07.jpg') }}" alt="IMG-BENNER">
+                    <img src="https://images.unsplash.com/photo-1486308510493-aa64833637bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="IMG-BENNER">
                 </div>
             </div>
 
             <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
                 <!-- block1 -->
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ URL::asset('assets/images/banner-04.jpg') }}" alt="IMG-BENNER">
+                    <img src="https://images.unsplash.com/photo-1509087859087-a384654eca4d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="IMG-BENNER">
+                </div>
+
+                <!-- block1 -->
+                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                    <img src="https://images.unsplash.com/photo-1537832816519-689ad163238b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60" alt="IMG-BENNER">
+                </div>
+            </div>
+
+            <div class="col-sm-10 col-md-8 col-lg-4 m-l-r-auto">
+                <!-- block1 -->
+                <div class="block1 hov-img-zoom pos-relative m-b-30">
+                    <img src="https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80" alt="IMG-BENNER">
                 </div>
 
                 <!-- block2 -->
