@@ -1,73 +1,46 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/icons/favicon.png') }}"/>
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+        <title>Login</title>
+    </head>
+    <body>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-
-                                @if ($errors->has('password'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
+                <!-- Icon -->
+                <div class="fadeIn first my-5">
+                    <img src="{{ asset('assets/images/icons/logo.png') }}" id="icon" alt="Store Logo" />
                 </div>
+
+                @if(!empty($errors->first('email')))
+                    <p class="text-danger">Email or password not found!</p>
+                @endif
+
+                <!-- Login Form -->
+                <form method="POST" action="{{ route('login') }}">
+                    {{ csrf_field() }}
+                    <input type="email" id="login" class="fadeIn second" name="email" autocomplete="off" placeholder="email" required>
+                    <input type="password" id="password" class="fadeIn third" name="password" autocomplete="off" placeholder="password" required>
+                    <button type="submit" class="fadeIn fourth">Log In</button>
+                    <br>
+                    <a href="{{ route('register') }}" class="my-4">Register</a>
+                </form>
+
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+                    <a class="underlineHover" href="{{ route('home') }}">Go to the Site</a>
+                </div>
+
             </div>
         </div>
-    </div>
-</div>
-@endsection
+
+        <script src="{{ asset('js/app.js') }}" charset="utf-8"></script>
+    </body>
+</html>
