@@ -2479,7 +2479,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 
         /*[ Slick1 ]
         ===========================================================*/
-        var itemSlick1 = $('.slick1-promo').find('.item-slick1-promo');
+        var itemSlick1 = $('.slick1').find('.item-slick1');
         var action1 = [];
         var action2 = [];
         var action3 = [];
@@ -2494,7 +2494,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
         }
 
 
-        $('.slick1-promo').on('init', function(){
+        $('.slick1').on('init', function(){
 
             action1[0] = setTimeout(function(){
                 $(cap1Slide1[0]).addClass($(cap1Slide1[0]).data('appear') + ' visible-true');
@@ -2510,7 +2510,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
         });
 
 
-        $('.slick1-promo').slick({
+        $('.slick1').slick({
             slidesToShow: 1,
             slidesToScroll: 1,
             fade: true,
@@ -2526,7 +2526,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
             nextArrow:'<button class="arrow-slick1 next-slick1"><i class="fa  fa-angle-right" aria-hidden="true"></i></button>',  
         });
 
-        $('.slick1-promo').on('afterChange', function(event, slick, currentSlide){ 
+        $('.slick1').on('afterChange', function(event, slick, currentSlide){ 
             for(var i=0; i<itemSlick1.length; i++) {
 
               clearTimeout(action1[i]);
@@ -2619,6 +2619,8 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
             },  
         });
 
+        
+
 })(jQuery);
 (function ($) {
     "use strict";
@@ -2694,7 +2696,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
         overlayParentElement : 'html',
         transition: function(url){ window.location.href = url; }
     });
-    
+
     /*[ Back to top ]
     ===========================================================*/
     var windowH = $(window).height()/2;
@@ -2722,8 +2724,8 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
     var sub_menu_is_showed = -1;
 
     for(var i=0; i<menu.length; i++){
-        $(menu[i]).on('click', function(){ 
-            
+        $(menu[i]).on('click', function(){
+
                 if(jQuery.inArray( this, menu ) == sub_menu_is_showed){
                     $(this).parent().find('.header-dropdown').toggleClass('show-header-dropdown');
                     sub_menu_is_showed = -1;
@@ -2760,29 +2762,29 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 
         if($(this).scrollTop() >= posWrapHeader) {
             $('.header1').addClass('fixed-header');
-            $(header).css('top',-posWrapHeader); 
+            $(header).css('top',-posWrapHeader);
 
-        }  
+        }
         else {
-            var x = - $(this).scrollTop(); 
-            $(header).css('top',x); 
+            var x = - $(this).scrollTop();
+            $(header).css('top',x);
             $('.header1').removeClass('fixed-header');
-        } 
+        }
 
         if($(this).scrollTop() >= 200 && $(window).width() > 992) {
             $('.fixed-header2').addClass('show-fixed-header2');
-            $('.header2').css('visibility','hidden'); 
+            $('.header2').css('visibility','hidden');
             $('.header2').find('.header-dropdown').removeClass("show-header-dropdown");
-            
-        }  
+
+        }
         else {
             $('.fixed-header2').removeClass('show-fixed-header2');
-            $('.header2').css('visibility','visible'); 
+            $('.header2').css('visibility','visible');
             $('.fixed-header2').find('.header-dropdown').removeClass("show-header-dropdown");
-        } 
+        }
 
     });
-    
+
     /*[ Show menu mobile ]
     ===========================================================*/
     $('.btn-show-menu-mobile').on('click', function(){
@@ -2864,7 +2866,7 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
 
         setTimeout(function(){
             $('.video-mo-01').css('opacity','1');
-        },300);      
+        },300);
     });
 
     $('[data-dismiss="modal"]').on('click',function(){
@@ -2873,3 +2875,154 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
     });
 
 })(jQuery);
+
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $('.header-cart-item').on('click', function () {
+        var data_id = $(this).attr('data-id');
+        var nameProduct = $(this).attr('name-product')
+        $.post('/removeFromCart', {id: data_id})
+        .done(function (response) {
+            if(response.status == 200) {
+                swal(nameProduct, "is removed from cart !", "success").then(function () {
+                    location.reload();
+                });
+            }
+        });
+    });
+
+    $('.block2-overlay > .block2-btn-addcart').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+            var data_id = $(this).attr('data-id');
+            var store_id = $(this).attr('store-id');
+            $.post('/addToCart', {id: data_id, qty: 1, store_id: store_id})
+            .done(function (response) {
+                if(response.status == 200) {
+                    swal(nameProduct, "is added to cart !", "success").then(function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    });
+
+    $('.btn-addcart-product-detail').each(function(){
+        $(this).on('click', function(){
+            var nameProduct = $(this).attr('data-name');
+            var data_id = $(this).attr('data-id');
+            var store_id = $(this).attr('store-id');
+            $.post('/addToCart', {id: data_id, qty: 1, store_id: store_id})
+            .done(function (response) {
+                if(response.status == 200) {
+                    swal(nameProduct, "is added to cart !", "success").then(function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    });
+
+    $('.btn-addcart').each(function(){
+        var nameProduct = $(this).parent().parent().find('.s-name').html();
+        $(this).on('click', function(){
+            var data_id = $(this).attr('data-id');
+            var price = $(this).attr('price');
+            var store_id = $(this).attr('store-id');
+            $.post('/addToCart', {id: data_id, qty: 1, price: price, store_id: store_id})
+            .done(function (response) {
+                if(response.status == 200) {
+                    swal(nameProduct, "is added to cart !", "success").then(function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    });
+
+    $('.block2-btn-addwishlist').each(function(){
+        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+        $(this).on('click', function(){
+            var data_id = $(this).attr('data-id');
+            $.post('/addToCart', {id: data_id, qty: 1})
+            .done(function (response) {
+                if(response.status == 200) {
+                    swal(nameProduct, "is added to cart !", "success").then(function () {
+                        location.reload();
+                    });
+                }
+            });
+        });
+    });
+
+    var filterBar = document.getElementById('filter-bar');
+
+    if(filterBar != null) {
+        noUiSlider.create(filterBar, {
+            start: [ 50, 200 ],
+            connect: true,
+            range: {
+                'min': 50,
+                'max': 200
+            }
+        });
+
+        var skipValues = [
+        document.getElementById('value-lower'),
+        document.getElementById('value-upper')
+        ];
+
+        filterBar.noUiSlider.on('update', function( values, handle ) {
+            skipValues[handle].innerHTML = Math.round(values[handle]) ;
+        });
+    }
+
+    $(".selection-1").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect2')
+    });
+});
+
+$(document).ready(function () {
+    $('.edit-store').on('click', function () {
+        $(this).hide();
+        $('.form-edit-store').show(1000);
+    });
+
+    $('.cancel-edit-store').on('click', function () {
+        $('.form-edit-store').hide();
+        $('.edit-store').show();
+    });
+
+    $('a.delete-smartphone').on('click', function () {
+        var data_id = $(this).attr('data-id');
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this product!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                $.ajax({
+                    url: '/product/' + data_id,
+                    type: 'DELETE',
+                    success: function(result) {
+                        location.reload();
+                    }
+                });
+            }
+        })
+    });
+});
