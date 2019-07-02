@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-        <link rel="icon" type="image/png" href="{{ asset('app-asset/images/icons/favicon.png') }}"/>
+        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+        <link rel="icon" type="image/png" href="{{ asset('assets/images/icons/favicon.png') }}"/>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
         <title>Register</title>

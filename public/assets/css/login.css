@@ -13,7 +13,7 @@ html {
 body {
   font-family: Montserrat-Regular, sans-serif;
   height: 100vh;
-  background: url(https://images.unsplash.com/photo-1518118293823-28f071202da1?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4e1f3300187f811160b6da8f1ae79782&auto=format&fit=crop&w=1050&q=80);
+  background: url('https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
