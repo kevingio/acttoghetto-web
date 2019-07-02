@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     public $timestamps = false;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,5 +16,6 @@ class Category extends Model
     protected $fillable = [
         'name',
         'image',
+        'type',
     ];
 }

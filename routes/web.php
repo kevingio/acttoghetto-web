@@ -20,8 +20,6 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('brand', 'BrandController');
 
 Route::resource('category', 'CategoryController');

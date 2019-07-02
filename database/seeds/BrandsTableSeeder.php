@@ -13,22 +13,16 @@ class BrandsTableSeeder extends Seeder
     public function run()
     {
         Brand::truncate();
-        $brands = [
-            [
-                'name' => 'Adidas'
-            ],
-            [
-                'name' => 'Nike'
-            ],
-            [
-                'name' => 'Gucci'
-            ],
-            [
-                'name' => 'Prada'
-            ]
-        ];
+        $brands = ['Adidas', 'Nike', 'Gucci', 'Prada', 'Balenciaga', 'Versace'];
         foreach ($brands as $key => $brand) {
-            Brand::create($brand);
+            Brand::create([
+                'name' => $brand,
+                'type' => 'man'
+            ]);
+            Brand::create([
+                'name' => $brand,
+                'type' => 'woman'
+            ]);
         }
     }
 }
