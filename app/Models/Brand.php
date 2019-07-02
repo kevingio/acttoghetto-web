@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Brand extends Model
 {
     public $timestamps = false;
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,5 +16,6 @@ class Brand extends Model
     protected $fillable = [
         'name',
         'image',
+        'type',
     ];
 }

@@ -11,9 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('web.home');
-});
 
 Route::get('/sale', function () {
     return view('web.sale');
@@ -21,7 +18,7 @@ Route::get('/sale', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index');
 
 Route::resource('brand', 'BrandController');
 

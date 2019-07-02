@@ -1,8 +1,8 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 
-@section('title') 
-    Home 
-@endsection 
+@section('title')
+    Home
+@endsection
 @section('content')
 
 <section class="slide1">
@@ -137,21 +137,21 @@
                 <div class="carousel-caption">
                     <h3>1 Chicago</h3>
                     <p>Thank you, Chicago!</p>
-                </div>  
+                </div>
             </div>
             <div class="carousel-item" data-interval="500">
                 <img class="d-block w-100" src="{{ asset('assets/images/master-slide-06.jpg') }}" alt="2">
                 <div class="carousel-caption">
                     <h3>2 Chicago</h3>
                     <p>Thank you, Chicago!</p>
-                </div>  
+                </div>
             </div>
             <div class="carousel-item" >
                 <img class="d-block w-100" src="{{ asset('assets/images/master-slide-07.jpg') }}" alt="3">
                 <div class="carousel-caption">
                     <h3>3 Chicago</h3>
                     <p>Thank you, Chicago!</p>
-                </div>  
+                </div>
             </div>
         </div>
     </div>
@@ -183,11 +183,12 @@
                 <!-- - -->
                 <div class="tab-pane fade show active" id="man-products" role="tabpanel">
                     <div class="row">
+                        @foreach($brandsForMan as $brand)
                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-02.jpg') }}" alt="IMG-PRODUCT">
+                                    <img src="{{ empty($brand->image) ? asset('assets/images/item-02.jpg') : $brand->image  }}" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
@@ -201,214 +202,25 @@
 
                                 <div class="block2-txt p-t-20">
                                     <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        GUCCI
+                                        {{ $brand->name }}
                                     </a>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
 
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-08.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Supreme
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-10.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Christian Dior
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative ">
-                                    <img src="{{ URL::asset('assets/images/item-06.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        GUCCI
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-12.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        GUCCI
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-14.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Supreme
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-05.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Christian Dior
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-07.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Balenciaga
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- - -->
                 <div class="tab-pane fade" id="woman-products" role="tabpanel">
                     <div class="row">
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative ">
-                                    <img src="{{ URL::asset('assets/images/item-07.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Balenciaga
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
+                        @foreach($brandsForWoman as $brand)
                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
                             <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-01.jpg') }}" alt="IMG-PRODUCT">
+                                    <img src="{{ empty($brand->image) ? asset('assets/images/item-02.jpg') : $brand->image  }}" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
@@ -422,134 +234,12 @@
 
                                 <div class="block2-txt p-t-20">
                                     <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        GUCCI
+                                        {{ $brand->name }}
                                     </a>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-14.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Supreme
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-06.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        GUCCI
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-11.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Balenciaga
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-12.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        GUCCI
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-15.jpg') }}" alt="IMG-PRODUCT">
-
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
-                                                See More
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
-                                        Supreme
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -567,8 +257,12 @@
     <div class="flex-w p-l-15 p-r-15">
         <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 respon1">
             <h4 class="m-text12 t-center">
-                Free Delivery Worldwide
+                Shipping
             </h4>
+
+            <span class="s-text11 t-center">
+                Free shipping worlwide
+            </span>
         </div>
 
         <div class="flex-col-c w-size5 p-l-15 p-r-15 p-t-16 p-b-15 bo2 respon2">

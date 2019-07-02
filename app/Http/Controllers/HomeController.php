@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Brand;
 
 class HomeController extends Controller
 {
@@ -11,9 +12,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Brand $brand)
     {
-        $this->middleware('auth');
+        $this->brand = $brand;
+        // $this->middleware('auth');
     }
 
     /**
@@ -23,6 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $brandsForMan = $this->brand->where('type', 'man')->orderBy('name')->get();
+        $brandsForWoman = $this->brand->where('type', 'woman')->orderBy('name')->get();
+        return view('web.home', compact('brandsForMan', 'brandsForWoman'));
     }
 }
