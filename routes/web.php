@@ -22,3 +22,9 @@ Route::get('/sale', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('brand', 'BrandController');
+
+Route::resource('category', 'CategoryController');
+
+Route::resource('product', 'ProductController');

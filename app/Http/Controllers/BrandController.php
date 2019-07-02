@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class BrandController extends Controller
 {
+
+    function __construct(Brand $brand) {
+        $this->$brand = $brand;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +19,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = $this->brand->all();
+        return $brands;
     }
 
     /**
@@ -35,7 +41,9 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $this->brand->create($data);
+        return 'sukses';
     }
 
     /**
@@ -46,7 +54,7 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return $brand;
     }
 
     /**
@@ -69,7 +77,9 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $data = $request->all();
+        $brand->update($data);
+        return 'sukses';
     }
 
     /**
@@ -80,6 +90,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+        $brand->delete();
+        return 'sukses';
     }
 }
