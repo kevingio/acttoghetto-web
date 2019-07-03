@@ -15,7 +15,7 @@
 							<li class="sale-noti">
 								<a href="/">Home</a>
 							<li>
-								<a href="/sale">Shop</a>
+								<a href="/product">Product</a>
 							</li>
 						</ul>
 					</nav>

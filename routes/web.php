@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('web.home');
 });
 
-Route::get('/sale', function () {
-    return view('web.sale');
+Route::get('/product', function () {
+    return view('web.product.index');
+});
+
+Route::get('/detail', function () {
+    return view('web.product.detail');
 });
