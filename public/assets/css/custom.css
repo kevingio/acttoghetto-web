@@ -1,0 +1,7 @@
+.carousel-caption p {
+    color: white;
+}
+
+.carousel-inner, .carousel-item {
+    height: 250px;
+}

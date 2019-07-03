@@ -1,288 +1,198 @@
+<header class="header1">
+    <!-- Header desktop -->
+    <div class="container-menu-header">
+        <div class="wrap_header">
+            <!-- Logo -->
+            <a href="{{ route('home') }}" class="logo">
+                <img src="{{ asset('assets/images/icons/logo.png') }}" alt="IMG-LOGO">
+            </a>
 
-    <header class="header1">
-		<!-- Header desktop -->
-		<div class="container-menu-header">
-			<div class="wrap_header">
-				<!-- Logo -->
-				<a href="index.html" class="logo">
-					<img src="{{ asset('assets/images/icons/logo.png') }}" alt="IMG-LOGO">
-				</a>
+            <!-- Menu -->
+            <div class="wrap_menu">
+                <nav class="menu">
+                    <ul class="main_menu">
+                        <li @if(request()->is('/')) class="sale-noti" @endif>
+                            <a href="{{ route('home') }}">Home</a>
+                        </li>
 
-				<!-- Menu -->
-				<div class="wrap_menu">
-					<nav class="menu">
-						<ul class="main_menu">
-							<li class="sale-noti">
-								<a href="/">Home</a>
-							<li>
-								<a href="/product">Product</a>
-							</li>
-						</ul>
-					</nav>
-				</div>
+                        <li @if(request()->is('product') || request()->is('product/*')) class="sale-noti" @endif>
+                            <a href="{{ url('/product') }}">Products</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
 
-				<!-- Header Icon -->
-				<div class="header-icons">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1" alt="ICON">
-					</a>
+            <!-- Header Icon -->
+            <div class="header-icons">
+                @if(auth()->check())
+                <a href="#" class="dis-block">
+                    <div>
+                        <a href="#" class="mr-3 js-show-header-dropdown">{{ auth()->user()->name }}</a>
+                        <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <div class="header-cart header-dropdown text-right" style="right: 25%; width: auto; min-width: 200px;">
+                            <p class="my-2">
+                                <a href="{{ url('/profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
+                            </p>
+                            <p class="my-2">
+                                <a href="#">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                            </p>
+                            <p class="my-2">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout <i class="fas fa-power-off ml-2"></i>
+                                </a>
 
-					<span class="linedivide1"></span>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    {{ csrf_field() }}
+                                </form>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                @else
+                <a href="{{ route('login') }}" class="btn btn-danger">
+                    Login
+                </a>
+                @endif
 
-					<div class="header-wrapicon2">
-						<img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+                <span class="linedivide1"></span>
 
-						<!-- Header cart noti -->
-						<div class="header-cart header-dropdown">
-							<ul class="header-cart-wrapitem">
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="{{ asset('assets/images/item-cart-01.jpg')}}" alt= "IMG">
-									</div>
+                <div class="header-wrapicon2">
+                    <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
 
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											1ST CAMO SHARK HOODIE JACKET
-										</a>
+                    @if(!empty($cart['data']))
+                    <div class="header-cart header-dropdown">
+                        <ul class="header-cart-wrapitem">
+                            @foreach($cart['data'] as $item)
+                            <li class="header-cart-item" data-id="{{ $item->id }}" name-product="{{ $item->name }}">
+                                <div class="header-cart-item-img">
+                                    <img src="{{ sizeof($item->image) > 0 ? Storage::url($item->image[0]->filename)  : 'https://www.91-img.com/pictures/119660-v10-samsung-galaxy-note-9-mobile-phone-large-1.jpg' }}" alt="IMG">
+                                </div>
 
-										<span class="header-cart-item-info">
-											1 x $358.40
-										</span>
-									</div>
-								</li>
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        {{ $item->name }}
+                                    </a>
 
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="{{ asset('assets/images/item-cart-02.jpg')}}" alt= "IMG">
-									</div>
+                                    <span class="header-cart-item-info">
+                                        {{ $item->qty }} x {{ "Rp. " . number_format($item->price,2,',','.') }}
+                                    </span>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
 
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Gucci Courrier GG Supreme belt bag
-										</a>
+                        <div class="header-cart-total">
+                            Total: {{ "Rp. " . number_format($cart['total'],2,',','.') }}
+                        </div>
 
-										<span class="header-cart-item-info">
-											1 x $1100
-										</span>
-									</div>
-								</li>
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="{{ url('/cart') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    View Cart
+                                </a>
+                            </div>
 
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="{{ asset('assets/images/item-cart-03.jpg')}}" alt= "IMG">
-									</div>
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    Check Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
 
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											TRIPLE S TRAINERS
-										</a>
+    <!-- Header Mobile -->
+    <div class="wrap_header_mobile">
+        <!-- Logo moblie -->
+        <a href="{{ route('home') }}" class="logo-mobile">
+            <img src="{{ asset('assets/images/icons/logo.png') }}" alt="IMG-LOGO">
+        </a>
 
-										<span class="header-cart-item-info">
-											1 x $820
-										</span>
-									</div>
-								</li>
-							</ul>
+        <!-- Button show menu -->
+        <div class="btn-show-menu">
+            <!-- Header Icon mobile -->
+            <div class="header-icons-mobile">
 
-							<div class="header-cart-total">
-								Total: $2278.40
-							</div>
+                <div class="header-wrapicon2">
+                    <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
 
-							<div class="header-cart-buttons">
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										View Cart
-									</a>
-								</div>
+                    @if(!empty($cart['data']))
+                    <div class="header-cart header-dropdown">
+                        <ul class="header-cart-wrapitem">
+                            @foreach($cart['data'] as $item)
+                            <li class="header-cart-item" data-id="{{ $item->id }}" name-product="{{ $item->name }}">
+                                <div class="header-cart-item-img">
+                                    <img src="{{ sizeof($item->image) > 0 ? Storage::url($item->image[0]->filename)  : 'https://www.91-img.com/pictures/119660-v10-samsung-galaxy-note-9-mobile-phone-large-1.jpg' }}" alt="IMG">
+                                </div>
 
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+                                <div class="header-cart-item-txt">
+                                    <a href="#" class="header-cart-item-name">
+                                        {{ $item->name }}
+                                    </a>
 
-		<!-- Header Mobile -->
-		<div class="wrap_header_mobile">
-			<!-- Logo moblie -->
-			<a href="index.html" class="logo-mobile">
-				<img src="{{ asset('assets/images/icons/logo.png')}}" alt="I MG-LOGO">
-			</a>
+                                    <span class="header-cart-item-info">
+                                        {{ $item->qty }} x {{ "Rp. " . number_format($item->price,2,',','.') }}
+                                    </span>
+                                </div>
+                            </li>
+                            @endforeach
+                        </ul>
 
-			<!-- Button show menu -->
-			<div class="btn-show-menu">
-				<!-- Header Icon mobile -->
-				<div class="header-icons-mobile">
-					<a href="#" class="header-wrapicon1 dis-block">
-						<img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1" alt="ICON">
-					</a>
+                        <div class="header-cart-total">
+                            Total: {{ "Rp. " . number_format($cart['total'],2,',','.') }}
+                        </div>
 
-					<span class="linedivide2"></span>
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="{{ url('/cart') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    View Cart
+                                </a>
+                            </div>
 
-					<div class="header-wrapicon2">
-						<img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-						<span class="header-icons-noti">0</span>
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    Check Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                </div>
+            </div>
 
-						<!-- Header cart noti -->
-						<div class="header-cart header-dropdown">
-							<ul class="header-cart-wrapitem">
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="{{ asset('assets/images/item-cart-01.jpg')}}" alt= "IMG">
-									</div>
+            <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </div>
+        </div>
+    </div>
 
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											White Shirt With Pleat Detail Back
-										</a>
+    <!-- Menu Mobile -->
+    <div class="wrap-side-menu" >
+        <nav class="side-menu">
+            <ul class="main-menu">
 
-										<span class="header-cart-item-info">
-											1 x $19.00
-										</span>
-									</div>
-								</li>
+                <li @if(request()->is('/')) class="item-menu-mobile" @endif>
+                    <a href="{{ route('home') }}" @if(!request()->is('/')) class="text-danger" @endif>Home</a>
+                </li>
 
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="{{ asset('assets/images/item-cart-02.jpg')}}" alt= "IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Converse All Star Hi Black Canvas
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $39.00
-										</span>
-									</div>
-								</li>
-
-								<li class="header-cart-item">
-									<div class="header-cart-item-img">
-										<img src="{{ asset('assets/images/item-cart-03.jpg')}}" alt= "IMG">
-									</div>
-
-									<div class="header-cart-item-txt">
-										<a href="#" class="header-cart-item-name">
-											Nixon Porter Leather Watch In Tan
-										</a>
-
-										<span class="header-cart-item-info">
-											1 x $17.00
-										</span>
-									</div>
-								</li>
-							</ul>
-
-							<div class="header-cart-total">
-								Total: $75.00
-							</div>
-
-							<div class="header-cart-buttons">
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										View Cart
-									</a>
-								</div>
-
-								<div class="header-cart-wrapbtn">
-									<!-- Button -->
-									<a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-										Check Out
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="btn-show-menu-mobile hamburger hamburger--squeeze">
-					<span class="hamburger-box">
-						<span class="hamburger-inner"></span>
-					</span>
-				</div>
-			</div>
-		</div>
-
-		<!-- Menu Mobile -->
-		<div class="wrap-side-menu" >
-			<nav class="side-menu">
-				<ul class="main-menu">
-					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-						<span class="topbar-child1">
-							Free shipping for standard order over $100
-						</span>
-					</li>
-
-					<li class="item-topbar-mobile p-l-20 p-t-8 p-b-8">
-						<div class="topbar-child2-mobile">
-							<span class="topbar-email">
-								fashe@example.com
-							</span>
-
-							<div class="topbar-language rs1-select2">
-								<select class="selection-1" name="time">
-									<option>USD</option>
-									<option>EUR</option>
-								</select>
-							</div>
-						</div>
-					</li>
-
-					<li class="item-topbar-mobile p-l-10">
-						<div class="topbar-social-mobile">
-							<a href="#" class="topbar-social-item fa fa-facebook"></a>
-							<a href="#" class="topbar-social-item fa fa-instagram"></a>
-							<a href="#" class="topbar-social-item fa fa-pinterest-p"></a>
-							<a href="#" class="topbar-social-item fa fa-snapchat-ghost"></a>
-							<a href="#" class="topbar-social-item fa fa-youtube-play"></a>
-						</div>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="index.html">Home</a>
-						<ul class="sub-menu">
-							<li><a href="index.html">Homepage V1</a></li>
-							<li><a href="home-02.html">Homepage V2</a></li>
-							<li><a href="home-03.html">Homepage V3</a></li>
-						</ul>
-						<i class="arrow-main-menu fa fa-angle-right" aria-hidden="true"></i>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="product.html">Shop</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="product.html">Sale</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="cart.html">Features</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="blog.html">Blog</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="about.html">About</a>
-					</li>
-
-					<li class="item-menu-mobile">
-						<a href="contact.html">Contact</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-    </header>
+                <li @if(request()->is('product') || request()->is('product/*')) class="item-menu-mobile" @endif>
+                    <a href="#" @if(!request()->is('product') && !request()->is('product/*')) class="text-danger" @endif>Products</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
