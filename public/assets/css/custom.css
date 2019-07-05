@@ -26,7 +26,7 @@
     display: inline-block;
     
     /*16px width of fake checkbox + 6px distance between fake checkbox and text*/
-    padding-left: 22px;
+    padding-left: 30px;
 }
 
 .checkbox-style label::before,

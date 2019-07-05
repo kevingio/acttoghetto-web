@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
-    function __construct(Product $product) {
+    function __construct(Product $product, Brand $brand, Category $category) {
         $this->product = $product;
+        $this->brand = $brand;
+        $this->category = $category;
     }
 
     /**
@@ -39,8 +43,11 @@ class ProductController extends Controller
         } else if(empty($request->sort)) {
             $products = $products->latest();
         }
-        // return $products->get();
-        return view('web.product.index');
+        $products = $products->paginate(9);
+        $products->appends(request()->input())->links();
+        $brands = $this->brand->orderBy('name')->get(['name']);
+        $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
+        return view('web.product.index', compact('brands', 'categories', 'products'));
     }
 
     /**

@@ -118,7 +118,7 @@
 
                         <div class="w-size2 p-t-25">
                             <!-- Button -->
-                            <a href="/sale" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
+                        <a href="{{ route('product.index') }}" class="flex-c-m size2 bg4 bo-rad-23 hov1 m-text3 trans-0-4">
                                 Shop
                             </a>
                         </div>

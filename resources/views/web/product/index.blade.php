@@ -5,7 +5,7 @@
 @endsection 
 @section('content')
 <!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('{{ URL::asset('assets/images/heading-pages-02.jpg') }}');">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('https://images.unsplash.com/photo-1501236570302-906143a7c9f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');">
 		<h2 class="l-text2 t-center">
 			Product
 		</h2>
@@ -30,61 +30,7 @@
                             </button>
                         </div>
 
-                        <!--  -->
-                        <form action="" method="">                     
-                            <ul class="p-b-54">
-                                <li class="p-t-4">
-                                    <h4 class="m-text14 p-b-7">
-                                        Gender
-                                    </h4>  
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox1" name="">
-                                        <label class="custom-control-label" for="checkBox1">All</label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox2" name="">
-                                        <label class="custom-control-label" for="checkBox2">Man</label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-control checkbox-style">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox3" name="">
-                                        <label class="custom-control-label" for="checkBox3">Woman</label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <hr class="mb-3">
-                                </li>
-
-                                <li class="p-t-4">
-                                    <h4 class="m-text14 p-b-7">
-                                        Categories
-                                    </h4>  
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox4" name="">
-                                        <label class="custom-control-label" for="checkBox4">All</label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox5" name="">
-                                        <label class="custom-control-label" for="checkBox5">Shoes</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </form>
+                        @include('web.product.sidemenu')
                     </div>
                 </div>
 
@@ -104,14 +50,18 @@
                         </div>
 
                         <span class="s-text8 p-t-5 p-b-5">
-                            Showing 1–12 of 16 results
+                            @if($products->count() > 0)
+                                Showing {{ (($products->currentPage() - 1) * $products->perPage()) + 1 }}–{{ (($products->currentPage() - 1) * $products->perPage()) + $products->count() }} of {{ $products->total() }} results
+                            @else
+                                No results
+                            @endif
                         </span>
                     </div>
 
                     <!-- Product -->
                     <div class="row">
+                        @foreach($products as $product)
                         <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
-                            <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                     <img src="{{ URL::asset('assets/images/item-02.jpg') }}" alt="IMG-PRODUCT">
@@ -128,22 +78,29 @@
 
                                 <div class="block2-txt p-t-20">
                                     <a href="/detail" class="block2-name dis-block s-text3 p-b-5">
-                                        Herschel supply co 25l
+                                        {{ $product->name }}
                                     </a>
 
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $75.00
+                                    <span class="text-danger block2-price p-r-5">
+                                        Rp {{ number_format($product->price,0,',','.') }}
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
 
-                    <!-- Pagination -->
+                    @if(count($products) > 0)
                     <div class="pagination flex-m flex-w p-t-26">
-                        <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-                        <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+                        @for($i = 1; $i < $products->lastPage() + 1; $i++)
+                            @if(request()->page == $i)
+                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ $i }}</a>
+                            @else
+                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 @if(empty(request()->page) && $i == 1) active-pagination @endif">{{ $i }}</a>
+                            @endif
+                        @endfor
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
