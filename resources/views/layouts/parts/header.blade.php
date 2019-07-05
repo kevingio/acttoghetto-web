@@ -34,7 +34,7 @@
                                 <a href="{{ url('/profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
                             </p>
                             <p class="my-2">
-                                <a href="#">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                                <a href="{{ url('/transactions') }}">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
                             </p>
                             <p class="my-2">
                                 <a href="{{ route('logout') }}"
