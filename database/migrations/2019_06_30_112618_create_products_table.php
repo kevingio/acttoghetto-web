@@ -17,8 +17,10 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->unsignedInteger('category_id');
             $table->unsignedInteger('brand_id')->nullable();
+            $table->string('sku')->unique();
             $table->string('name');
             $table->bigInteger('price');
+            $table->unsignedInteger('size_id');
             $table->integer('qty');
             $table->text('description')->nullable();
             $table->timestamps();

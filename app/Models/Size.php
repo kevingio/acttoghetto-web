@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Size extends Model
 {
     public $timestamps = false;
 
@@ -14,9 +14,7 @@ class Brand extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'image',
-        'type',
+        'category_id',
+        'text',
     ];
-
 }

@@ -10752,6 +10752,7 @@ input.num-product::-webkit-inner-spin-button {
     padding: .5rem .75rem!important;
     background-color: #f8f9fa!important;
     width: 100%!important;
+<<<<<<< HEAD
 }
 
 .w-10{
@@ -10791,4 +10792,6 @@ input.num-product::-webkit-inner-spin-button {
     height: 16px;
     border: 2px solid #aaa;
     transition: .3s;
+=======
+>>>>>>> front-end
 }

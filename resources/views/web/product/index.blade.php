@@ -25,8 +25,8 @@
                         <div class="search-product pos-relative bo4 of-hidden mb-4">
                             <form action="{{ route('product.index') }}" method="get">
                                 <input class="s-text7 size6 p-l-23 p-r-50" type="text" autocomplete="off" name="search" value="{{ !empty(request()->search) ? request()->search : '' }}" placeholder="Search Products...">
-                                @foreach(request()->except('search') as $key => $value)
-                                <input type="hidden" name="{{ $key }}" value="{{ $value }}" readonly>
+                                @foreach(request()->except('search') as $key => $item)
+                                    <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
                                 @endforeach
                                 <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
                                     <i class="fs-12 fa fa-search" aria-hidden="true"></i>
@@ -45,8 +45,8 @@
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
                                 <form action="{{ route('product.index') }}" method="get">
-                                    @foreach(request()->except('sort') as $key => $value)
-                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}" readonly>
+                                    @foreach(request()->except('sort') as $key => $item)
+                                        <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
                                     @endforeach
                                     <select class="selection-2" name="sort" onchange="this.form.submit()">
                                         <option value="asc" @if(request()->sort == 'asc') selected @endif>Price: low to high</option>
@@ -69,7 +69,8 @@
                     <!-- Product -->
                     <div class="row">
                         @foreach($products as $product)
-                        <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+                        <a href="{{ route('product.show',[$product->id]) }}">
+                            <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                     <img src="{{ URL::asset('assets/images/item-02.jpg') }}" alt="IMG-PRODUCT">
@@ -85,7 +86,7 @@
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="/detail" class="block2-name dis-block s-text3 p-b-5">
+                                    <a href="{{ route('product.show',[$product->id]) }}" class="block2-name dis-block s-text3 p-b-5">
                                         {{ $product->name }}
                                     </a>
 
@@ -95,6 +96,7 @@
                                 </div>
                             </div>
                         </div>
+                        </a>
                         @endforeach
                     </div>
 

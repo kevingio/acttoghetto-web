@@ -1,108 +1,53 @@
 <!-- Sidemenu -->
-<form action="" method="">                     
-    <ul class="p-b-54">
-        <li class="p-t-4">
-            <h4 class="m-text14 p-b-7">
-                Gender
-            </h4>  
-        </li>
-
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">All</span>
-                </label>
+<form action="{{ route('product.index') }}" method="GET">
+    @foreach(request()->except(['brand', 'category', 'gender']) as $key => $item)
+    <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
+    @endforeach
+    <div class="py-2">
+        <h4 class="m-text14 p-b-7">
+            Gender
+        </h4>  
+        <div class="flex-w">
+            <div class="rs2-select2 bo4 of-hidden w-100">
+                <select class="selection-2" name="gender">
+                    <option value="all" @if(empty(request()->brand)) selected @endif>All</option>
+                    <option value="man" @if(request()->gender == 'man') selected @endif>Man</option>
+                    <option value="woman" @if(request()->gender == 'woman') selected @endif>Woman</option>
+                </select>
             </div>
-        </li>
-
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">Man</span>
-                </label>
+        </div>
+    </div>
+    <hr>
+    <div class="py-2">
+        <h4 class="m-text14 p-b-7">
+            Categories
+        </h4>  
+        <div class="flex-w">
+            <div class="rs2-select2 bo4 of-hidden w-100">
+                <select class="selection-2" name="category">
+                    <option value="all" @if(empty($request->category)) selected @endif>All</option>
+                    @foreach ($categories as $category)
+                    <option value="{{ strtolower($category->name) }}" @if(request()->category == strtolower($category->name)) selected @endif>{{ $category->name }}</option>
+                    @endforeach
+                </select>
             </div>
-        </li>
-
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">Woman</span>
-                </label>
+        </div>
+    </div>         
+    <hr>
+    <div class="py-2">
+        <h4 class="m-text14 p-b-7">
+            Brands
+        </h4>  
+        <div class="flex-w">
+            <div class="rs2-select2 bo4 of-hidden w-100">
+                <select class="selection-2" name="brand">
+                    <option value="all" @if(empty($request->brand)) selected @endif>All</option>
+                    @foreach ($brands as $brand)
+                    <option value="{{ strtolower($brand->name) }}" @if(request()->brand == strtolower($brand->name)) selected @endif>{{ $brand->name }}</option>
+                    @endforeach
+                </select>
             </div>
-        </li>
-
-        <li class="p-t-4">
-            <hr class="mb-3">
-        </li>
-
-        <li class="p-t-4">
-            <h4 class="m-text14 p-b-7">
-                Categories
-            </h4>  
-        </li>
-
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">All</span>
-                </label>
-            </div>
-        </li>
-        @foreach ($categories as $item)
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">{{ $item->name }}</span>
-                </label>
-            </div>
-        </li>
-        @endforeach
-
-        <li class="p-t-4">
-            <hr class="mb-3">
-        </li>
-
-        <li class="p-t-4">
-            <h4 class="m-text14 p-b-7">
-                Brands
-            </h4>  
-        </li>
-
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">All</span>
-                </label>
-            </div>
-        </li>
-        @foreach ($brands as $item)
-        <li class="p-t-4">
-            <div class="custom-controls-stacked d-block ">
-                <label class="custom-control material-checkbox">
-                    <input type="checkbox" class="material-control-input">
-                    <span class="material-control-indicator"></span>
-                    <span class="material-control-description">{{ $item->name }}</span>
-                </label>
-            </div>
-        </li>
-        @endforeach
-
-        <li class="p-t-4">
-            <div class="text-center mt-3">
-                <button class="btn btn-success w-100">Filter</button>
-            </div>
-        </li>
-    </ul>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success w-100 mt-3">Filter</button>
 </form>

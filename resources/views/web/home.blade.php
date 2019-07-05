@@ -20,7 +20,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="zoomIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="{{ route('product.index') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -39,7 +39,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="{{ route('product.index') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -58,7 +58,7 @@
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">
                         <!-- Button -->
-                        <a href="product.html" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
+                        <a href="{{ route('product.index') }}" class="flex-c-m size2 bo-rad-23 s-text2 bgwhite hov1 trans-0-4">
                             Shop Now
                         </a>
                     </div>
@@ -193,15 +193,15 @@
                                     <div class="block2-overlay trans-0-4">
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
                                             <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            <a href="{{ url('/product?brand=') . urlencode(strtolower($brand->name)) }}" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                 See More
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
+                                    <a href="{{ url('/product?brand=') . urlencode(strtolower($brand->name)) }}" class="block2-name dis-block s-text3 p-b-5 text-center">
                                         {{ $brand->name }}
                                     </a>
                                 </div>
@@ -217,23 +217,21 @@
                     <div class="row">
                         @foreach($brandsForWoman as $brand)
                         <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
-                            <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                     <img src="{{ empty($brand->image) ? asset('assets/images/item-02.jpg') : $brand->image  }}" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            <a href="{{ url('/product?brand=') . urlencode(strtolower($brand->name)) }}" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                 See More
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="block2-txt p-t-20">
-                                    <a href="product-detail.html" class="block2-name dis-block s-text3 p-b-5 text-center">
+                                    <a href="{{ url('/product?brand=') . urlencode(strtolower($brand->name)) }}" class="block2-name dis-block s-text3 p-b-5 text-center">
                                         {{ $brand->name }}
                                     </a>
                                 </div>
