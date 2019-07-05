@@ -8,7 +8,7 @@
             Gender
         </h4>  
         <div class="flex-w">
-            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+            <div class="rs2-select2 bo4 of-hidden w-100">
                 <select class="selection-2" name="gender">
                     <option value="all" @if(empty(request()->brand)) selected @endif>All</option>
                     <option value="man" @if(request()->gender == 'man') selected @endif>Man</option>
@@ -23,7 +23,7 @@
             Categories
         </h4>  
         <div class="flex-w">
-            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+            <div class="rs2-select2 bo4 of-hidden w-100">
                 <select class="selection-2" name="category">
                     <option value="all" @if(empty($request->category)) selected @endif>All</option>
                     @foreach ($categories as $category)
@@ -39,7 +39,7 @@
             Brands
         </h4>  
         <div class="flex-w">
-            <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
+            <div class="rs2-select2 bo4 of-hidden w-100">
                 <select class="selection-2" name="brand">
                     <option value="all" @if(empty($request->brand)) selected @endif>All</option>
                     @foreach ($brands as $brand)
