@@ -15,6 +15,10 @@ Route::get('/detail', function () {
     return view('web.product.detail');
 });
 
+Route::get('/profile', function () {
+    return view('web.user.profile');
+});
+
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
