@@ -31,7 +31,7 @@
                         </div>
 
                         <!--  -->
-                        <form action="" method="">                     
+                        <form action="" method="">                 
                             <ul class="p-b-54">
                                 <li class="p-t-4">
                                     <h4 class="m-text14 p-b-7">
@@ -40,23 +40,32 @@
                                 </li>
 
                                 <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox1" name="">
-                                        <label class="custom-control-label" for="checkBox1">All</label>
+                                    <div class="custom-controls-stacked d-block ">
+                                        <label class="custom-control material-checkbox">
+                                            <input type="checkbox" class="material-control-input">
+                                            <span class="material-control-indicator"></span>
+                                            <span class="material-control-description">All</span>
+                                        </label>
                                     </div>
                                 </li>
 
                                 <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox2" name="">
-                                        <label class="custom-control-label" for="checkBox2">Man</label>
+                                    <div class="custom-controls-stacked d-block ">
+                                        <label class="custom-control material-checkbox">
+                                            <input type="checkbox" class="material-control-input">
+                                            <span class="material-control-indicator"></span>
+                                            <span class="material-control-description">Men</span>
+                                        </label>
                                     </div>
                                 </li>
 
                                 <li class="p-t-4">
-                                    <div class="custom-control checkbox-style">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox3" name="">
-                                        <label class="custom-control-label" for="checkBox3">Woman</label>
+                                    <div class="custom-controls-stacked d-block ">
+                                        <label class="custom-control material-checkbox">
+                                            <input type="checkbox" class="material-control-input">
+                                            <span class="material-control-indicator"></span>
+                                            <span class="material-control-description">Woman</span>
+                                        </label>
                                     </div>
                                 </li>
 
@@ -71,16 +80,28 @@
                                 </li>
 
                                 <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox4" name="">
-                                        <label class="custom-control-label" for="checkBox4">All</label>
+                                    <div class="custom-controls-stacked d-block ">
+                                        <label class="custom-control material-checkbox">
+                                            <input type="checkbox" class="material-control-input">
+                                            <span class="material-control-indicator"></span>
+                                            <span class="material-control-description">All</span>
+                                        </label>
                                     </div>
                                 </li>
 
                                 <li class="p-t-4">
-                                    <div class="custom-control checkbox-style mb-1">
-                                        <input type="checkbox" class="custom-control-input" id="checkBox5" name="">
-                                        <label class="custom-control-label" for="checkBox5">Shoes</label>
+                                    <div class="custom-controls-stacked d-block ">
+                                        <label class="custom-control material-checkbox">
+                                            <input type="checkbox" class="material-control-input">
+                                            <span class="material-control-indicator"></span>
+                                            <span class="material-control-description">Shoes</span>
+                                        </label>
+                                    </div>
+                                </li>
+
+                                <li class="p-t-4">
+                                    <div class="text-right">
+                                        <button class="btn btn-success">Filter</button>
                                     </div>
                                 </li>
                             </ul>
