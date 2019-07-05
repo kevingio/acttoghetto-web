@@ -11,7 +11,7 @@
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
-		<a href="{{ url('/product?type=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
+		<a href="{{ url('/product?gender=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
 			{{ ucwords($product->brand->type) }}
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>

@@ -30,6 +30,11 @@ class ProductController extends Controller
                 $query->where('name', $request->brand);
             });
         }
+        if(!empty($request->gender) && $request->gender != 'all') {
+            $products = $products->whereHas('brand', function ($query) use ($request) {
+                $query->where('type', $request->gender);
+            });
+        }
         if(!empty($request->category) && $request->category != 'all') {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('name', $request->category);
@@ -41,7 +46,7 @@ class ProductController extends Controller
         if(!empty($request->sort) && in_array(strtolower($request->sort), ['asc', 'desc'])) {
             $products = $products->orderBy('price', strtolower($request->sort));
         }
-        
+
         $products = $products->paginate(9);
         $products->appends(request()->input())->links();
         $brands = $this->brand->orderBy('name')->get(['name']);
