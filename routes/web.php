@@ -15,6 +15,10 @@ Route::get('/detail', function () {
     return view('web.product.detail');
 });
 
+Route::get('/transactions', function () {
+    return view('web.user.transactions');
+});
+
 
 Auth::routes();
 
