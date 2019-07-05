@@ -25,12 +25,12 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = $this->product->with(['category', 'brand']);
-        if(!empty($request->brand)) {
+        if(!empty($request->brand) && $request->brand != 'all') {
             $products = $products->whereHas('brand', function ($query) use ($request) {
                 $query->where('name', $request->brand);
             });
         }
-        if(!empty($request->category)) {
+        if(!empty($request->category) && $request->category != 'all') {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('name', $request->category);
             });
@@ -40,9 +40,8 @@ class ProductController extends Controller
         }
         if(!empty($request->sort) && in_array(strtolower($request->sort), ['asc', 'desc'])) {
             $products = $products->orderBy('price', strtolower($request->sort));
-        } else if(empty($request->sort)) {
-            $products = $products->latest();
         }
+        
         $products = $products->paginate(9);
         $products->appends(request()->input())->links();
         $brands = $this->brand->orderBy('name')->get(['name']);
@@ -76,12 +75,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  String $productName
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        return $product;
+        $product = $product->with(['category.sizes', 'brand'])->find($product->id);
+        return view('web.product.detail', compact('product'));
     }
 
     /**

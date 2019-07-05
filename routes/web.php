@@ -10,11 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/detail', function () {
-    return view('web.product.detail');
-});
-
+date_default_timezone_get('Asia/Jakarta');
 
 Auth::routes();
 

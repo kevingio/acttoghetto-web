@@ -1,28 +1,28 @@
 @extends('layouts.master') 
 
 @section('title') 
-    Detail 
+    {{ $product->name }} 
 @endsection 
 @section('content')
 <!-- breadcrumb -->
 	<div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-		<a href="index.html" class="s-text16">
+		<a href="{{ route('home') }}" class="s-text16">
 			Home
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
-		<a href="product.html" class="s-text16">
-			Women
+		<a href="{{ url('/product?type=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
+			{{ ucwords($product->brand->type) }}
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
-		<a href="#" class="s-text16">
-			T-Shirt
+		<a href="{{ url('/product?category=') . urlencode(strtolower($product->category->name)) }}" class="s-text16">
+			{{ $product->category->name }}
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
 		<span class="s-text17">
-			Boxy T-Shirt with Roll Sleeve Detail
+			{{ $product->name }}
 		</span>
 	</div>
 
@@ -57,15 +57,15 @@
 
 			<div class="w-size14 p-t-30 respon5">
 				<h4 class="product-detail-name m-text16 p-b-13">
-					Boxy T-Shirt with Roll Sleeve Detail
+					{{ $product->name }}
 				</h4>
 
-				<span class="m-text17">
-					$22
+				<span class="text-danger m-text17">
+					Rp {{ number_format($product->price,0,',','.') }}
 				</span>
 
 				<p class="s-text8 p-t-10">
-					Nulla eget sem vitae eros pharetra viverra. Nam vitae luctus ligula. Mauris consequat ornare feugiat.
+					{{ $product->description }}
 				</p>
 
 				<!--  -->
@@ -78,10 +78,9 @@
 						<div class="rs2-select2 rs3-select2 bo4 of-hidden w-size16">
 							<select class="selection-2" name="size">
 								<option>Choose an option</option>
-								<option>Size S</option>
-								<option>Size M</option>
-								<option>Size L</option>
-								<option>Size XL</option>
+								@foreach($product->category->sizes as $size)
+								<option value="{{ $size->text }}">{{ $size->text }}</option>
+								@endforeach
 							</select>
 						</div>
 					</div>
@@ -111,7 +110,7 @@
 				</div>
 
 				<div class="p-b-45">
-					<span class="s-text8 m-r-35">SKU: MUG-01</span>
+					<span class="s-text8 m-r-35">SKU: {{ $product->sku }}</span>
 				</div>
 
 			</div>

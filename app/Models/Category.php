@@ -18,4 +18,13 @@ class Category extends Model
         'image',
         'type',
     ];
+
+    /**
+     * Relation to Size
+     *
+     */
+    public function sizes()
+    {
+        return $this->hasMany('App\Models\Size');
+    }
 }
