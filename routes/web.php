@@ -20,9 +20,11 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/profile', 'HomeController@getProfile');
+Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
-Route::post('/profile', 'HomeController@updateProfile');
+Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
+
+Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
 
 Route::resource('brand', 'BrandController');
 

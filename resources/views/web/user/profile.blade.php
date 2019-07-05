@@ -12,10 +12,36 @@
 
     <section class="cart bgwhite p-t-70 p-b-100">
         <div class="container">
-            
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            @if(is_array(session()->get('success')))
+                            <ul>
+                                @foreach (session()->get('success') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </div>
+                    @endif
+                    @if (session()->has('error'))
+                        <div class="alert alert-danger">
+                            @if(is_array(session()->get('error')))
+                            <ul>
+                                @foreach (session()->get('error') as $message)
+                                    <li>{{ $message }}</li>
+                                @endforeach
+                            </ul>
+                            @endif
+                        </div>
+                    @endif
+                </div>
+            </div>
             <h5 class="mb-3 font-weight-bold">Profile</h5>
-            <form action="">
+            <form action="{{ route('update-profile') }}" method="POST">
                 <div class="form-group row">
+                    {{ csrf_field() }}
                     <div class="col-sm-12">
                         <label for="">Name</label>
                     </div>
@@ -36,10 +62,11 @@
                     </div>
                 </div>
             </form>
-
+            
             <h5 class="mb-3 font-weight-bold">Change Password</h5>
-            <form action="">
+            <form action="{{ route('change-password') }}" method="POST">
                 <div class="form-group row">
+                    {{ csrf_field() }}
                     <div class="col-sm-12">
                         <label for="">Old Password</label>
                     </div>
