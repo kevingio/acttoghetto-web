@@ -5,7 +5,7 @@
 @endsection 
 @section('content')
 <!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('{{ URL::asset('assets/images/heading-pages-02.jpg') }}');">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('https://images.unsplash.com/photo-1501236570302-906143a7c9f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');">
 		<h2 class="l-text2 t-center">
 			Product
 		</h2>
@@ -23,116 +23,53 @@
                     <div class="leftbar p-r-20 p-r-0-sm">
 
                         <div class="search-product pos-relative bo4 of-hidden mb-4">
-                            <input class="s-text7 size6 p-l-23 p-r-50" type="text" name="search-product" placeholder="Search Products...">
-
-                            <button class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                            </button>
+                            <form action="{{ route('product.index') }}" method="get">
+                                <input class="s-text7 size6 p-l-23 p-r-50" type="text" autocomplete="off" name="search" value="{{ !empty(request()->search) ? request()->search : '' }}" placeholder="Search Products...">
+                                @foreach(request()->except('search') as $key => $value)
+                                <input type="hidden" name="{{ $key }}" value="{{ $value }}" readonly>
+                                @endforeach
+                                <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
+                                    <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </form>
                         </div>
 
-                        <!--  -->
-                        <form action="" method="">                 
-                            <ul class="p-b-54">
-                                <li class="p-t-4">
-                                    <h4 class="m-text14 p-b-7">
-                                        Gender
-                                    </h4>  
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-controls-stacked d-block ">
-                                        <label class="custom-control material-checkbox">
-                                            <input type="checkbox" class="material-control-input">
-                                            <span class="material-control-indicator"></span>
-                                            <span class="material-control-description">All</span>
-                                        </label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-controls-stacked d-block ">
-                                        <label class="custom-control material-checkbox">
-                                            <input type="checkbox" class="material-control-input">
-                                            <span class="material-control-indicator"></span>
-                                            <span class="material-control-description">Men</span>
-                                        </label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-controls-stacked d-block ">
-                                        <label class="custom-control material-checkbox">
-                                            <input type="checkbox" class="material-control-input">
-                                            <span class="material-control-indicator"></span>
-                                            <span class="material-control-description">Woman</span>
-                                        </label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <hr class="mb-3">
-                                </li>
-
-                                <li class="p-t-4">
-                                    <h4 class="m-text14 p-b-7">
-                                        Categories
-                                    </h4>  
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-controls-stacked d-block ">
-                                        <label class="custom-control material-checkbox">
-                                            <input type="checkbox" class="material-control-input">
-                                            <span class="material-control-indicator"></span>
-                                            <span class="material-control-description">All</span>
-                                        </label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="custom-controls-stacked d-block ">
-                                        <label class="custom-control material-checkbox">
-                                            <input type="checkbox" class="material-control-input">
-                                            <span class="material-control-indicator"></span>
-                                            <span class="material-control-description">Shoes</span>
-                                        </label>
-                                    </div>
-                                </li>
-
-                                <li class="p-t-4">
-                                    <div class="text-right">
-                                        <button class="btn btn-success">Filter</button>
-                                    </div>
-                                </li>
-                            </ul>
-                        </form>
+                        @include('web.product.sidemenu')
                     </div>
                 </div>
 
                 <div class="col-sm-6 col-md-8 col-lg-9 p-b-50">
                     <!--  -->
                     <div class="flex-sb-m flex-w p-b-35">
+                        @if($products->count() > 0)
                         <div class="flex-w">
                             <div class="rs2-select2 bo4 of-hidden w-size12 m-t-5 m-b-5 m-r-10">
-                                <form action="">
-                                    <input type="hidden" readonly>
-                                    <select class="selection-2" name="sorting">
-                                    <option>Price: low to high</option>
-                                    <option>Price: high to low</option>
-                                </select>
+                                <form action="{{ route('product.index') }}" method="get">
+                                    @foreach(request()->except('sort') as $key => $value)
+                                    <input type="hidden" name="{{ $key }}" value="{{ $value }}" readonly>
+                                    @endforeach
+                                    <select class="selection-2" name="sort" onchange="this.form.submit()">
+                                        <option value="asc" @if(request()->sort == 'asc') selected @endif>Price: low to high</option>
+                                        <option value="desc" @if(request()->sort == 'desc') selected @endif>Price: high to low</option>
+                                    </select>
                                 </form>
                             </div>
                         </div>
+                        @endif
 
                         <span class="s-text8 p-t-5 p-b-5">
-                            Showing 1–12 of 16 results
+                            @if($products->count() > 0)
+                                Showing {{ (($products->currentPage() - 1) * $products->perPage()) + 1 }}–{{ (($products->currentPage() - 1) * $products->perPage()) + $products->count() }} of {{ $products->total() }} results
+                            @else
+                                No results
+                            @endif
                         </span>
                     </div>
 
                     <!-- Product -->
                     <div class="row">
+                        @foreach($products as $product)
                         <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
-                            <!-- Block2 -->
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                     <img src="{{ URL::asset('assets/images/item-02.jpg') }}" alt="IMG-PRODUCT">
@@ -149,22 +86,29 @@
 
                                 <div class="block2-txt p-t-20">
                                     <a href="/detail" class="block2-name dis-block s-text3 p-b-5">
-                                        Herschel supply co 25l
+                                        {{ $product->name }}
                                     </a>
 
-                                    <span class="block2-price m-text6 p-r-5">
-                                        $75.00
+                                    <span class="text-danger block2-price p-r-5">
+                                        Rp {{ number_format($product->price,0,',','.') }}
                                     </span>
                                 </div>
                             </div>
                         </div>
+                        @endforeach
                     </div>
 
-                    <!-- Pagination -->
+                    @if(count($products) > 0)
                     <div class="pagination flex-m flex-w p-t-26">
-                        <a href="#" class="item-pagination flex-c-m trans-0-4 active-pagination">1</a>
-                        <a href="#" class="item-pagination flex-c-m trans-0-4">2</a>
+                        @for($i = 1; $i < $products->lastPage() + 1; $i++)
+                            @if(request()->page == $i)
+                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ $i }}</a>
+                            @else
+                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 @if(empty(request()->page) && $i == 1) active-pagination @endif">{{ $i }}</a>
+                            @endif
+                        @endfor
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

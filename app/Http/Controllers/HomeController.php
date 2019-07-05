@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function __construct(Brand $brand)
     {
         $this->brand = $brand;
-        // $this->middleware('auth');
+        $this->middleware('auth', ['except' => ['index']]);
     }
 
     /**
@@ -28,5 +28,15 @@ class HomeController extends Controller
         $brandsForMan = $this->brand->where('type', 'man')->orderBy('name')->get();
         $brandsForWoman = $this->brand->where('type', 'woman')->orderBy('name')->get();
         return view('web.home', compact('brandsForMan', 'brandsForWoman'));
+    }
+
+    /**
+     * Show user profile
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function getProfile()
+    {
+        return view('web.user.profile');
     }
 }
