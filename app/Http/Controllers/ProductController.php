@@ -35,8 +35,8 @@ class ProductController extends Controller
                 $query->where('name', $request->category);
             });
         }
-        if(!empty($request->q)) {
-            $products = $products->where('name', 'like', "%{$request->q}%");
+        if(!empty($request->search)) {
+            $products = $products->where('name', 'like', "%{$request->search}%");
         }
         if(!empty($request->sort) && in_array(strtolower($request->sort), ['asc', 'desc'])) {
             $products = $products->orderBy('price', strtolower($request->sort));
