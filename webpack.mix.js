@@ -22,6 +22,8 @@ mix.scripts([
         'public/assets/vendor/countdowntime/countdowntime.js',
         'public/assets/vendor/sweetalert/sweetalert.min.js',
         'public/assets/vendor/noui/nouislider.min.js',
+        'public/assets/vendor/datatables/jquery.dataTables.min.js',
+        'public/assets/vendor/datatables/dataTables.bootstrap4.min.js',
         'public/assets/js/main.js',
         'public/assets/js/preload.js',
         'public/assets/js/contents/*.js'
@@ -40,6 +42,7 @@ mix.scripts([
         'public/assets/vendor/slick/slick.css',
         'public/assets/vendor/lightbox2/css/lightbox.min.css',
         'public/assets/vendor/noui/nouislider.min.css',
+        'public/assets/vendor/datatables/jquery.dataTables.min.css',
         'public/assets/css/util.css',
         'public/assets/css/main.css',
         'public/assets/css/custom.css'
