@@ -45,14 +45,18 @@ class Transaction extends Model
      */
     public function datatable()
     {
-        $results = $this->with(['user', 'detail'])->where('user_id', auth()->id())->get();
+        $results = $this->with(['user', 'detail'])->where('user_id', auth()->id())->latest()->get();
         return Datatables::of($results)
             ->editColumn('created_at', function ($data) {
-                return date('Y-m-d', strtotime($data->created_at));
+                return date('l, d F Y', strtotime($data->created_at));
             })
             ->editColumn('is_paid', function ($data) {
-                $html = '
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-id="' . encrypt($data->id) . '" data-target="#modalUpload">Upload</button>';
+                if($data->is_paid == 1) {
+                    $html = '<span class="badge badge-success">Sudah dibayar</span>';
+                } else {
+                    $html = '
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-id="' . encrypt($data->id) . '" data-target="#modalUpload">Upload</button>';
+                }
                 return $html;
             })
             ->rawColumns(['is_paid'])
