@@ -100,17 +100,7 @@
                         @endforeach
                     </div>
 
-                    @if(count($products) > 0)
-                    <div class="pagination flex-m flex-w p-t-26">
-                        @for($i = 1; $i < $products->lastPage() + 1; $i++)
-                            @if(request()->page == $i)
-                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ $i }}</a>
-                            @else
-                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 @if(empty(request()->page) && $i == 1) active-pagination @endif">{{ $i }}</a>
-                            @endif
-                        @endfor
-                    </div>
-                    @endif
+                    {{ $products->links('vendor.pagination.simple') }}
                 </div>
             </div>
         </div>
