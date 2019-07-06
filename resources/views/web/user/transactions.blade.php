@@ -10,52 +10,20 @@
         </h2>
     </section>
 
-    <section class="cart bgwhite p-t-70 p-b-100">
+    <section class="cart bgwhite p-t-70 p-b-100" id="my-transactions-page">
         <div class="container">
-            <table id="tableTransactions" class="table table-striped table-bordered dataTable" style="width:100%">
-        <thead>
-            <tr>
-                <th>Nomor Transaksi</th>
-                <th class="w-15">Nominal</th>
-                <th class="w-15"> Tanggal</th>
-                <th class="w-10">Status</th>
-                <th class="w-10">Detail</th>
-                <th class="w-20">Bukti Pembayaran</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-                <td class="text-center">
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalUpload">Upload</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td class="text-center">
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalUpload">Upload</button>
-                </td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td class="text-center">
-                    <p>Sudah Upload</p>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+            <table id="transactionDatatable" class="table table-striped table-bordered dataTable" style="width:100%">
+                <thead>
+                    <tr>
+                        <th width="20%">Nomor Transaksi</th>
+                        <th width="20%">Total Transaksi</th>
+                        <th class="no-sort">Tanggal</th>
+                        <th width="15%" class="no-sort">Status</th>
+                        <th width="20%" class="no-sort">Bukti Pembayaran</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </section>
     @include('web.user.modal-upload')

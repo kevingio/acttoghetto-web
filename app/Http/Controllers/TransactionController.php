@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TransactionController extends Controller
 {
+    function __construct(Transaction $transaction) {
+        $this->transaction = $transaction;
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -81,5 +86,19 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+    /**
+     * Handle all AJAX request
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajax(Request $request)
+    {
+        switch ($request->mode) {
+            case 'datatable':
+                return $this->transaction->datatable();
+                break;
+        }
     }
 }

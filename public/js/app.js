@@ -3583,56 +3583,64 @@ $(document).ready(function () {
     });
 });
 
+
 $(document).ready(function () {
-    $('#tableTransactions').DataTable({
-        "searching": false
-    });
-    $('.edit-store').on('click', function () {
-        $(this).hide();
-        $('.form-edit-store').show(1000);
-    });
+    var $page = $('#my-transactions-page');
 
-    $('.cancel-edit-store').on('click', function () {
-        $('.form-edit-store').hide();
-        $('.edit-store').show();
-    });
+    var myTransactionsPage = {
+        dtTable: {},
+        init: function () {
+            this.initDatatable();
+            this.customFunction();
+        },
+        customFunction: function () {
+            let self = this;
+            $("#imageUpload").change(function () {
+                self.readURL(this);
+            });
+        },
+        readURL: function () {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
 
-    $('a.delete-smartphone').on('click', function () {
-        var data_id = $(this).attr('data-id');
-        swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this product!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                $.ajax({
-                    url: '/product/' + data_id,
-                    type: 'DELETE',
-                    success: function(result) {
-                        location.reload();
-                    }
-                });
+                reader.onload = function (e) {
+                    $('#previewImage').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
             }
-        })
-    });
-    
-});
-
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#previewImage').attr('src', e.target.result);
+        },
+        initDatatable: function () {
+            $table = $page.find('#transactionDatatable');
+            myTransactionsPage.dtTable = $table.DataTable({
+                "aaSorting": [],
+                "processing": true,
+                "serverSide": true,
+                "searching": false,
+                "lengthChange": false,
+                "responsive": true,
+                "ajax": {
+                    url: "/ajax/transaction",
+                    type: "POST",
+                    data: function (d) { d.mode = 'datatable'; }
+                },
+                "columns": [
+                    { data: 'number', name: 'number' },
+                    { data: 'total', name: 'total' },
+                    { data: 'created_at', name: 'created_at' },
+                    { data: 'status', name: 'status' },
+                    { data: 'is_paid', name: 'is_paid' },
+                ],
+                "columnDefs": [
+                    { targets: 'no-sort', orderable: false },
+                    { targets: 'no-search', searchable: false },
+                    { targets: 'text-center', className: 'text-center' },
+                ]
+            });
         }
+    };
 
-        reader.readAsDataURL(input.files[0]);
+    if ($page.length) {
+        myTransactionsPage.init();
     }
-}
-
-$("#imageUpload").change(function () {
-    readURL(this);
 });

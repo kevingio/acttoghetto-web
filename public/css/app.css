@@ -10344,22 +10344,15 @@ li.sale-noti > a {
 .item-pagination {
   font-family: Montserrat-Regular;
   font-size: 13px;
-  color: #808080;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  color: black;
+  border-radius: .25rem;
   border: 1px solid #eeeeee;
   margin: 6px;
-}
-
-.item-pagination:hover {
-  background-color: #222222;
-  color: white;
+  padding: 10px 15px;
 }
 
 .active-pagination {
-  background-color: #222222;
-  color: white;
+  background-color: #f0f0f0;
 }
 
 
