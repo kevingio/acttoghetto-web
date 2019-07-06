@@ -55,10 +55,12 @@ class Transaction extends Model
             })
             ->editColumn('is_paid', function ($data) {
                 if($data->is_paid == 1) {
-                    $html = '<span class="badge badge-success">Sudah dibayar</span>';
-                } else {
+                    $html = '<span class="badge badge-success">Terverifikasi</span>';
+                } else if(empty($data->proof)) {
                     $html = '
-                    <button type="button" class="btn btn-danger" data-toggle="modal" data-id="' . encrypt($data->id) . '" data-target="#modalUpload">Upload</button>';
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-id="' . encrypt($data->id) . '" data-target="#modalUpload">Konfirmasi Pembayaran</button>';
+                } else {
+                    $html = '<span class="badge badge-warning">Menunggu verifikasi penjual</span>';
                 }
                 return $html;
             })
