@@ -50,6 +50,9 @@ class Transaction extends Model
             ->editColumn('created_at', function ($data) {
                 return date('l, d F Y', strtotime($data->created_at));
             })
+            ->editColumn('total', function ($data) {
+                return 'Rp '. number_format($data->total,0,',','.');
+            })
             ->editColumn('is_paid', function ($data) {
                 if($data->is_paid == 1) {
                     $html = '<span class="badge badge-success">Sudah dibayar</span>';
