@@ -1,4 +1,7 @@
 $(document).ready(function () {
+    $('#tableTransactions').DataTable({
+        "searching": false
+    });
     $('.edit-store').on('click', function () {
         $(this).hide();
         $('.form-edit-store').show(1000);
@@ -30,4 +33,21 @@ $(document).ready(function () {
             }
         })
     });
+    
+});
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#previewImage').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imageUpload").change(function () {
+    readURL(this);
 });

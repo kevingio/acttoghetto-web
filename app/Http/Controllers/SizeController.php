@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Transaction;
+use App\Models\Size;
 use Illuminate\Http\Request;
 
-class TransactionController extends Controller
+class SizeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('web.user.transactions');
+        //
     }
 
     /**
@@ -41,10 +41,10 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function show(Transaction $transaction)
+    public function show(Size $size)
     {
         //
     }
@@ -52,10 +52,10 @@ class TransactionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function edit(Transaction $transaction)
+    public function edit(Size $size)
     {
         //
     }
@@ -64,10 +64,10 @@ class TransactionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Transaction $transaction)
+    public function update(Request $request, Size $size)
     {
         //
     }
@@ -75,10 +75,10 @@ class TransactionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Transaction  $transaction
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Transaction $transaction)
+    public function destroy(Size $size)
     {
         //
     }

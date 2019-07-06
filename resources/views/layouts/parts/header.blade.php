@@ -16,7 +16,7 @@
                         </li>
 
                         <li @if(request()->is('product') || request()->is('product/*')) class="sale-noti" @endif>
-                            <a href="#">Products</a>
+                            <a href="{{ url('/product') }}">Products</a>
                         </li>
                     </ul>
                 </nav>
@@ -31,10 +31,10 @@
                         <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                         <div class="header-cart header-dropdown text-right" style="right: 25%; width: auto; min-width: 200px;">
                             <p class="my-2">
-                                <a href="{{ url('/profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
+                                <a href="{{ route('show-profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
                             </p>
                             <p class="my-2">
-                                <a href="#">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                                <a href="{{ route('transaction.index') }}">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
                             </p>
                             <p class="my-2">
                                 <a href="{{ route('logout') }}"

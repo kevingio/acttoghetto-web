@@ -17,6 +17,16 @@ class TransactionDetail extends Model
         'product_id',
         'price',
         'qty',
+        'size_id',
         'note',
     ];
+
+    /**
+     * Relation to Size
+     *
+     */
+    public function size()
+    {
+        return $this->belongsTo('App\Models\Size');
+    }
 }
