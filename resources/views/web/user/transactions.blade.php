@@ -31,8 +31,7 @@
                 <td>61</td>
                 <td>2011/04/25</td>
                 <td class="text-center">
-                    
-                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalUpload">Upload</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalUpload">Upload</button>
                 </td>
             </tr>
             <tr>
@@ -42,8 +41,7 @@
                 <td>63</td>
                 <td>2011/07/25</td>
                 <td class="text-center">
-                    
-                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#modalUpload">Upload</button>
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalUpload">Upload</button>
                 </td>
             </tr>
             <tr>
@@ -53,7 +51,6 @@
                 <td>66</td>
                 <td>2009/01/12</td>
                 <td class="text-center">
-                    <button type="button" class="btn btn-danger btn-lg d-none" data-toggle="modal" data-target="#modalUpload">Upload</button>
                     <p>Sudah Upload</p>
                 </td>
             </tr>
@@ -61,5 +58,5 @@
     </table>
         </div>
     </section>
-    @include('web.user.modalupload')
+    @include('web.user.modal-upload')
 @endsection

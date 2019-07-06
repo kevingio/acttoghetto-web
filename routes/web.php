@@ -27,3 +27,5 @@ Route::resource('brand', 'BrandController');
 Route::resource('category', 'CategoryController');
 
 Route::resource('product', 'ProductController');
+
+Route::resource('transaction', 'TransactionController');
