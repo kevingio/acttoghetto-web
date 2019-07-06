@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class TransactionDetail extends Model
+class ProductImage extends Model
 {
     public $timestamps = false;
 
@@ -15,18 +15,8 @@ class TransactionDetail extends Model
      */
     protected $fillable = [
         'product_id',
-        'price',
-        'qty',
-        'size_id',
-        'note',
+        'path',
+        'thumbnail',
+        'size',
     ];
-
-    /**
-     * Relation to Size
-     *
-     */
-    public function size()
-    {
-        return $this->belongsTo('App\Models\Size');
-    }
 }

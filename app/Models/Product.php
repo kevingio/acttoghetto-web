@@ -48,4 +48,13 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Size');
     }
+
+    /**
+     * Relation to Product Image
+     *
+     */
+    public function images()
+    {
+        return $this->hasMany('App\Models\ProductImage');
+    }
 }

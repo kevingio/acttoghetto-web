@@ -36,3 +36,10 @@ Route::resource('brand', 'BrandController');
 Route::resource('category', 'CategoryController');
 
 Route::resource('product', 'ProductController');
+
+Route::resource('transaction', 'TransactionController');
+
+/* Ajax from Admin Dashboard */
+Route::any('ajax/{page}', function ($page) {
+    return app()->call('\App\Http\Controllers\\'.studly_case($page).'Controller@ajax');
+});

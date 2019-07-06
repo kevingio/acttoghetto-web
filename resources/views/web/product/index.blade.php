@@ -68,12 +68,12 @@
 
                     <!-- Product -->
                     <div class="row">
-                        @foreach($products as $product)
+                        @foreach($products as $key => $product)
                         <a href="{{ route('product.show',[$product->id]) }}">
                             <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ URL::asset('assets/images/item-02.jpg') }}" alt="IMG-PRODUCT">
+                                    <img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}" alt="Image-{{ $key + 1 }}">
 
                                     <div class="block2-overlay trans-0-4">
                                         <div class="block2-btn-addcart w-size1 trans-0-4">
@@ -100,17 +100,7 @@
                         @endforeach
                     </div>
 
-                    @if(count($products) > 0)
-                    <div class="pagination flex-m flex-w p-t-26">
-                        @for($i = 1; $i < $products->lastPage() + 1; $i++)
-                            @if(request()->page == $i)
-                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 active-pagination">{{ $i }}</a>
-                            @else
-                            <a href="{{ $products->url($i) }}" class="item-pagination flex-c-m trans-0-4 @if(empty(request()->page) && $i == 1) active-pagination @endif">{{ $i }}</a>
-                            @endif
-                        @endfor
-                    </div>
-                    @endif
+                    {{ $products->links('vendor.pagination.simple') }}
                 </div>
             </div>
         </div>

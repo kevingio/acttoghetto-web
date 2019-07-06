@@ -34,21 +34,21 @@
 					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="{{ URL::asset('assets/images/thumb-item-01.jpg') }}">
+						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}">
 							<div class="wrap-pic-w">
-								<img src="{{ URL::asset('assets/images/product-detail-01.jpg') }}" alt="IMG-PRODUCT">
+								<img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/720/960' }}" alt="Image-1">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="{{ URL::asset('assets/images/thumb-item-02.jpg') }}">
+						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}">
 							<div class="wrap-pic-w">
-								<img src="{{ URL::asset('assets/images/product-detail-02.jpg') }}" alt="IMG-PRODUCT">
+								<img src="{{ count($product->images) > 0 ? asset($product->images[1]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/720/960' }}" alt="Image-2">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="{{ URL::asset('assets/images/thumb-item-03.jpg') }}">
+						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}">
 							<div class="wrap-pic-w">
-								<img src="{{ URL::asset('assets/images/product-detail-03.jpg') }}" alt="IMG-PRODUCT">
+								<img src="{{ count($product->images) > 0 ? asset($product->images[2]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/720/960' }}" alt="Image-3">
 							</div>
 						</div>
 					</div>
