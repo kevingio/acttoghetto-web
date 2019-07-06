@@ -5,7 +5,7 @@
         <!-- Modal content-->
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title">Upload Bukti Pembayaran</h5>
+            <h6 class="modal-title font-weight-bold">Upload Bukti Pembayaran</h6>
             <button type="button" class="close" data-dismiss="modal">&times;</button>
         </div>
         <div class="modal-body">
@@ -14,7 +14,7 @@
             <img id="previewImage" class="pt-3" src="http://placehold.it/180" alt="your image" />
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-success" data-dismiss="modal">Simpan</button>
+            <button type="button" class="btn btn-success" data-dismiss="modal">Upload</button>
         </div>
         </div>
 

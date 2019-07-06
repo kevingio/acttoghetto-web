@@ -3595,11 +3595,11 @@ $(document).ready(function () {
         },
         customFunction: function () {
             let self = this;
-            $("#imageUpload").change(function () {
+            $("#imageUpload").on('change', function () {
                 self.readURL(this);
             });
         },
-        readURL: function () {
+        readURL: function (input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
 

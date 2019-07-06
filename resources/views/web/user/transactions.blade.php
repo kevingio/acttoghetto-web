@@ -19,7 +19,7 @@
                         <th width="20%">Total Transaksi</th>
                         <th class="no-sort">Tanggal</th>
                         <th width="15%" class="no-sort">Status</th>
-                        <th width="20%" class="no-sort">Bukti Pembayaran</th>
+                        <th width="20%" class="no-sort text-center">Bukti Pembayaran</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
