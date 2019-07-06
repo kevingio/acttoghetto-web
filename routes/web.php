@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-date_default_timezone_get('Asia/Jakarta');
+date_default_timezone('Asia/Jakarta');
 
 Auth::routes();
 
