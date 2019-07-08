@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <title>@yield('title')</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/app.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
 </head>
 <body class="animsition">
 
@@ -28,6 +28,6 @@
 	<div id="dropDownSelect1"></div>
     <div id="dropDownSelect2"></div>
 
-    <script src="{{ URL::asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
