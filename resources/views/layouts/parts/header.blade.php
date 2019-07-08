@@ -59,6 +59,9 @@
                 <span class="linedivide1"></span>
 
                 <div class="header-wrapicon2">
+                    <a href="{{ route('login') }}" class="btn btn-danger">
+                        Login
+                    </a>
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
 
@@ -190,7 +193,7 @@
                 </li>
 
                 <li @if(request()->is('product') || request()->is('product/*')) class="item-menu-mobile" @endif>
-                    <a href="#" @if(!request()->is('product') && !request()->is('product/*')) class="text-danger" @endif>Products</a>
+                    <a href="{{ route('product.index') }}" @if(!request()->is('product') && !request()->is('product/*')) class="text-danger" @endif>Products</a>
                 </li>
             </ul>
         </nav>
