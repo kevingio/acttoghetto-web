@@ -6,6 +6,7 @@ $(document).ready(function () {
         products: [],
         init: function () {
             this.initProduct();
+            this.totalPrice();
         },
         displayCartItem: function () {
             $('.header-cart-wrapitem').children().remove();
@@ -24,7 +25,38 @@ $(document).ready(function () {
                     + '</div>'
                     + '</li>';
                 $('.header-cart-wrapitem').append(html);
+
+                this.deleteCartItem();
+ 
             })
+        },
+        deleteCartItem: function () {
+            let self = this
+            $('.header-cart-item-img').on('click', function () {
+                let cartId = $(this).parent().attr('data-id')
+
+                myProductsPage.products.map((item, index) => {
+                    if (cartId == item.id) {
+                        myProductsPage.products.splice(index, 1)
+                        $(this).parent().remove()
+                        return
+                    }
+                })
+                $('.header-wrapicon2 .header-icons-noti').text(myProductsPage.products.length)
+
+                self.totalPrice();
+                localStorage.setItem("listProducts", JSON.stringify(myProductsPage.products));
+            })
+        },
+        totalPrice: function () {
+            var total = 0
+            myProductsPage.products.map((item, index) => {
+                total += (item.qty * item.rawPrice)
+            })
+            
+            $('.header-cart-total .total-cart').text('Rp ' + total.toLocaleString(
+                "de-DE", { minimumFractionDigits: 2 }
+            ));
         },
         initProduct: function () {
             let self = this;
@@ -41,6 +73,7 @@ $(document).ready(function () {
                 let imgProduct = $(this).parent().parent().find('img').attr('src');
                 
                 myProductsPage.product.id = $(this).attr('data-id');
+                myProductsPage.product.rawPrice = $(this).attr('data-price');
                 myProductsPage.product.name = nameProduct;
                 myProductsPage.product.price = priceProduct;
                 myProductsPage.product.img = imgProduct;
@@ -68,6 +101,10 @@ $(document).ready(function () {
 
                 swal(nameProduct, "is added to cart !", "success").then(function () {
                     $('.header-wrapicon2 span').text(myProductsPage.products.length)
+                    
+                    
+                    self.totalPrice()
+                    self.deleteCartItem()
                     self.displayCartItem()
                 });
 

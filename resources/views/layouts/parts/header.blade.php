@@ -67,7 +67,8 @@
                         <ul class="header-cart-wrapitem"></ul>
 
                         <div class="header-cart-total">
-                            Total: 
+                            Total:    
+                            <span class="total-cart"></span> 
                         </div>
 
                         <div class="header-cart-buttons">
@@ -132,6 +133,7 @@
 
                         <div class="header-cart-total">
                             Total: 
+                            <span class="total-cart"></span>
                         </div>
 
                         <div class="header-cart-buttons">
