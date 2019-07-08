@@ -56,14 +56,14 @@ My Cart
                             <label for="">Name</label>
                         </div>
                         <div class="col-12 col-md-5 mb-3">
-                            <input class="border-input" type="text" name="name" autocomplete="off" value="" required>
+                            <input class="border-input" type="text" name="name" autocomplete="off" value="{{ auth()->user()->name }}" required>
                         </div>
 
                         <div class="col-12 col-md-2">
                             <label for="">Nomor Telp</label>
                         </div>
                         <div class="col-12 col-md-3 mb-3">
-                            <input class="border-input" type="text" name="name" autocomplete="off" value="" required>
+                            <input class="border-input" type="text" name="contact" autocomplete="off" value="{{ auth()->user()->phone_number }}" required>
                         </div>
                     </div>
                     <div class="row">
@@ -71,7 +71,7 @@ My Cart
                             <label for="">Alamat</label>
                         </div>
                         <div class="col-12 col-md-10">
-                            <textarea class="border-input" rows="5" id="comment" value="" required></textarea>
+                            <textarea class="border-input" rows="5" required>{{ auth()->user()->address }}</textarea>
                         </div>
                     </div>
                 </div>

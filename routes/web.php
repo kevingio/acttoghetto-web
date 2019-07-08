@@ -11,17 +11,11 @@
 |
 */
 
-Route::get('/transactions', function () {
-    return view('web.user.transactions');
-});
-
-Route::get('/cart', function () {
-    return view('web.user.cart');
-});
-
 date_default_timezone_get('Asia/Jakarta');
 
 Auth::routes();
+
+Route::get('/cart', 'HomeController@myCart');
 
 Route::get('/', 'HomeController@landing')->name('landing');
 
