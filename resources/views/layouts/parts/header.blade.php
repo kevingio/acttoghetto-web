@@ -64,25 +64,7 @@
 
                     
                     <div class="header-cart header-dropdown">
-                        <ul class="header-cart-wrapitem">
-                            
-                            <li class="header-cart-item" data-id="" name-product="">
-                                <div class="header-cart-item-img">
-                                    <img src="" alt="IMG">
-                                </div>
-
-                                <div class="header-cart-item-txt">
-                                    <a href="#" class="header-cart-item-name">
-                                        
-                                    </a>
-
-                                    <span class="header-cart-item-info">
-                                        
-                                    </span>
-                                </div>
-                            </li>
-                            
-                        </ul>
+                        <ul class="header-cart-wrapitem"></ul>
 
                         <div class="header-cart-total">
                             Total: 

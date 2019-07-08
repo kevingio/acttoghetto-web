@@ -7,12 +7,34 @@ $(document).ready(function () {
         init: function () {
             this.initProduct();
         },
+        displayCartItem: function () {
+            $('.header-cart-wrapitem').children().remove();
+            myProductsPage.products.map((item, index) => {
+                let html = '<li class="header-cart-item" data-id="' + item.id + '">'
+                    + '<div class="header-cart-item-img">'
+                    + '<img src="' + item.img + '" alt="IMG">'
+                    + '</div>'
+                    + '<div class="header-cart-item-txt">'
+                    + '<a href="#" class="header-cart-item-name">'
+                    + item.name
+                    + '</a>'
+                    + '<span class="header-cart-item-info">'
+                    + item.price
+                    + '</span>'
+                    + '</div>'
+                    + '</li>';
+                $('.header-cart-wrapitem').append(html);
+            })
+        },
         initProduct: function () {
+            let self = this;
             let data = JSON.parse(localStorage.getItem('listProducts'));
             myProductsPage.products = data == null ? [] : data ;
-            console.log(myProductsPage.products);
-            
+            $('.header-wrapicon2 span').text(myProductsPage.products.length);
+            this.displayCartItem()
             $('.block2-btn-addcart').on('click', function () {
+                data = JSON.parse(localStorage.getItem('listProducts'));
+                myProductsPage.products = data == null ? [] : data ;
                 
                 let nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
                 let priceProduct = $(this).parent().parent().parent().find('.block2-price').html();
@@ -24,41 +46,30 @@ $(document).ready(function () {
                 myProductsPage.product.img = imgProduct;
                 myProductsPage.product.qty = 1;
 
-                console.log(myProductsPage.product.id);
-
                 if (myProductsPage.products.length == 0) {
-                    console.log('pertama');
-                    
                     myProductsPage.products.push(myProductsPage.product);
                 } else {
                     var temp = -1
-                    console.log(myProductsPage.products);
                     
                     myProductsPage.products.map((item, index) => {
-                        console.log('id :' + myProductsPage.product.id);
-                        console.log('item-id :' + item.id);
                         if (myProductsPage.product.id == item.id) {
                             temp = index
-                            
                         }
                     })
-
-                    console.log('temp : ' + temp);
                     
                     if (temp != -1) {
-                        console.log('kedua');
                         myProductsPage.products[temp].qty += 1
                     } else {
-                        console.log('ketiga');
                         myProductsPage.products.push(myProductsPage.product);
                     }
                 }
                 
                 localStorage.setItem("listProducts", JSON.stringify(myProductsPage.products));
 
-                // swal(nameProduct, "is added to cart !", "success").then(function () {
-                //     location.reload();                    
-                // });
+                swal(nameProduct, "is added to cart !", "success").then(function () {
+                    $('.header-wrapicon2 span').text(myProductsPage.products.length)
+                    self.displayCartItem()
+                });
 
             });
         }
