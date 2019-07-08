@@ -13,18 +13,20 @@
 
     <section class="cart bgwhite p-t-70 p-b-100" id="my-transactions-page">
         <div class="container">
-            <table id="transactionDatatable" class="table table-striped table-bordered dataTable" style="width:100%">
-                <thead>
-                    <tr>
-                        <th width="20%">Nomor Transaksi</th>
-                        <th width="20%">Total Transaksi</th>
-                        <th class="no-sort">Tanggal</th>
-                        <th width="15%" class="no-sort">Status</th>
-                        <th width="20%" class="no-sort text-center">Bukti Pembayaran</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
+            <div class="table-overflow">
+                <table id="transactionDatatable" class="table table-striped table-bordered dataTable" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th width="20%">Nomor Transaksi</th>
+                            <th width="20%">Total Transaksi</th>
+                            <th class="no-sort">Tanggal</th>
+                            <th width="15%" class="no-sort">Status</th>
+                            <th width="20%" class="no-sort text-center">Pembayaran</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
         </div>
     </section>
     @include('web.user.modal-upload')

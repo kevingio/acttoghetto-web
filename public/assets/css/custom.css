@@ -60,3 +60,6 @@ textarea{
     border: 2px solid #aaa;
     transition: .3s;
 }
+.table-overflow {
+    overflow: auto;
+}

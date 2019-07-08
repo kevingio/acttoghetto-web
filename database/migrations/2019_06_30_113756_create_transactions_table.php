@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->string('total');
             $table->text('shipping_address');
             $table->enum('status', ['diproses', 'dikirim', 'selesai'])->default('diproses');
+            $table->string('proof')->nullable();
             $table->timestamps();
         });
     }
