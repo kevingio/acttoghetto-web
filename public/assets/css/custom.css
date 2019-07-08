@@ -18,6 +18,10 @@
     width: 100%!important;
 }
 
+textarea{
+    resize: none;
+}
+
 .w-10{
     width: 10%!important;
 }

@@ -58,34 +58,34 @@
 
                 <span class="linedivide1"></span>
 
-                <div class="header-wrapicon2">
+                <div class="header-wrapicon2 cart-header">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
+                    <span class="header-icons-noti">0</span>
 
-                    @if(!empty($cart['data']))
+                    
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem">
-                            @foreach($cart['data'] as $item)
-                            <li class="header-cart-item" data-id="{{ $item->id }}" name-product="{{ $item->name }}">
+                            
+                            <li class="header-cart-item" data-id="" name-product="">
                                 <div class="header-cart-item-img">
-                                    <img src="{{ sizeof($item->image) > 0 ? Storage::url($item->image[0]->filename)  : 'https://www.91-img.com/pictures/119660-v10-samsung-galaxy-note-9-mobile-phone-large-1.jpg' }}" alt="IMG">
+                                    <img src="" alt="IMG">
                                 </div>
 
                                 <div class="header-cart-item-txt">
                                     <a href="#" class="header-cart-item-name">
-                                        {{ $item->name }}
+                                        
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                        {{ $item->qty }} x {{ "Rp. " . number_format($item->price,2,',','.') }}
+                                        
                                     </span>
                                 </div>
                             </li>
-                            @endforeach
+                            
                         </ul>
 
                         <div class="header-cart-total">
-                            Total: {{ "Rp. " . number_format($cart['total'],2,',','.') }}
+                            Total: 
                         </div>
 
                         <div class="header-cart-buttons">
@@ -104,7 +104,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    
                 </div>
             </div>
         </div>
@@ -124,32 +124,32 @@
 
                 <div class="header-wrapicon2">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
+                    <span class="header-icons-noti">0</span>
 
-                    @if(!empty($cart['data']))
+                    
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem">
-                            @foreach($cart['data'] as $item)
-                            <li class="header-cart-item" data-id="{{ $item->id }}" name-product="{{ $item->name }}">
+                            
+                            <li class="header-cart-item" data-id="" name-product="">
                                 <div class="header-cart-item-img">
-                                    <img src="{{ sizeof($item->image) > 0 ? Storage::url($item->image[0]->filename)  : 'https://www.91-img.com/pictures/119660-v10-samsung-galaxy-note-9-mobile-phone-large-1.jpg' }}" alt="IMG">
+                                    <img src="" alt="IMG">
                                 </div>
 
                                 <div class="header-cart-item-txt">
                                     <a href="#" class="header-cart-item-name">
-                                        {{ $item->name }}
+                                        
                                     </a>
 
                                     <span class="header-cart-item-info">
-                                        {{ $item->qty }} x {{ "Rp. " . number_format($item->price,2,',','.') }}
+                                        
                                     </span>
                                 </div>
                             </li>
-                            @endforeach
+                            
                         </ul>
 
                         <div class="header-cart-total">
-                            Total: {{ "Rp. " . number_format($cart['total'],2,',','.') }}
+                            Total: 
                         </div>
 
                         <div class="header-cart-buttons">
@@ -168,7 +168,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    
                 </div>
             </div>
 
