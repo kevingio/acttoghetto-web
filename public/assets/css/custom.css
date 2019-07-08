@@ -18,6 +18,10 @@
     width: 100%!important;
 }
 
+textarea{
+    resize: none;
+}
+
 .w-10{
     width: 10%!important;
 }
@@ -58,4 +62,8 @@
 }
 .table-overflow {
     overflow: auto;
+}
+
+.header-icons-mobile .header-cart-mobile {
+    top: 9%;
 }

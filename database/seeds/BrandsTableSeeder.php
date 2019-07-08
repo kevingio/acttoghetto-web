@@ -36,11 +36,11 @@ class BrandsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Supreme',
-                'image' => 'https://icon2.kisspng.com/20180401/adw/kisspng-t-shirt-hoodie-supreme-clothing-top-supreme-5ac106f2e41594.4492481215225996669342.jpg'
+                'image' => 'https://upload.wikimedia.org/wikipedia/commons/2/23/Supreme-logo-newyork.png'
             ],
             [
                 'name' => 'Luis Vuitton',
-                'image' => 'https://smallimg.pngkey.com/png/small/46-464211_louis-vuitton-logo.png'
+                'image' => 'https://softwarenegotiation.com/wp-content/uploads/2008/08/lv.png'
             ],
             [
                 'name' => 'ZARA',

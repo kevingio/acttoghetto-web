@@ -14,7 +14,9 @@ date_default_timezone_set('Asia/Jakarta');
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@landing')->name('landing');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
