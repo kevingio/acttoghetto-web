@@ -102,35 +102,102 @@
 
         <!-- Button show menu -->
         <div class="btn-show-menu">
-            <!-- Header Icon mobile -->
             <div class="header-icons-mobile">
+                @if(auth()->check())
+                <a href="#" class="dis-block">
+                    <div>
+                        <a href="#" class="mr-3 js-show-header-dropdown">{{ auth()->user()->name }}</a>
+                        <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <div class="header-cart header-cart-mobile header-dropdown text-right" style="right: 25%; width: auto; min-width: 200px;">
+                            <p class="my-2">
+                                <a href="{{ route('show-profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
+                            </p>
+                            <p class="my-2">
+                                <a href="{{ route('transaction.index') }}">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                            </p>
+                            <p class="my-2">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout <i class="fas fa-power-off ml-2"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                @else
+                <a href="{{ route('login') }}" class="btn btn-danger">
+                    Login
+                </a>
+                @endif
+
+                <span class="linedivide2"></span>
 
                 <div class="header-wrapicon2">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">0</span>
 
+                    <!-- Header cart noti -->
+                    <div class="header-cart header-dropdown">
+                        <ul class="header-cart-wrapitem"></ul>
+
+                        <div class="header-cart-total">
+                            Total: $75.00
+                        </div>
+
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    View Cart
+                                </a>
+                            </div>
+
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    Check Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Icon mobile -->
+            {{-- <div class="header-icons-mobile">
+                @if(auth()->check())
+                <a href="#" class="mr-3 js-show-header-dropdown">{{ auth()->user()->name }}</a>
+                <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                <div class="header-cart header-dropdown text-right" style="right: 25%; width: auto; min-width: 200px;">
+                    <p class="my-2">
+                        <a href="{{ route('show-profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
+                    </p>
+                    <p class="my-2">
+                        <a href="{{ route('transaction.index') }}">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                    </p>
+                    <p class="my-2">
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout <i class="fas fa-power-off ml-2"></i>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </p>
+                </div>
+                @else
+                <a href="{{ route('login') }}" class="btn btn-danger btn-sm mr-2">
+                    Login
+                </a>
+                @endif
+                <div class="header-wrapicon2">
+                    <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span class="header-icons-noti">0</span>
                     
                     <div class="header-cart header-dropdown">
-                        <ul class="header-cart-wrapitem">
-                            
-                            <li class="header-cart-item" data-id="" name-product="">
-                                <div class="header-cart-item-img">
-                                    <img src="" alt="IMG">
-                                </div>
-
-                                <div class="header-cart-item-txt">
-                                    <a href="#" class="header-cart-item-name">
-                                        
-                                    </a>
-
-                                    <span class="header-cart-item-info">
-                                        
-                                    </span>
-                                </div>
-                            </li>
-                            
-                        </ul>
-
+                        <ul class="header-cart-wrapitem"></ul>
                         <div class="header-cart-total">
                             Total: 
                             <span class="total-cart"></span>
@@ -154,7 +221,7 @@
                     </div>
                     
                 </div>
-            </div>
+            </div> --}}
 
             <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
                 <span class="hamburger-box">
