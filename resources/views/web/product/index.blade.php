@@ -76,7 +76,7 @@
                                     <img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}" alt="Image-{{ $key + 1 }}">
 
                                     <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{ $product->id }}">
+                                        <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{ $product->id }}" data-price="{{ $product->price }}">
                                             <!-- Button -->
                                             <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 btn-add" >
                                                 Add to Cart
