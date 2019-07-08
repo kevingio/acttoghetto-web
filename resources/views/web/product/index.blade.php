@@ -16,7 +16,7 @@
 
 
 	<!-- Content page -->
-    <section class="bgwhite p-t-55 p-b-65">
+    <section class="bgwhite p-t-55 p-b-65" id="my-products-page"> 
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
@@ -69,16 +69,16 @@
                     <!-- Product -->
                     <div class="row">
                         @foreach($products as $key => $product)
-                        <a href="{{ route('product.show',[$product->id]) }}">
+                        
                             <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
                             <div class="block2">
                                 <div class="block2-img wrap-pic-w of-hidden pos-relative">
                                     <img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}" alt="Image-{{ $key + 1 }}">
 
                                     <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{ $product->id }}">
                                             <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
+                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 btn-add" >
                                                 Add to Cart
                                             </button>
                                         </div>
@@ -96,7 +96,7 @@
                                 </div>
                             </div>
                         </div>
-                        </a>
+                        
                         @endforeach
                     </div>
 

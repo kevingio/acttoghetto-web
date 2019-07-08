@@ -10,11 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/transactions', function () {
+    return view('web.user.transactions');
+});
+
+Route::get('/cart', function () {
+    return view('web.user.cart');
+});
+
 date_default_timezone_get('Asia/Jakarta');
 
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@landing')->name('landing');
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 

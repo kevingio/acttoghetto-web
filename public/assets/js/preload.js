@@ -18,21 +18,21 @@ $(document).ready(function () {
         });
     });
 
-    $('.block2-overlay > .block2-btn-addcart').each(function(){
-        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function(){
-            var data_id = $(this).attr('data-id');
-            var store_id = $(this).attr('store-id');
-            $.post('/addToCart', {id: data_id, qty: 1, store_id: store_id})
-            .done(function (response) {
-                if(response.status == 200) {
-                    swal(nameProduct, "is added to cart !", "success").then(function () {
-                        location.reload();
-                    });
-                }
-            });
-        });
-    });
+    // $('.block2-overlay > .block2-btn-addcart').each(function () {
+    //     var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
+    //     $(this).on('click', function () {
+    //         var data_id = $(this).attr('data-id');
+    //         var store_id = $(this).attr('store-id');
+    //         $.post('/addToCart', { id: data_id, qty: 1, store_id: store_id })
+    //             .done(function (response) {
+    //                 if (response.status == 200) {
+    //                     swal(nameProduct, "is added to cart !", "success").then(function () {
+    //                         location.reload();
+    //                     });
+    //                 }
+    //             });
+    //     });
+    // });
 
     $('.btn-addcart-product-detail').each(function(){
         $(this).on('click', function(){

@@ -58,34 +58,16 @@
 
                 <span class="linedivide1"></span>
 
-                <div class="header-wrapicon2">
+                <div class="header-wrapicon2 cart-header">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
+                    <span class="header-icons-noti">0</span>
 
-                    @if(!empty($cart['data']))
+                    
                     <div class="header-cart header-dropdown">
-                        <ul class="header-cart-wrapitem">
-                            @foreach($cart['data'] as $item)
-                            <li class="header-cart-item" data-id="{{ $item->id }}" name-product="{{ $item->name }}">
-                                <div class="header-cart-item-img">
-                                    <img src="{{ sizeof($item->image) > 0 ? Storage::url($item->image[0]->filename)  : 'https://www.91-img.com/pictures/119660-v10-samsung-galaxy-note-9-mobile-phone-large-1.jpg' }}" alt="IMG">
-                                </div>
-
-                                <div class="header-cart-item-txt">
-                                    <a href="#" class="header-cart-item-name">
-                                        {{ $item->name }}
-                                    </a>
-
-                                    <span class="header-cart-item-info">
-                                        {{ $item->qty }} x {{ "Rp. " . number_format($item->price,2,',','.') }}
-                                    </span>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
+                        <ul class="header-cart-wrapitem"></ul>
 
                         <div class="header-cart-total">
-                            Total: {{ "Rp. " . number_format($cart['total'],2,',','.') }}
+                            Total: 
                         </div>
 
                         <div class="header-cart-buttons">
@@ -104,7 +86,7 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    
                 </div>
             </div>
         </div>
@@ -119,37 +101,104 @@
 
         <!-- Button show menu -->
         <div class="btn-show-menu">
-            <!-- Header Icon mobile -->
             <div class="header-icons-mobile">
+                @if(auth()->check())
+                <a href="#" class="dis-block">
+                    <div>
+                        <a href="#" class="mr-3 js-show-header-dropdown">{{ auth()->user()->name }}</a>
+                        <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                        <div class="header-cart header-cart-mobile header-dropdown text-right" style="right: 25%; width: auto; min-width: 200px;">
+                            <p class="my-2">
+                                <a href="{{ route('show-profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
+                            </p>
+                            <p class="my-2">
+                                <a href="{{ route('transaction.index') }}">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                            </p>
+                            <p class="my-2">
+                                <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Logout <i class="fas fa-power-off ml-2"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </a>
+                @else
+                <a href="{{ route('login') }}" class="btn btn-danger">
+                    Login
+                </a>
+                @endif
+
+                <span class="linedivide2"></span>
 
                 <div class="header-wrapicon2">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
-                    <span class="header-icons-noti">{{ empty($cart['data']) ? 0 : sizeof($cart['data']) }}</span>
+                    <span class="header-icons-noti">0</span>
 
-                    @if(!empty($cart['data']))
+                    <!-- Header cart noti -->
                     <div class="header-cart header-dropdown">
-                        <ul class="header-cart-wrapitem">
-                            @foreach($cart['data'] as $item)
-                            <li class="header-cart-item" data-id="{{ $item->id }}" name-product="{{ $item->name }}">
-                                <div class="header-cart-item-img">
-                                    <img src="{{ sizeof($item->image) > 0 ? Storage::url($item->image[0]->filename)  : 'https://www.91-img.com/pictures/119660-v10-samsung-galaxy-note-9-mobile-phone-large-1.jpg' }}" alt="IMG">
-                                </div>
-
-                                <div class="header-cart-item-txt">
-                                    <a href="#" class="header-cart-item-name">
-                                        {{ $item->name }}
-                                    </a>
-
-                                    <span class="header-cart-item-info">
-                                        {{ $item->qty }} x {{ "Rp. " . number_format($item->price,2,',','.') }}
-                                    </span>
-                                </div>
-                            </li>
-                            @endforeach
-                        </ul>
+                        <ul class="header-cart-wrapitem"></ul>
 
                         <div class="header-cart-total">
-                            Total: {{ "Rp. " . number_format($cart['total'],2,',','.') }}
+                            Total: $75.00
+                        </div>
+
+                        <div class="header-cart-buttons">
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    View Cart
+                                </a>
+                            </div>
+
+                            <div class="header-cart-wrapbtn">
+                                <!-- Button -->
+                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                    Check Out
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Header Icon mobile -->
+            {{-- <div class="header-icons-mobile">
+                @if(auth()->check())
+                <a href="#" class="mr-3 js-show-header-dropdown">{{ auth()->user()->name }}</a>
+                <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                <div class="header-cart header-dropdown text-right" style="right: 25%; width: auto; min-width: 200px;">
+                    <p class="my-2">
+                        <a href="{{ route('show-profile') }}">My Profile <i class="fas fa-user ml-2"></i></a>
+                    </p>
+                    <p class="my-2">
+                        <a href="{{ route('transaction.index') }}">My Transactions <i class="fas fa-shopping-bag ml-2"></i></a>
+                    </p>
+                    <p class="my-2">
+                        <a href="{{ route('logout') }}"
+                            onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                            Logout <i class="fas fa-power-off ml-2"></i>
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </p>
+                </div>
+                @else
+                <a href="{{ route('login') }}" class="btn btn-danger btn-sm mr-2">
+                    Login
+                </a>
+                @endif
+                <div class="header-wrapicon2">
+                    <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
+                    <span class="header-icons-noti">0</span>
+                    
+                    <div class="header-cart header-dropdown">
+                        <ul class="header-cart-wrapitem"></ul>
+                        <div class="header-cart-total">
+                            Total: 
                         </div>
 
                         <div class="header-cart-buttons">
@@ -168,9 +217,9 @@
                             </div>
                         </div>
                     </div>
-                    @endif
+                    
                 </div>
-            </div>
+            </div> --}}
 
             <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
                 <span class="hamburger-box">
@@ -190,7 +239,7 @@
                 </li>
 
                 <li @if(request()->is('product') || request()->is('product/*')) class="item-menu-mobile" @endif>
-                    <a href="#" @if(!request()->is('product') && !request()->is('product/*')) class="text-danger" @endif>Products</a>
+                    <a href="{{ route('product.index') }}" @if(!request()->is('product') && !request()->is('product/*')) class="text-danger" @endif>Products</a>
                 </li>
             </ul>
         </nav>

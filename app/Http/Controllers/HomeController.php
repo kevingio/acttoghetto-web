@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $this->brand = $brand;
         $this->user = $user;
-        $this->middleware('auth', ['except' => ['index']]);
+        $this->middleware('auth', ['except' => ['index', 'landing']]);
     }
 
     /**
@@ -31,6 +31,16 @@ class HomeController extends Controller
         $brandsForMan = $this->brand->where('type', 'man')->orderBy('name')->get();
         $brandsForWoman = $this->brand->where('type', 'woman')->orderBy('name')->get();
         return view('web.home', compact('brandsForMan', 'brandsForWoman'));
+    }
+
+    /**
+     * Show the application landing page.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function landing()
+    {
+        return view('web.landing');
     }
 
     /**
