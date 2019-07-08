@@ -40,7 +40,7 @@ My Cart
                         <td class="column-4"></td>
                         <td class="column-5">,-</td>
                         <td class="column-1">
-                            <button class="btn btn-danger">Delete</button>
+                            <a href=""><i class="fas fa-trash"></i></a>
                         </td>
                     </tr>
                     
@@ -48,11 +48,40 @@ My Cart
             </div>
         </div>
 
+        <div class="p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm">
+            <form action="" method="POST">
+                <div class="form-group mb-0">
+                    <div class="row">
+                        <div class="col-12 col-md-2">
+                            <label for="">Name</label>
+                        </div>
+                        <div class="col-12 col-md-5 mb-3">
+                            <input class="border-input" type="text" name="name" autocomplete="off" value="" required>
+                        </div>
+
+                        <div class="col-12 col-md-2">
+                            <label for="">Nomor Telp</label>
+                        </div>
+                        <div class="col-12 col-md-3 mb-3">
+                            <input class="border-input" type="text" name="name" autocomplete="off" value="" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-md-2">
+                            <label for="">Alamat</label>
+                        </div>
+                        <div class="col-12 col-md-10">
+                            <textarea class="border-input" rows="5" id="comment" value="" required></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
         <div class="p-t-25 p-b-25 bo8 p-l-35 p-r-60 p-lr-15-sm text-right">
             <button class="bg1 bo-rad-23 hov1 s-text1 trans-0-4 p-2" onclick="">
                     Update Cart
-                </button>
-            
+            </button>
         </div>
 
         <!-- Total -->

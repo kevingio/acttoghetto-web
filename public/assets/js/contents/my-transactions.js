@@ -16,12 +16,10 @@ $(document).ready(function () {
         readURL: function (input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-
+                reader.readAsDataURL(input.files[0]);
                 reader.onload = function (e) {
                     $('#previewImage').attr('src', e.target.result);
                 }
-
-                reader.readAsDataURL(input.files[0]);
             }
         },
         initDatatable: function () {
