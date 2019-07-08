@@ -63,3 +63,7 @@ textarea{
 .table-overflow {
     overflow: auto;
 }
+
+.header-icons-mobile .header-cart-mobile {
+    top: 9%;
+}
