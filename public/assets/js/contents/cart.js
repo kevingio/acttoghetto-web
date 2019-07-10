@@ -21,6 +21,8 @@ $(document).ready(function () {
                     + '</a>'
                     + '<span class="header-cart-item-info">'
                     + item.price
+                    + ' x '
+                    + item.qty
                     + '</span>'
                     + '</div>'
                     + '</li>';
@@ -33,12 +35,13 @@ $(document).ready(function () {
         deleteCartItem: function () {
             let self = this
             $('.header-cart-item-img').on('click', function () {
-                let cartId = $(this).parent().attr('data-id')
-
+                let cartId = $(this).parent().attr('data-id')           
+                
                 myProductsPage.products.map((item, index) => {
                     if (cartId == item.id) {
                         myProductsPage.products.splice(index, 1)
                         $(this).parent().remove()
+                        $('.table-row-item-cart[data-id="' + item.id +'"]').remove();
                         return
                     }
                 })
@@ -49,12 +52,21 @@ $(document).ready(function () {
             })
         },
         totalPrice: function () {
-            var total = 0
+            var totalCart = 0
+
             myProductsPage.products.map((item, index) => {
-                total += (item.qty * item.rawPrice)
+                totalCart += (item.qty * item.rawPrice)
             })
             
-            $('.header-cart-total .total-cart').text('Rp ' + total.toLocaleString(
+            $('.header-cart-total .total-cart').text('Rp ' + totalCart.toLocaleString(
+                "de-DE", { minimumFractionDigits: 2 }
+            ));
+
+            $('.subtotal-cart-list-wrapper .subtotal-cart-list').text('Rp ' + totalCart.toLocaleString(
+                "de-DE", { minimumFractionDigits: 2 }
+            ));
+            
+            $('.total-cart-list-wrapper .total-cart-list').text('Rp ' + totalCart.toLocaleString(
                 "de-DE", { minimumFractionDigits: 2 }
             ));
         },
@@ -101,7 +113,6 @@ $(document).ready(function () {
 
                 swal(nameProduct, "is added to cart !", "success").then(function () {
                     $('.header-wrapicon2 span').text(myProductsPage.products.length)
-                    
                     
                     self.totalPrice()
                     self.deleteCartItem()

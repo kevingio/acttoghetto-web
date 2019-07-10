@@ -18,6 +18,15 @@
     width: 100%!important;
 }
 
+i:hover{
+    text-decoration: none;
+    color: #e65540;
+}
+
+.max-w-200{
+    width: 200px!important;
+    max-width: 200px!important;
+}
 textarea{
     resize: none;
 }

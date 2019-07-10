@@ -17,6 +17,10 @@ Auth::routes();
 
 Route::get('/cart', 'HomeController@myCart');
 
+Route::post('/cart', function () {
+    return '';
+});
+
 Route::get('/', 'HomeController@landing')->name('landing');
 
 Route::get('/home', 'HomeController@index')->name('home');
