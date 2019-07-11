@@ -20,11 +20,11 @@ class RedirectIfAuthenticated
         if (Auth::guard($guard)->check()) {
             switch (auth()->user()->role_id) {
                 case 3:
-                    return '/home';
+                    return redirect('/home');
                     break;
 
                 default:
-                    return '/admin';
+                    return redirect('/admin');
                     break;
             }
         }
