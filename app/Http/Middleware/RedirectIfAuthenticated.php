@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
                     break;
 
                 default:
-                    return '/admin'
+                    return '/admin';
                     break;
             }
         }
