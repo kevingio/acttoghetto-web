@@ -225,7 +225,7 @@
             <ul class="main-menu">
 
                 <li @if(request()->is('home')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('home') }}" @if(!request()->is('/')) class="text-danger" @endif>Home</a>
+                    <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-danger" @endif>Home</a>
                 </li>
 
                 <li @if(request()->is('product') || request()->is('product/*')) class="item-menu-mobile" @endif>
