@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{{ asset('assets/images/icons/favicon.png') }}"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Acttoghetto</title>
     <style>
@@ -11,12 +12,12 @@
             margin: 0;
         }
 
-        .bg { 
+        .bg {
         /* The image used */
         background-image: url('assets/images/landing.png');
 
         /* Full height */
-        height: 100%; 
+        height: 100%;
 
         /* Center and scale the image nicely */
         background-position: center;
