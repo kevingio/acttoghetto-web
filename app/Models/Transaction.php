@@ -14,6 +14,8 @@ class Transaction extends Model
      */
     protected $fillable = [
         'number',
+        'receiver',
+        'phone_number',
         'user_id',
         'is_paid',
         'total',
@@ -40,15 +42,26 @@ class Transaction extends Model
     }
 
     /**
+     * Generate Transaction Number
+     * @return string
+     */
+    public function generateTransactionNumber()
+    {
+        $lastTransaction = $this->orderBy('number', 'desc')->first();
+        $number = empty($lastTransaction) ? '1' : ((int) $lastTransaction->number) + 1;
+        return 'ACT' . str_pad((string) $number, 6, '0', STR_PAD_LEFT);
+    }
+
+    /**
      * Get Datatable Data
      * @return array
      */
     public function datatable()
     {
-        $results = $this->with(['user', 'detail'])->where('user_id', auth()->id())->latest()->get();
+        $results = $this->with(['user', 'detail'])->where('user_id', auth()->id())->orderBy('number', 'desc')->get();
         return Datatables::of($results)
             ->editColumn('created_at', function ($data) {
-                return date('l, d F Y', strtotime($data->created_at));
+                return date('l, d F Y - H:i', strtotime($data->created_at));
             })
             ->editColumn('total', function ($data) {
                 return 'Rp '. number_format($data->total,0,',','.');
@@ -58,7 +71,7 @@ class Transaction extends Model
                     $html = '<span class="badge badge-success">Terverifikasi</span>';
                 } else if(empty($data->proof)) {
                     $html = '
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-id="' . encrypt($data->id) . '" data-target="#modalUpload">Konfirmasi Pembayaran</button>';
+                    <button type="button" class="btn btn-primary btn-upload" data-id="' . encrypt($data->id) . '">Konfirmasi Pembayaran</button>';
                 } else {
                     $html = '<span class="badge badge-warning">Menunggu verifikasi penjual</span>';
                 }

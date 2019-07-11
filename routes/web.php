@@ -11,15 +11,9 @@
 |
 */
 
-date_default_timezone_get('Asia/Jakarta');
-
 Auth::routes();
 
-Route::get('/cart', 'HomeController@myCart');
-
-Route::post('/cart', function () {
-    return '';
-});
+Route::get('/checkout', 'HomeController@myCart');
 
 Route::get('/', 'HomeController@landing')->name('landing');
 

@@ -24,7 +24,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->product->with(['category', 'brand', 'images']);
+        $products = $this->product->with(['category.sizes', 'brand', 'images']);
         if(!empty($request->brand) && $request->brand != 'all') {
             $products = $products->whereHas('brand', function ($query) use ($request) {
                 $query->where('name', $request->brand);

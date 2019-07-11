@@ -10,7 +10,7 @@ $(document).ready(function () {
             let total = 0
             myCartDetailsPage.products.map((item, index) => {
                 total = (item.qty * item.rawPrice)
-                
+
                 let html = '<tr class="table-row-item-cart" data-id="' + item.id + '">'
                     + '<td>'
                     + '<div class="b-rad-4 o-f-hidden">'
@@ -18,11 +18,12 @@ $(document).ready(function () {
                     + '</div>'
                     + '</td>'
                     + '<td>'+ item.name +'</td>'
+                    + '<td>'+ item.size +'</td>'
                     + '<td>'+ item.price +'</td>'
                     + '<td>'+ item.qty +'</td>'
                     + '<td class="total-price-qty-list-cart">Rp '+ total.toLocaleString("de-DE", { minimumFractionDigits: 2 }) +'</td>'
-                    + '<td class="cart-list-delete-icon">'
-                    + '<i class="fas fa-trash"></i>'
+                    + '<td class="cart-list-delete-icon text-center">'
+                    + '<a href="javascript: void(0)"><i class="fas fa-trash"></i></a>'
                     + '</td>'
                     + '</tr>';
                 $('.table-shopping-cart tbody').append(html);
@@ -36,7 +37,7 @@ $(document).ready(function () {
                 let cartListId = $(this).parent().attr('data-id')
 
                 myCartDetailsPage.products.map((item, index) => {
-                    
+
                     if (cartListId == item.id) {
                         myCartDetailsPage.products.splice(index, 1)
                         $(this).parent().remove()
@@ -46,7 +47,7 @@ $(document).ready(function () {
                 })
                 $('.header-wrapicon2 .header-icons-noti').text(myCartDetailsPage.products.length)
 
-                self.totalPrice();    
+                self.totalPrice();
                 localStorage.setItem("listProducts", JSON.stringify(myCartDetailsPage.products));
             })
         },

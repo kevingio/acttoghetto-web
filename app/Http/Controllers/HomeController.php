@@ -60,7 +60,7 @@ class HomeController extends Controller
      */
     public function myCart()
     {
-        return view('web.user.cart');
+        return view('web.user.checkout');
     }
 
     /**

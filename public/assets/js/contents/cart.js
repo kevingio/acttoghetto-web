@@ -16,9 +16,10 @@ $(document).ready(function () {
                     + '<img src="' + item.img + '" alt="IMG">'
                     + '</div>'
                     + '<div class="header-cart-item-txt">'
-                    + '<a href="#" class="header-cart-item-name">'
+                    + '<a href="/product/' + item.id + '" class="header-cart-item-name">'
                     + item.name
                     + '</a>'
+                    + '<p class="font-weight-bold">Size: ' + item.size + '</p>'
                     + '<span class="header-cart-item-info">'
                     + item.price
                     + ' x '
@@ -29,14 +30,14 @@ $(document).ready(function () {
                 $('.header-cart-wrapitem').append(html);
 
                 this.deleteCartItem();
- 
+
             })
         },
         deleteCartItem: function () {
             let self = this
             $('.header-cart-item-img').on('click', function () {
-                let cartId = $(this).parent().attr('data-id')           
-                
+                let cartId = $(this).parent().attr('data-id')
+
                 myProductsPage.products.map((item, index) => {
                     if (cartId == item.id) {
                         myProductsPage.products.splice(index, 1)
@@ -57,7 +58,7 @@ $(document).ready(function () {
             myProductsPage.products.map((item, index) => {
                 totalCart += (item.qty * item.rawPrice)
             })
-            
+
             $('.header-cart-total .total-cart').text('Rp ' + totalCart.toLocaleString(
                 "de-DE", { minimumFractionDigits: 2 }
             ));
@@ -65,7 +66,7 @@ $(document).ready(function () {
             $('.subtotal-cart-list-wrapper .subtotal-cart-list').text('Rp ' + totalCart.toLocaleString(
                 "de-DE", { minimumFractionDigits: 2 }
             ));
-            
+
             $('.total-cart-list-wrapper .total-cart-list').text('Rp ' + totalCart.toLocaleString(
                 "de-DE", { minimumFractionDigits: 2 }
             ));
@@ -79,41 +80,42 @@ $(document).ready(function () {
             $('.block2-btn-addcart').on('click', function () {
                 data = JSON.parse(localStorage.getItem('listProducts'));
                 myProductsPage.products = data == null ? [] : data ;
-                
+
                 let nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
                 let priceProduct = $(this).parent().parent().parent().find('.block2-price').html();
                 let imgProduct = $(this).parent().parent().find('img').attr('src');
-                
+
                 myProductsPage.product.id = $(this).attr('data-id');
                 myProductsPage.product.rawPrice = $(this).attr('data-price');
                 myProductsPage.product.name = nameProduct;
                 myProductsPage.product.price = priceProduct;
                 myProductsPage.product.img = imgProduct;
                 myProductsPage.product.qty = 1;
+                myProductsPage.product.size = $(this).attr('size');
 
                 if (myProductsPage.products.length == 0) {
                     myProductsPage.products.push(myProductsPage.product);
                 } else {
                     var temp = -1
-                    
+
                     myProductsPage.products.map((item, index) => {
-                        if (myProductsPage.product.id == item.id) {
+                        if (myProductsPage.product.id == item.id && myProductsPage.product.size == item.size) {
                             temp = index
                         }
                     })
-                    
+
                     if (temp != -1) {
                         myProductsPage.products[temp].qty += 1
                     } else {
                         myProductsPage.products.push(myProductsPage.product);
                     }
                 }
-                
+
                 localStorage.setItem("listProducts", JSON.stringify(myProductsPage.products));
 
-                swal(nameProduct, "is added to cart !", "success").then(function () {
+                swal(nameProduct, "berhasil ditambahkan ke keranjang!", "success").then(function () {
                     $('.header-wrapicon2 span').text(myProductsPage.products.length)
-                    
+
                     self.totalPrice()
                     self.deleteCartItem()
                     self.displayCartItem()

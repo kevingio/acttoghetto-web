@@ -7,6 +7,12 @@ $(document).ready(function () {
         init: function () {
             this.initProduct();
             this.totalPrice();
+
+            $(document).on('change', 'input[name=num-product]', function () {
+                if($('input[name=num-product]').val() <= 0) {
+                    $('input[name=num-product]').val(1)
+                }
+            })
         },
         displayCartItem: function () {
             $('.header-cart-wrapitem').children().remove();
@@ -16,9 +22,10 @@ $(document).ready(function () {
                     + '<img src="' + item.img + '" alt="IMG">'
                     + '</div>'
                     + '<div class="header-cart-item-txt">'
-                    + '<a href="#" class="header-cart-item-name">'
+                    + '<a href="/product/' + item.id +'" class="header-cart-item-name">'
                     + item.name
                     + '</a>'
+                    + '<p class="font-weight-bold">Size: ' + item.size + '</p>'
                     + '<span class="header-cart-item-info">'
                     + item.price
                     + ' x '
@@ -76,46 +83,45 @@ $(document).ready(function () {
                 let qty = $(this).parent().parent().find('.wrapper-num-product .num-product').val();
                 let imgProduct = $(this).parent().parent().parent().parent().parent().find('.product-detail-main-img').attr('src');
                 let size = $(this).parent().parent().parent().find('select.selection-2').val();
-                
-                
 
-                myProductPageDetail.product.id = $(this).attr('data-id');
-                myProductPageDetail.product.rawPrice = $(this).attr('data-price');
-                myProductPageDetail.product.name = nameProduct;
-                myProductPageDetail.product.price = priceProduct;
-                myProductPageDetail.product.img = imgProduct;
-                myProductPageDetail.product.qty = parseInt(qty);
-                myProductPageDetail.product.size = size;
+                if (size !== 'Choose an option') {
+                    myProductPageDetail.product.id = $(this).attr('data-id');
+                    myProductPageDetail.product.rawPrice = $(this).attr('data-price');
+                    myProductPageDetail.product.name = nameProduct;
+                    myProductPageDetail.product.price = priceProduct;
+                    myProductPageDetail.product.img = imgProduct;
+                    myProductPageDetail.product.qty = parseInt(qty);
+                    myProductPageDetail.product.size = size;
 
-                if (myProductPageDetail.products.length == 0) {
-                    myProductPageDetail.products.push(myProductPageDetail.product);
-                } else {
-                    var temp = -1
-
-                    myProductPageDetail.products.map((item, index) => {
-                        if (myProductPageDetail.product.id == item.id) {
-                            temp = index
-                        }
-                    })
-
-                    if (temp != -1) {
-                        myProductPageDetail.products[temp].qty += myProductPageDetail.products[temp].qty
-                    } else {
+                    if (myProductPageDetail.products.length == 0) {
                         myProductPageDetail.products.push(myProductPageDetail.product);
+                    } else {
+                        var temp = -1
+
+                        myProductPageDetail.products.map((item, index) => {
+                            if (myProductPageDetail.product.id == item.id && myProductPageDetail.product.size == item.size) {
+                                temp = index
+                            }
+                        })
+
+                        if (temp != -1) {
+                            myProductPageDetail.products[temp].qty += myProductPageDetail.product.qty
+                        } else {
+                            myProductPageDetail.products.push(myProductPageDetail.product);
+                        }
                     }
+
+                    localStorage.setItem("listProducts", JSON.stringify(myProductPageDetail.products));
+
+                    swal(nameProduct, "berhasil ditambahkan ke keranjang!", "success").then(function () {
+                        $('.header-wrapicon2 span').text(myProductPageDetail.products.length)
+                        self.totalPrice()
+                        self.deleteCartItem()
+                        self.displayCartItem()
+                    });
+                } else {
+                    swal("Mohon pilih size terlebih dahulu", "", "error")
                 }
-
-                localStorage.setItem("listProducts", JSON.stringify(myProductPageDetail.products));
-
-                swal(nameProduct, "is added to cart !", "success").then(function () {
-                    $('.header-wrapicon2 span').text(myProductPageDetail.products.length)
-
-                    console.log(myProductPageDetail.products);
-                    
-                    self.totalPrice()
-                    self.deleteCartItem()
-                    self.displayCartItem()
-                });
 
             });
         }

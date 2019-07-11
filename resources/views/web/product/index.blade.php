@@ -1,8 +1,8 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 
-@section('title') 
-    Products 
-@endsection 
+@section('title')
+    Products
+@endsection
 @section('content')
 <!-- Title Page -->
 	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('https://images.unsplash.com/photo-1501236570302-906143a7c9f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');">
@@ -10,13 +10,13 @@
 			Product
 		</h2>
 		<p class="m-text13 t-center">
-			Acttoghetto Collections 
+			Acttoghetto Collections
 		</p>
 	</section>
 
 
 	<!-- Content page -->
-    <section class="bgwhite p-t-55 p-b-65" id="my-products-page"> 
+    <section class="bgwhite p-t-55 p-b-65" id="my-products-page">
         <div class="container">
             <div class="row">
                 <div class="col-sm-6 col-md-4 col-lg-3 p-b-50">
@@ -69,34 +69,34 @@
                     <!-- Product -->
                     <div class="row">
                         @foreach($products as $key => $product)
-                        
-                            <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
-                            <div class="block2">
-                                <div class="block2-img wrap-pic-w of-hidden pos-relative">
-                                    <img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}" alt="Image-{{ $key + 1 }}">
 
-                                    <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{ $product->id }}" data-price="{{ $product->price }}">
-                                            <!-- Button -->
-                                            <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 btn-add" >
-                                                Add to Cart
-                                            </button>
+                            <div class="col-sm-12 col-md-6 col-lg-4 p-b-50">
+                                <div class="block2">
+                                    <div class="block2-img wrap-pic-w of-hidden pos-relative">
+                                        <img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}" alt="Image-{{ $key + 1 }}">
+
+                                        <div class="block2-overlay trans-0-4">
+                                            <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{ $product->id }}" data-price="{{ $product->price }}" size="{{ $product->category->sizes[0]->text }}">
+                                                <!-- Button -->
+                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 btn-add" >
+                                                    Add to Cart
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="block2-txt p-t-20">
-                                    <a href="{{ route('product.show',[$product->id]) }}" class="block2-name dis-block s-text3 p-b-5">
-                                        {{ $product->name }}
-                                    </a>
+                                    <div class="block2-txt p-t-20">
+                                        <a href="{{ route('product.show',[$product->id]) }}" class="block2-name dis-block s-text3 p-b-5">
+                                            {{ $product->name }}
+                                        </a>
 
-                                    <span class="text-danger block2-price p-r-5">
-                                        Rp {{ number_format($product->price,0,',','.') }}
-                                    </span>
+                                        <span class="text-danger block2-price p-r-5">
+                                            Rp {{ number_format($product->price,0,',','.') }}
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        
+
                         @endforeach
                     </div>
 

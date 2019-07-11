@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('page-title')
+@section('title')
 My Cart
 @endsection
 
@@ -23,6 +23,7 @@ My Cart
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Product</th>
+                            <th scope="col">Size</th>
                             <th scope="col">Price</th>
                             <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
@@ -77,7 +78,7 @@ My Cart
                 </span>
 
                 <span class="m-text21 w-size20 w-full-sm subtotal-cart-list">
-                    
+
                 </span>
             </div>
 
@@ -101,7 +102,7 @@ My Cart
                 </span>
 
                 <span class="m-text21 w-size20 w-full-sm total-cart-list">
-                    
+
                 </span>
             </div>
 
