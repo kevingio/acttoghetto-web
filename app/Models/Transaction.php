@@ -48,8 +48,8 @@ class Transaction extends Model
     public function generateTransactionNumber()
     {
         $lastTransaction = $this->orderBy('number', 'desc')->first();
-        $number = empty($lastTransaction) ? '1' : ((int) $lastTransaction->number) + 1;
-        return 'ACT' . str_pad((string) $number, 6, '0', STR_PAD_LEFT);
+        $number = empty($lastTransaction) ? '0' : (int) str_replace('ACT', '', $lastTransaction->number);
+        return 'ACT' . str_pad((string) ($number + 1), 6, '0', STR_PAD_LEFT);
     }
 
     /**
