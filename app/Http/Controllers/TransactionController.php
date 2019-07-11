@@ -6,6 +6,8 @@ use App\Models\Transaction;
 use App\Models\TransactionDetail;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Image;
 use DB;
 
 class TransactionController extends Controller
@@ -114,6 +116,31 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+    /**
+     * Upload Transfer Proof
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  integer  $transaction
+     * @return \Illuminate\Http\Response
+     */
+    public function uploadProof(Request $request, $id)
+    {
+        $transaction = $this->transaction->find($id);
+        if($request->hasFile('proof')) {
+            $image = $request->file('proof');
+            $filename = str_random(28) . '.jpg';
+            $path = 'public/transactions/proof/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('jpg',75);
+            Storage::put($path, (string) $file);
+
+            $transaction->update([
+                'proof' => Storage::url($path),
+            ]);
+        }
+
+        return redirect()->route('transaction.index');
     }
 
     /**

@@ -4,7 +4,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="{{ route('transaction.store') }}" method="POST">
+            <form action="{{ route('transaction.store') }}" method="POST" enctype="multipart/form-data" id="form-upload-proof">
                 {{ csrf_field() }}
                 <div class="modal-header">
                     <h6 class="modal-title font-weight-bold">Upload Bukti Pembayaran</h6>
@@ -22,7 +22,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger" data-dismiss="modal"><i class="fas fa-upload mr-2"></i> Upload</button>
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-upload mr-2"></i> Upload</button>
                 </div>
             </form>
         </div>

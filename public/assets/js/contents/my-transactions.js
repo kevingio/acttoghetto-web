@@ -14,7 +14,9 @@ $(document).ready(function () {
             });
 
             $(document).on('click', '.btn-upload', function () {
+                let dataId = $(this).attr('data-id')
                 $('#previewImage').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
+                $('#form-upload-proof').attr('action', '/transaction/' + dataId + '/upload')
                 $('#modalUpload').modal('show');
             })
 
