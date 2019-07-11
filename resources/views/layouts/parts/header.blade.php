@@ -11,7 +11,7 @@
             <div class="wrap_menu">
                 <nav class="menu">
                     <ul class="main_menu">
-                        <li @if(request()->is('/')) class="sale-noti" @endif>
+                        <li @if(request()->is('home')) class="sale-noti" @endif>
                             <a href="{{ route('home') }}">Home</a>
                         </li>
 
@@ -62,31 +62,26 @@
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">0</span>
 
-                    
+
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem"></ul>
 
                         <div class="header-cart-total">
-                            Total: 
+                            Total:
+                            <span class="total-cart"></span>
                         </div>
 
-                        <div class="header-cart-buttons">
-                            <div class="header-cart-wrapbtn">
-                                <!-- Button -->
-                                <a href="{{ url('/cart') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                    View Cart
-                                </a>
-                            </div>
+                        <div class="header-cart-btn">
 
-                            <div class="header-cart-wrapbtn">
+                            <div class="header-cart-wrap-btn">
                                 <!-- Button -->
-                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a href="{{ url('/checkout') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     Check Out
                                 </a>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -132,7 +127,7 @@
 
                 <span class="linedivide2"></span>
 
-                <div class="header-wrapicon2">
+                <div class="header-wrapicon2 cart-header">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">0</span>
 
@@ -141,20 +136,14 @@
                         <ul class="header-cart-wrapitem"></ul>
 
                         <div class="header-cart-total">
-                            Total: $75.00
+                            Total:
+                            <span class="total-cart"></span>
                         </div>
 
-                        <div class="header-cart-buttons">
-                            <div class="header-cart-wrapbtn">
+                        <div class="header-cart-btn">
+                            <div class="header-cart-wrap-btn">
                                 <!-- Button -->
-                                <a href="cart.html" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
-                                    View Cart
-                                </a>
-                            </div>
-
-                            <div class="header-cart-wrapbtn">
-                                <!-- Button -->
-                                <a href="#" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a href="{{ url('/checkout') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     Check Out
                                 </a>
                             </div>
@@ -194,17 +183,18 @@
                 <div class="header-wrapicon2">
                     <img src="{{ asset('assets/images/icons/icon-header-02.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
                     <span class="header-icons-noti">0</span>
-                    
+
                     <div class="header-cart header-dropdown">
                         <ul class="header-cart-wrapitem"></ul>
                         <div class="header-cart-total">
-                            Total: 
+                            Total:
+                            <span class="total-cart"></span>
                         </div>
 
                         <div class="header-cart-buttons">
                             <div class="header-cart-wrapbtn">
                                 <!-- Button -->
-                                <a href="{{ url('/cart') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
+                                <a href="{{ url('/checkout') }}" class="flex-c-m size1 bg1 bo-rad-20 hov1 s-text1 trans-0-4">
                                     View Cart
                                 </a>
                             </div>
@@ -217,7 +207,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div> --}}
 
@@ -234,7 +224,7 @@
         <nav class="side-menu">
             <ul class="main-menu">
 
-                <li @if(request()->is('/')) class="item-menu-mobile" @endif>
+                <li @if(request()->is('home')) class="item-menu-mobile" @endif>
                     <a href="{{ route('home') }}" @if(!request()->is('/')) class="text-danger" @endif>Home</a>
                 </li>
 

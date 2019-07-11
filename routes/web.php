@@ -10,9 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-date_default_timezone_set('Asia/Jakarta');
 
 Auth::routes();
+
+Route::get('/checkout', 'HomeController@myCart');
 
 Route::get('/', 'HomeController@landing')->name('landing');
 
