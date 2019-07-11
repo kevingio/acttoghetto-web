@@ -19,8 +19,11 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->boolean('is_paid')->default(0);
             $table->string('total');
+            $table->string('receiver');
+            $table->string('phone_number');
             $table->text('shipping_address');
             $table->enum('status', ['diproses', 'dikirim', 'selesai'])->default('diproses');
+            $table->string('proof')->nullable();
             $table->timestamps();
         });
     }

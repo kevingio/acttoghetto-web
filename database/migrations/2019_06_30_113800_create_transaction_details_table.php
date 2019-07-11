@@ -18,6 +18,7 @@ class CreateTransactionDetailsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->bigInteger('price');
             $table->integer('qty');
+            $table->unsignedInteger('size_id');
             $table->string('note')->nullable();
         });
     }

@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Brand;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
-    function __construct(Product $product) {
+    function __construct(Product $product, Brand $brand, Category $category) {
         $this->product = $product;
+        $this->brand = $brand;
+        $this->category = $category;
     }
 
     /**
@@ -20,26 +24,34 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->product->with(['category', 'brand']);
-        if(!empty($request->brand)) {
+        $products = $this->product->with(['category.sizes', 'brand', 'images']);
+        if(!empty($request->brand) && $request->brand != 'all') {
             $products = $products->whereHas('brand', function ($query) use ($request) {
                 $query->where('name', $request->brand);
             });
         }
-        if(!empty($request->category)) {
+        if(!empty($request->gender) && $request->gender != 'all') {
+            $products = $products->whereHas('brand', function ($query) use ($request) {
+                $query->where('type', $request->gender);
+            });
+        }
+        if(!empty($request->category) && $request->category != 'all') {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('name', $request->category);
             });
         }
-        if(!empty($request->q)) {
-            $products = $products->where('name', 'like', "%{$request->q}%");
+        if(!empty($request->search)) {
+            $products = $products->where('name', 'like', "%{$request->search}%");
         }
         if(!empty($request->sort) && in_array(strtolower($request->sort), ['asc', 'desc'])) {
             $products = $products->orderBy('price', strtolower($request->sort));
-        } else if(empty($request->sort)) {
-            $products = $products->latest();
         }
-        return $products->get();
+
+        $products = $products->paginate(9);
+        $products->appends(request()->input())->links();
+        $brands = $this->brand->orderBy('name')->get(['name']);
+        $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
+        return view('web.product.index', compact('brands', 'categories', 'products'));
     }
 
     /**
@@ -68,12 +80,13 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Product  $product
+     * @param  String $productName
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
     {
-        return $product;
+        $product = $product->with(['category.sizes', 'brand'])->find($product->id);
+        return view('web.product.detail', compact('product'));
     }
 
     /**
