@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
