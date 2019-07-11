@@ -57,4 +57,20 @@ class Product extends Model
     {
         return $this->hasMany('App\Models\ProductImage');
     }
+
+    /**
+     * Get Product Size ID
+     * @param integer $productId
+     * @param string $size
+     * @return integer
+     */
+    public function getSizeId($productId, $size)
+    {
+        $product = $this->with('category.sizes')->find($productId);
+        foreach ($product->category->sizes as $key => $value) {
+            if($value->text == $size) {
+                return $value->id;
+            }
+        }
+    }
 }

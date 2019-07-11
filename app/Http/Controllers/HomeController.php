@@ -54,6 +54,16 @@ class HomeController extends Controller
     }
 
     /**
+     * Show user cart
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function myCart()
+    {
+        return view('web.user.checkout');
+    }
+
+    /**
      * Change user profile
      *
      * @return \Illuminate\Contracts\Support\Renderable

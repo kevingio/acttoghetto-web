@@ -12,14 +12,25 @@ $(document).ready(function () {
             $("#imageUpload").on('change', function () {
                 self.readURL(this);
             });
+
+            $(document).on('click', '.btn-upload', function () {
+                $('#previewImage').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
+                $('#modalUpload').modal('show');
+            })
+
+            $(document).on('click', '.close', function () {
+                $('#modalUpload').modal('hide');
+            })
         },
         readURL: function (input) {
             if (input.files && input.files[0]) {
                 var reader = new FileReader();
-                reader.readAsDataURL(input.files[0]);
                 reader.onload = function (e) {
-                    $('#previewImage').attr('src', e.target.result);
+                    if(e.target.result) {
+                        $('#previewImage').attr('src', e.target.result);
+                    }
                 }
+                reader.readAsDataURL(input.files[0]);
             }
         },
         initDatatable: function () {
