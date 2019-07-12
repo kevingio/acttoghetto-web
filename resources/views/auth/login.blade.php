@@ -6,6 +6,7 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Login</title>
     </head>
     <body>

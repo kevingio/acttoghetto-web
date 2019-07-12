@@ -14,7 +14,9 @@ $(document).ready(function () {
             });
 
             $(document).on('click', '.btn-upload', function () {
+                let dataId = $(this).attr('data-id')
                 $('#previewImage').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
+                $('#form-upload-proof').attr('action', '/transaction/' + dataId + '/upload')
                 $('#modalUpload').modal('show');
             })
 
@@ -37,11 +39,15 @@ $(document).ready(function () {
             $table = $page.find('#transactionDatatable');
             myTransactionsPage.dtTable = $table.DataTable({
                 "aaSorting": [],
+                "pageLength": 5,
                 "processing": true,
                 "serverSide": true,
-                "searching": false,
+                "searching": true,
                 "lengthChange": false,
                 "responsive": true,
+                "oLanguage": {
+                    "sSearch": "Cari Nomor Transaksi"
+                },
                 "ajax": {
                     url: "/ajax/transaction",
                     type: "POST",

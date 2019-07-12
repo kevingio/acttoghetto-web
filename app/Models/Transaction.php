@@ -21,6 +21,7 @@ class Transaction extends Model
         'total',
         'shipping_address',
         'status',
+        'proof',
     ];
 
     /**
@@ -47,9 +48,8 @@ class Transaction extends Model
      */
     public function generateTransactionNumber()
     {
-        $lastTransaction = $this->orderBy('number', 'desc')->first();
-        $number = empty($lastTransaction) ? '0' : (int) str_replace('ACT', '', $lastTransaction->number);
-        return 'ACT' . str_pad((string) ($number + 1), 6, '0', STR_PAD_LEFT);
+        $number = date('YmdHis');
+        return 'ACT' . str_pad(rand(1,9999), 4, '0', STR_PAD_LEFT) . $number;
     }
 
     /**
@@ -71,7 +71,7 @@ class Transaction extends Model
                     $html = '<span class="badge badge-success">Terverifikasi</span>';
                 } else if(empty($data->proof)) {
                     $html = '
-                    <button type="button" class="btn btn-primary btn-upload" data-id="' . encrypt($data->id) . '">Konfirmasi Pembayaran</button>';
+                    <button type="button" class="btn btn-primary btn-upload" data-id="' . $data->id . '">Konfirmasi Pembayaran</button>';
                 } else {
                     $html = '<span class="badge badge-warning">Menunggu verifikasi penjual</span>';
                 }

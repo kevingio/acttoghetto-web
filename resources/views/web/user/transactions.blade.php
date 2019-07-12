@@ -17,10 +17,10 @@
                     <thead>
                         <tr>
                             <th width="20%">Nomor Transaksi</th>
-                            <th width="20%">Total Transaksi</th>
-                            <th class="no-sort">Tanggal</th>
-                            <th width="15%" class="no-sort">Status</th>
-                            <th width="20%" class="no-sort text-center">Pembayaran</th>
+                            <th width="20% no-search">Total Transaksi</th>
+                            <th class="no-sort no-search">Tanggal</th>
+                            <th width="15%" class="no-sort no-search">Status</th>
+                            <th width="20%" class="no-sort no-search text-center">Pembayaran</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
