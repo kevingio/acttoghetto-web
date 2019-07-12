@@ -7,6 +7,13 @@ $(document).ready(function () {
         init: function () {
             this.initProduct();
             this.totalPrice();
+            this.checkSizeOptionInCart();
+        },
+        checkSizeOptionInCart: function () {
+            let data = JSON.parse(localStorage.getItem('listProducts')) == null ? [] : JSON.parse(localStorage.getItem('listProducts'));
+            if (data.length > 0 && data[0].sizeOption == "undefined") {
+                localStorage.clear()
+            }
         },
         displayCartItem: function () {
             $('.header-cart-wrapitem').children().remove();
@@ -92,6 +99,7 @@ $(document).ready(function () {
                 myProductsPage.product.img = imgProduct;
                 myProductsPage.product.qty = 1;
                 myProductsPage.product.size = $(this).attr('size');
+                myProductsPage.product.sizeOption = $(this).attr('sizeOption');
 
                 if (myProductsPage.products.length == 0) {
                     myProductsPage.products.push(myProductsPage.product);
