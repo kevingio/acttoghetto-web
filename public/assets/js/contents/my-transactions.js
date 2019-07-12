@@ -39,6 +39,7 @@ $(document).ready(function () {
             $table = $page.find('#transactionDatatable');
             myTransactionsPage.dtTable = $table.DataTable({
                 "aaSorting": [],
+                "pageLength": 5,
                 "processing": true,
                 "serverSide": true,
                 "searching": false,
