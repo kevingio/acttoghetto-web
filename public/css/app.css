@@ -10833,3 +10833,7 @@ textarea{
     font-weight: bolder;
     font-family: Arial;
 }
+
+.cart-list-delete-icon i {
+    color: #dc3545!important;
+}

@@ -18,7 +18,7 @@ My Cart
         <!-- Cart item -->
         <div class="container-table-cart pos-relative">
             <div class="wrap-table-shopping-cart bgwhite">
-                <table class="table table-hover table-shopping-cart">
+                <table class="table table-shopping-cart">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col"></th>
