@@ -42,9 +42,12 @@ $(document).ready(function () {
                 "pageLength": 5,
                 "processing": true,
                 "serverSide": true,
-                "searching": false,
+                "searching": true,
                 "lengthChange": false,
                 "responsive": true,
+                "oLanguage": {
+                    "sSearch": "Cari Nomor Transaksi"
+                },
                 "ajax": {
                     url: "/ajax/transaction",
                     type: "POST",

@@ -48,10 +48,10 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $number = null;
-        DB::transaction(function() use ($data) {
+        $number = $this->transaction->generateTransactionNumber();
+        DB::transaction(function() use ($data, $number) {
             $transaction = $this->transaction->create([
-                'number' => $this->transaction->generateTransactionNumber(),
+                'number' => $number,
                 'receiver' => $data['receiver'],
                 'user_id'=> auth()->id(),
                 'total' => $data['total'],
@@ -67,7 +67,6 @@ class TransactionController extends Controller
                     'size_id' => $this->product->getSizeId($product['id'], $product['size'])
                 ]);
             }
-            $number = $transaction->number;
         }, 3);
 
         return response()->json([

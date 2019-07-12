@@ -3731,10 +3731,10 @@ $(document).ready(function () {
                 let html = '<tr class="table-row-item-cart" data-id="' + item.id + '">'
                     + '<td>'
                     + '<div class="b-rad-4 o-f-hidden">'
-                    + '<img class="max-w-200" src="' + item.img + '" alt="IMG-PRODUCT">'
+                    + '<a href="/product/' + item.id + '"><img class="max-w-200" src="' + item.img + '" alt="IMG-PRODUCT"></a>'
                     + '</div>'
                     + '</td>'
-                    + '<td>'+ item.name +'</td>'
+                    + '<td><a href="/product/' + item.id + '">'+ item.name +'</a></td>'
                     + '<td class="text-center">'+ item.size +'</td>'
                     + '<td>'+ item.price +'</td>'
                     + '<td class="text-center">'+ item.qty +'</td>'
@@ -4046,9 +4046,12 @@ $(document).ready(function () {
                 "pageLength": 5,
                 "processing": true,
                 "serverSide": true,
-                "searching": false,
+                "searching": true,
                 "lengthChange": false,
                 "responsive": true,
+                "oLanguage": {
+                    "sSearch": "Cari Nomor Transaksi"
+                },
                 "ajax": {
                     url: "/ajax/transaction",
                     type: "POST",
