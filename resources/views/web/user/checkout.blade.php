@@ -25,7 +25,7 @@ My Cart
                             <th scope="col">Product</th>
                             <th scope="col">Size</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
+                            <th scope="col">Qty</th>
                             <th scope="col">Total</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -40,25 +40,31 @@ My Cart
                 <div class="form-group mb-0">
                     <div class="row">
                         <div class="col-12 col-md-2">
-                            <label for="">Name</label>
+                            <p for="">Name</p>
                         </div>
                         <div class="col-12 col-md-5 mb-3">
-                            <input class="border-input buyer-name" type="text" name="name" autocomplete="off" value="{{ auth()->user()->name }}" required>
+                            <div class="w-100 p-2 bo4 m-b-12">
+                                <input class="sizefull s-text7 p-l-15 p-r-15 buyer-name" type="text" name="name" autocomplete="off" value="{{ auth()->user()->name }}" required>
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-2">
-                            <label for="">Nomor Telp</label>
+                            <p for="">Nomor Telp</p>
                         </div>
                         <div class="col-12 col-md-3 mb-3">
-                            <input class="border-input buyer-contact" type="text" name="contact" autocomplete="off" value="{{ auth()->user()->phone_number }}" required>
+                            <div class="w-100 p-2 bo4 m-b-12">
+                                <input class="sizefull s-text7 p-l-15 p-r-15 buyer-contact" type="text" name="contact" autocomplete="off" value="{{ auth()->user()->phone_number }}" required>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-2">
-                            <label for="">Alamat</label>
+                            <p for="">Alamat</p>
                         </div>
                         <div class="col-12 col-md-10">
-                            <textarea class="border-input buyer-address" rows="5" required>{{ auth()->user()->address }}</textarea>
+                            <div class="w-100 p-2 bo4 m-b-12">
+                                <textarea class="sizefull s-text7 p-l-15 p-r-15 buyer-address" style="border: 0;" rows="5" required>{{ auth()->user()->address }}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>

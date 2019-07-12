@@ -65,7 +65,7 @@ $(document).ready(function () {
             })
 
             $('.header-cart-total .total-cart').text('Rp ' + totalCart.toLocaleString(
-                "de-DE", { minimumFractionDigits: 2 }
+                "de-DE", { minimumFractionDigits: 0 }
             ));
         },
         initProduct: function () {
@@ -92,6 +92,7 @@ $(document).ready(function () {
                     myProductPageDetail.product.img = imgProduct;
                     myProductPageDetail.product.qty = parseInt(qty);
                     myProductPageDetail.product.size = size;
+                    myProductPageDetail.product.sizeOption = $(this).attr('sizeOption');
 
                     if (myProductPageDetail.products.length == 0) {
                         myProductPageDetail.products.push(myProductPageDetail.product);
