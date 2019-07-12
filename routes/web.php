@@ -23,6 +23,8 @@ Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
 Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
 
+Route::post('/transaction/{id}/upload', 'TransactionController@uploadProof')->name('upload-proof');
+
 Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
 
 Route::resource('brand', 'BrandController');

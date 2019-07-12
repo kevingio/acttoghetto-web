@@ -14,11 +14,11 @@ My Cart
 
 <!-- Cart -->
 <section class="cart bgwhite p-t-70 p-b-100">
-    <div class="container">
+    <div class="container" id="checkout-section">
         <!-- Cart item -->
         <div class="container-table-cart pos-relative">
             <div class="wrap-table-shopping-cart bgwhite">
-                <table class="table table-hover table-shopping-cart">
+                <table class="table table-shopping-cart">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col"></th>
@@ -111,6 +111,22 @@ My Cart
                 <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                     Proceed to Checkout
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="payment-info" style="display: none;">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h6>Terima kasih telah melakukan pemesanan. Pesanan anda telah kami terima.</h6>
+                <h5 class="bolder my-3" id="transaction-number">ACT0000</h5>
+                <p class="font-weight-bold">Biaya yang harus dibayarkan: </p>
+                <h3 class="bolder text-danger my-3" id="transaction-total">Rp 0,-</h3>
+                <p class="text-black">Metode pembayaran melalui rekening: </p>
+                <img src="{{ asset('/assets/images/rekening.png') }}" class="img-fluid" alt="rekening" />
+                <div class="text-center">
+                    <a href="{{ route('transaction.index') }}" class="btn btn-primary mt-3">Konfirmasi Pembayaran</a>
+                </div>
             </div>
         </div>
     </div>

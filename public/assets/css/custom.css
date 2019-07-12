@@ -99,3 +99,12 @@ textarea{
         min-height: calc(100% - (1.75rem * 2));
     }
 }
+
+.bolder {
+    font-weight: bolder;
+    font-family: Arial;
+}
+
+.cart-list-delete-icon i {
+    color: #dc3545!important;
+}
