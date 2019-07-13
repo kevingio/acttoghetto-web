@@ -4033,7 +4033,7 @@ $(document).ready(function () {
             }
         },
         initDatatable: function () {
-            $table = $page.find('#transactionDatatable');
+            var $table = $page.find('#transactionDatatable');
             myTransactionsPage.dtTable = $table.DataTable({
                 "aaSorting": [],
                 "processing": true,

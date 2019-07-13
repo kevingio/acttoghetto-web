@@ -28,6 +28,20 @@ mix.scripts([
         'public/assets/js/preload.js',
         'public/assets/js/contents/*.js'
     ], 'public/js/app.js')
+    .scripts([
+        'public/assets/vendor/admin/jquery/jquery.min.js',
+        'public/assets/vendor/admin/bootstrap/bootstrap.bundle.min.js',
+        'public/assets/vendor/admin/metismenu/metisMenu.min.js',
+        'public/assets/vendor/admin/slimscroll/jquery.slimscroll.js',
+        'public/assets/vendor/admin/waves/waves.min.js',
+        'public/assets/vendor/admin/sparkline/jquery.sparkline.min.js',
+        'public/assets/vendor/admin/morris/morris.min.js',
+        'public/assets/vendor/admin/raphael/raphael-min.js',
+        'public/assets/vendor/admin/datatables/jquery.dataTables.min.js',
+        'public/assets/vendor/admin/datatables/dataTables.bootstrap4.min.js',
+        'public/assets/js/admin/app.js',
+        'public/assets/js/admin/contents/*.js'
+    ], 'public/js/admin.js')
     .styles([
         'public/assets/vendor/bootstrap/css/bootstrap.min.css',
         'public/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css',
@@ -46,4 +60,21 @@ mix.scripts([
         'public/assets/css/util.css',
         'public/assets/css/main.css',
         'public/assets/css/custom.css'
-    ], 'public/css/app.css');
+    ], 'public/css/app.css')
+    .styles([
+        'public/assets/vendor/admin/bootstrap/bootstrap.min.css',
+        'public/assets/vendor/admin/metismenu/metismenu.min.css',
+        'public/assets/vendor/admin/icons/icons.css',
+        'public/assets/fonts/themify-icons/themify-icons.css',
+        'public/assets/fonts/ionicons/css/ionicons.css',
+        'public/assets/fonts/material-design/css/materialdesignicons.css',
+        'public/assets/fonts/themify-icons/themify-icons.css',
+        'public/assets/fonts/typicons/typicons.min.css',
+        'public/assets/fonts/fontawesome/css/fa-brands.css',
+        'public/assets/fonts/fontawesome/css/fa-regular.css',
+        'public/assets/fonts/fontawesome/css/fa-solid.css',
+        'public/assets/fonts/fontawesome/css/fontawesome-all.css',
+        'public/assets/fonts/fontawesome/css/fontawesome.css',
+        'public/assets/vendor/admin/datatables/jquery.dataTables.min.css',
+        'public/assets/css/admin/style.css',
+    ], 'public/css/admin.css');

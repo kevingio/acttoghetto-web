@@ -13,6 +13,26 @@
 
 Auth::routes();
 
+Route::get('/admin/transactions', function () {
+    return view('admin.web.transactions');
+});
+
+Route::get('/admin/products', function () {
+    return view('admin.web.product');
+});
+
+Route::get('/admin/master-data-category', function () {
+    return view('admin.web.master-data-category');
+});
+
+Route::get('/admin/brands', function () {
+    return view('admin.web.brand');
+});
+
+Route::get('/admin/size', function () {
+    return view('admin.web.size');
+});
+
 Route::get('/checkout', 'HomeController@myCart');
 
 Route::get('/', 'HomeController@landing')->name('landing');
