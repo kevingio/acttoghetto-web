@@ -43,7 +43,9 @@ class CategoryController extends Controller
     {
         $data = $request->all();
         $this->category->create($data);
-        return 'sukses';
+        return response()->json([
+            'status' => 'data created'
+        ], 200);
     }
 
     /**
@@ -79,7 +81,9 @@ class CategoryController extends Controller
     {
         $data = $request->all();
         $category->update($data);
-        return 'sukses';
+        return response()->json([
+            'status' => 'updated'
+        ], 200);
     }
 
     /**
@@ -91,6 +95,8 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return 'sukses';
+        return response()->json([
+            'status' => 'deleted'
+        ], 200);
     }
 }
