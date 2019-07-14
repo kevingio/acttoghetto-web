@@ -10828,3 +10828,27 @@ textarea{
         min-height: calc(100% - (1.75rem * 2));
     }
 }
+
+.bolder {
+    font-weight: bolder;
+    font-family: Arial;
+}
+
+.cart-list-delete-icon i {
+    color: #dc3545!important;
+}
+
+@media (min-width: 768px) {
+    .offset-md-0 {
+        margin-left: 0;
+    }
+    .offset-md-1 {
+        margin-left: 8.333333%;
+    }
+    .offset-md-2 {
+        margin-left: 16.666667%;
+    }
+    .offset-md-3 {
+        margin-left: 25%;
+    }
+}

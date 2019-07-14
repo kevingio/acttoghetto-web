@@ -1,8 +1,8 @@
-@extends('layouts.master') 
+@extends('layouts.master')
 
-@section('title') 
-    {{ $product->name }} 
-@endsection 
+@section('title')
+    {{ $product->name }}
+@endsection
 @section('content')
 <!-- breadcrumb -->
 	<div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
@@ -99,7 +99,7 @@
 								</button>
 							</div>
 
-							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" data-id="{{ $product->id }}" data-price="{{ $product->price }}">
+							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" data-id="{{ $product->id }}" data-price="{{ $product->price }}" sizeOption="{{ json_encode($product->category->sizes) }}">
 								<!-- Button -->
 								<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
 									Add to Cart

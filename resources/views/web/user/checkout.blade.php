@@ -14,18 +14,18 @@ My Cart
 
 <!-- Cart -->
 <section class="cart bgwhite p-t-70 p-b-100">
-    <div class="container">
+    <div class="container" id="checkout-section">
         <!-- Cart item -->
         <div class="container-table-cart pos-relative">
             <div class="wrap-table-shopping-cart bgwhite">
-                <table class="table table-hover table-shopping-cart">
+                <table class="table table-shopping-cart">
                     <thead class="thead-light">
                         <tr>
                             <th scope="col"></th>
                             <th scope="col">Product</th>
                             <th scope="col">Size</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
+                            <th scope="col">Qty</th>
                             <th scope="col">Total</th>
                             <th scope="col">Delete</th>
                         </tr>
@@ -40,25 +40,31 @@ My Cart
                 <div class="form-group mb-0">
                     <div class="row">
                         <div class="col-12 col-md-2">
-                            <label for="">Name</label>
+                            <p for="">Name</p>
                         </div>
                         <div class="col-12 col-md-5 mb-3">
-                            <input class="border-input buyer-name" type="text" name="name" autocomplete="off" value="{{ auth()->user()->name }}" required>
+                            <div class="w-100 p-2 bo4 m-b-12">
+                                <input class="sizefull s-text7 p-l-15 p-r-15 buyer-name" type="text" name="name" autocomplete="off" value="{{ auth()->user()->name }}" required>
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-2">
-                            <label for="">Nomor Telp</label>
+                            <p for="">Nomor Telp</p>
                         </div>
                         <div class="col-12 col-md-3 mb-3">
-                            <input class="border-input buyer-contact" type="text" name="contact" autocomplete="off" value="{{ auth()->user()->phone_number }}" required>
+                            <div class="w-100 p-2 bo4 m-b-12">
+                                <input class="sizefull s-text7 p-l-15 p-r-15 buyer-contact" type="text" name="contact" autocomplete="off" value="{{ auth()->user()->phone_number }}" required>
+                            </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-md-2">
-                            <label for="">Alamat</label>
+                            <p for="">Alamat</p>
                         </div>
                         <div class="col-12 col-md-10">
-                            <textarea class="border-input buyer-address" rows="5" required>{{ auth()->user()->address }}</textarea>
+                            <div class="w-100 p-2 bo4 m-b-12">
+                                <textarea class="sizefull s-text7 p-l-15 p-r-15 buyer-address" style="border: 0;" rows="5" required>{{ auth()->user()->address }}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -111,6 +117,22 @@ My Cart
                 <button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
                     Proceed to Checkout
                 </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" id="payment-info" style="display: none;">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h6>Terima kasih telah melakukan pemesanan. Pesanan anda telah kami terima.</h6>
+                <h5 class="bolder my-3" id="transaction-number">ACT0000</h5>
+                <p class="font-weight-bold">Biaya yang harus dibayarkan: </p>
+                <h3 class="bolder text-danger my-3" id="transaction-total">Rp 0,-</h3>
+                <p class="text-black">Metode pembayaran melalui rekening: </p>
+                <img src="{{ asset('/assets/images/rekening.png') }}" class="img-fluid" alt="rekening" />
+                <div class="text-center">
+                    <a href="{{ route('transaction.index') }}" class="btn btn-primary mt-3">Konfirmasi Pembayaran</a>
+                </div>
             </div>
         </div>
     </div>

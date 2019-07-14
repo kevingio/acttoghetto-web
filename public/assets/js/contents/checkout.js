@@ -39,7 +39,12 @@ $(document).ready(function () {
                                 localStorage.clear();
                                 $('.header-cart-wrapitem').empty();
                                 $('.table-body-cart').empty();
-                                window.location.href = '/transaction'
+                                $('#transaction-number').text(response.number);
+                                $('#transaction-total').text('Rp ' + totalInCart.toLocaleString(
+                                    "de-DE", { minimumFractionDigits: 2 }
+                                ));
+                                $('#checkout-section').hide();
+                                $('#payment-info').show(500);
                             });
                         }
                     });
