@@ -77,4 +77,5 @@ mix.scripts([
         'public/assets/fonts/fontawesome/css/fontawesome.css',
         'public/assets/vendor/admin/datatables/jquery.dataTables.min.css',
         'public/assets/css/admin/style.css',
+        'public/assets/css/admin/custom.css',
     ], 'public/css/admin.css');

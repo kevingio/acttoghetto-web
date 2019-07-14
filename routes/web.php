@@ -14,23 +14,27 @@
 Auth::routes();
 
 Route::get('/admin/transactions', function () {
-    return view('admin.web.transactions');
+    return view('admin.web.transactions/index');
 });
 
 Route::get('/admin/products', function () {
     return view('admin.web.product');
 });
 
-Route::get('/admin/master-data-category', function () {
-    return view('admin.web.master-data-category');
+Route::get('/admin/banner-promo', function () {
+    return view('admin.web.banner-promo');
+});
+
+Route::get('/admin/category', function () {
+    return view('admin.web.masterData.category');
 });
 
 Route::get('/admin/brands', function () {
-    return view('admin.web.brand');
+    return view('admin.web.masterData.brand');
 });
 
 Route::get('/admin/size', function () {
-    return view('admin.web.size');
+    return view('admin.web.masterData.size');
 });
 
 Route::get('/checkout', 'HomeController@myCart');

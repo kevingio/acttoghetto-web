@@ -13,31 +13,44 @@
                         <span> Rekap Transaksi </span>
                     </a>
                 </li>
+
                 <li>
                     <a href="/admin/products" class="waves-effect">
-                        <i class="mdi mdi-nas"></i>
+                        <i class="mdi mdi-receipt"></i>
                         <span> Product </span></a>
                 </li>
 
                 <li>
-                    <a href="/admin/master-data-category" class="waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
-                        <span> Master Data Category </span>
-                    </a>
+                    <a href="/admin/banner-promo" class="waves-effect">
+                        <i class="mdi mdi-receipt"></i>
+                        <span> Banner Promo </span></a>
                 </li>
 
                 <li>
-                    <a href="/admin/brands" class="waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
-                        <span> Brand </span>
-                    </a>
-                </li>
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-google-pages"></i><span> Master Data <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <ul class="submenu">
+                        <li>
+                            <a href="/admin/category" class="waves-effect">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span> Category </span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="/admin/brands" class="waves-effect">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span> Brand </span>
+                            </a>
+                        </li>
 
-                <li>
-                    <a href="/admin/size" class="waves-effect">
-                        <i class="mdi mdi-calendar-check"></i>
-                        <span> Size </span>
-                    </a>
+                        <li>
+                            <a href="/admin/size" class="waves-effect">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span> Size </span>
+                            </a>
+                        </li>
+                        
+                    </ul>
                 </li>
 
             </ul>
