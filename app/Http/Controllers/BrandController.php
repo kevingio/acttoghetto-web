@@ -43,7 +43,9 @@ class BrandController extends Controller
     {
         $data = $request->all();
         $this->brand->create($data);
-        return 'sukses';
+        return response()->json([
+            'status' => 'data created'
+        ], 201);
     }
 
     /**
@@ -79,7 +81,9 @@ class BrandController extends Controller
     {
         $data = $request->all();
         $brand->update($data);
-        return 'sukses';
+        return response()->json([
+            'status' => 'edited'
+        ], 200);
     }
 
     /**
@@ -91,6 +95,8 @@ class BrandController extends Controller
     public function destroy(Brand $brand)
     {
         $brand->delete();
-        return 'sukses';
+        return response()->json([
+            'status' => 'deleted'
+        ], 200);
     }
 }

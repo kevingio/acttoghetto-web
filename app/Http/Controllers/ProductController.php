@@ -111,7 +111,9 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product->update($data);
-        return 'sukses';
+        return response()->json([
+            'status' => 'edited'
+        ], 200);
     }
 
     /**
@@ -123,6 +125,8 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         $product->delete();
-        return 'sukses';
+        return response()->json([
+            'status' => 'deleted'
+        ], 200);
     }
 }

@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
+    function __construct(Size $size) {
+        $this->size = $size;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -35,7 +39,11 @@ class SizeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $this->size->create($data);
+        return response()->json([
+            'status' => 'data created'
+        ], 201);
     }
 
     /**
@@ -69,7 +77,11 @@ class SizeController extends Controller
      */
     public function update(Request $request, Size $size)
     {
-        //
+        $data = $request->all();
+        $size->update($data);
+        return response()->json([
+            'status' => 'edited'
+        ], 200);
     }
 
     /**
@@ -80,6 +92,9 @@ class SizeController extends Controller
      */
     public function destroy(Size $size)
     {
-        //
+        $size->delete();
+        return response()->json([
+            'status' => 'deleted'
+        ], 200);
     }
 }
