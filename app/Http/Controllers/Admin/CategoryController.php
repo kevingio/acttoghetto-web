@@ -20,8 +20,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->all();
-        return $categories;
+        return view('admin.web.masterData.category.index');
     }
 
     /**
@@ -99,5 +98,19 @@ class CategoryController extends Controller
         return response()->json([
             'status' => 'deleted'
         ], 200);
+    }
+
+    /**
+     * Handle all AJAX request
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajax(Request $request)
+    {
+        switch ($request->mode) {
+            case 'datatable':
+                return $this->category->datatableForAdmin();
+                break;
+        }
     }
 }

@@ -24,29 +24,11 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Kategori</th>
-                                        <th>Jenis Kategori</th>
-                                        <th width="15%" class="no-sort text-center">Pembayaran</th>
+                                        <th class="no-search no-sort">Jenis Kategori</th>
+                                        <th width="15%" class="no-sort no-search text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>
-                                            <span>
-                                                <button type="button" class="btn btn-outline-warning btn-admin-edit-category btn-icon" data-id="">
-                                                     <i aria-hidden="true" class="mdi mdi-pencil"></i>
-                                                </button>
-                                            </span>
-                                            
-                                            <span>
-                                                <button type="button" class="btn btn-outline-danger btn-admin-delete-category btn-icon">
-                                                     <i aria-hidden="true" class="mdi mdi-delete"></i>
-                                                </button>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
