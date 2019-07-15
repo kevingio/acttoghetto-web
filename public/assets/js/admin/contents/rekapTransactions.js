@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var $page = $('#rekap-transactions-page');
+    var $page = $('#rekapTransactionsPage');
 
     var rekapTransactionsPage = {
         dtTable: {},
@@ -47,6 +47,7 @@ $(document).ready(function () {
         },
         initDatatable: function () {
             var $table = $page.find('#rekapTransactionDataTable');
+            
             rekapTransactionsPage.dtTable = $table.DataTable({
                 "aaSorting": [],
                 // "processing": true,

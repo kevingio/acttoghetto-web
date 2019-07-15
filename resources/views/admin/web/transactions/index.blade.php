@@ -19,7 +19,7 @@
                             </div>
                         </div>
 
-                        <div class="table-overflow" id="rekap-transactions-page">
+                        <div class="table-overflow" id="rekapTransactionsPage">
                             <table id="rekapTransactionDataTable" class="table table-striped table-bordered dataTable" style="width:100%">
                                 <thead>
                                     <tr>
@@ -39,7 +39,7 @@
                                         <td>pending</td>
                                         <td>pending</td>
                                         <td class="text-center">
-                                            <button id="adminButtonModalTransactions" class="btn btn-outline-danger btn-admin-transactions btn-icon" data-id=""> 
+                                            <button id="adminButtonModalTransactions" class="btn btn-outline-warning btn-admin-transactions btn-icon" data-id=""> 
                                                 <i aria-hidden="true" class="mdi mdi-pencil"></i>
                                             </button>
                                         </td>

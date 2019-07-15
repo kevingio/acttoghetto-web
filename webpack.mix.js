@@ -37,6 +37,7 @@ mix.scripts([
         'public/assets/vendor/admin/sparkline/jquery.sparkline.min.js',
         'public/assets/vendor/admin/morris/morris.min.js',
         'public/assets/vendor/admin/raphael/raphael-min.js',
+        'public/assets/vendor/admin/sweetalert/sweetalert.min.js',
         'public/assets/vendor/admin/datatables/jquery.dataTables.min.js',
         'public/assets/vendor/admin/datatables/dataTables.bootstrap4.min.js',
         'public/assets/js/admin/app.js',

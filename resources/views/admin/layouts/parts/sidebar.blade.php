@@ -15,9 +15,23 @@
                 </li>
 
                 <li>
-                    <a href="/admin/products" class="waves-effect">
-                        <i class="mdi mdi-receipt"></i>
-                        <span> Product </span></a>
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <i class="mdi mdi-google-pages"></i>
+                        <span> 
+                            Product
+                            <span class="float-right menu-arrow">
+                                <i class="mdi mdi-receiptt"></i>
+                            </span> 
+                        </span>
+                    </a> 
+                    <ul class="submenu">
+                        <li>
+                            <a href="/admin/products" class="waves-effect">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span> All Brand </span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li>
@@ -27,7 +41,15 @@
                 </li>
 
                 <li>
-                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-google-pages"></i><span> Master Data <span class="float-right menu-arrow"><i class="mdi mdi-chevron-right"></i></span> </span></a>
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <i class="mdi mdi-google-pages"></i>
+                        <span> 
+                            Master Data 
+                            <span class="float-right menu-arrow">
+                                <i class="mdi mdi-chevron-right"></i>
+                            </span> 
+                        </span>
+                    </a> 
                     <ul class="submenu">
                         <li>
                             <a href="/admin/category" class="waves-effect">

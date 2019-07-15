@@ -14,11 +14,11 @@
 Auth::routes();
 
 Route::get('/admin/transactions', function () {
-    return view('admin.web.transactions/index');
+    return view('admin.web.transactions.index');
 });
 
 Route::get('/admin/products', function () {
-    return view('admin.web.product');
+    return view('admin.web.product.index');
 });
 
 Route::get('/admin/banner-promo', function () {
@@ -26,7 +26,7 @@ Route::get('/admin/banner-promo', function () {
 });
 
 Route::get('/admin/category', function () {
-    return view('admin.web.masterData.category');
+    return view('admin.web.masterData.category.index');
 });
 
 Route::get('/admin/brands', function () {
