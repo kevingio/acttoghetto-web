@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/admin/products', function () {
-    return view('admin.web.product.index');
+    return view('admin.web.product');
 });
 
 Route::get('/admin/banner-promo', function () {
@@ -26,11 +26,11 @@ Route::get('/admin/category', function () {
 });
 
 Route::get('/admin/brands', function () {
-    return view('admin.web.masterData.brand');
+    return view('admin.web.masterData.brand.index');
 });
 
 Route::get('/admin/size', function () {
-    return view('admin.web.masterData.size');
+    return view('admin.web.masterData.size.index');
 });
 
 Route::get('/', 'HomeController@landing')->name('landing');
@@ -65,7 +65,7 @@ Route::middleware(['role:3'])->group(function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(function () {
     Route::resource('transaction', 'Admin\TransactionController');
 
-    Route::resource('brand', 'Admin\BrandController');
+    // Route::resource('brand', 'Admin\BrandController');
 
     Route::resource('category', 'Admin\CategoryController');
 
