@@ -74,20 +74,7 @@
                                         <th width="10%" class="no-sort text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>A54745HGTYJ</td>
-                                        <td>500</td>
-                                        <td>2011/04/25</td>
-                                        <td>pending</td>
-                                        <td>pending</td>
-                                        <td class="text-center">
-                                            <button class="btn btn-outline-danger btn-admin-transactions btn-icon" data-id="">
-                                                <i aria-hidden="true" class="mdi mdi-pencil"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>

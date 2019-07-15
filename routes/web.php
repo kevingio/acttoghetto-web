@@ -21,10 +21,6 @@ Route::get('/admin/banner-promo', function () {
     return view('admin.web.banner-promo');
 });
 
-Route::get('/admin/category', function () {
-    return view('admin.web.masterData.category.index');
-});
-
 Route::get('/admin/brands', function () {
     return view('admin.web.masterData.brand.index');
 });

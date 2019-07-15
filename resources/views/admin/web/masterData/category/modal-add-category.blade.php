@@ -4,8 +4,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="" method="POST" enctype="multipart/form-data" id="form-add-category">
-               
+            <form id="form-add-category">
                 <div class="modal-header">
                     <h6 class="modal-title font-weight-bold">Tambah Kategori</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -14,7 +13,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="nameEditCategory">Nama Kategori</label>
-                            <input type="text" class="form-control" id="nameAddCategory" placeholder="Nama Kategori">
+                            <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Nama Kategori">
                         </div>
                     </div>
 
@@ -24,16 +23,16 @@
 
                     <div class="col-sm-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radioTypeAddCategoryMan" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="type" value="man" checked>
                             <label class="form-check-label" for="radioTypeCategoryMan">
                                 Man
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radioTypeAddCategoryWoman" value="option2">
+                            <input class="form-check-input" type="radio" name="type" value="woman">
                             <label class="form-check-label" for="radioTypeCategoryWoman">
                                 Woman
                             </label>
@@ -41,7 +40,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-save-add-category-admin"><i class="fas fa-save mr-2"></i> Simpan</button>
+                    <button type="submit" class="btn btn-danger btn-save-add-category-admin"><i class="fas fa-save mr-2"></i> Tambah</button>
                 </div>
             </form>
         </div>

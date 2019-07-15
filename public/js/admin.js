@@ -993,107 +993,113 @@ $(document).ready(function () {
         },
         customFunction: function () {
             let self = this;
-
+            let dataId = null
             $(document).on('click', '.btn-admin-edit-category', function () {
-                let dataId = $(this).attr('data-id')
+                dataId = $(this).attr('data-id')
+                let name = $(this).attr('name')
+                let type = $(this).attr('gender')
+                $('#form-edit-category input[name=name]').val(name)
+                $('#form-edit-category input[name=type]').val(type)
                 $('#adminModalEditCategory').modal('show');
             })
 
             $(document).on('click', '.btn-admin-add-category', function () {
-                let dataId = $(this).attr('data-id')
                 $('#adminModalAddCategory').modal('show');
             })
 
             $(document).on('click', '.btn-admin-delete-category', function () {
-                self.deleteCategory(this);
+                dataId = $(this).attr('data-id')
+                self.deleteCategory(dataId);
             })
 
-            $(document).on('click', '.close', function () {
-                $('#adminModalEditCategory').modal('hide');
+            $(document).on('submit', '#form-edit-category', function (e) {
+                self.editCategory(e, dataId);
             })
 
-            $(document).on('click', '.btn-save-change-category-admin', function () {
-                self.editCategory(this);
+            $(document).on('submit', '#form-add-category', function (e) {
+                self.addCategory(e);
             })
         },
-        deleteCategory: function (input) {
+        deleteCategory: function (dataId) {
             swal({
                 title: "Yakin akan menghapus item?",
-                text: "Item yang sudah dihapus tidak bisa di kembalikan !!",
+                text: "Item yang sudah dihapus tidak bisa di kembalikan",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
             })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal({
-                            title: "Item Berhasil Dihapus",
-                            icon: "success",
-                        });
-                    }
-                });
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/admin/category/" + dataId,
+                        type: 'DELETE',
+                        success: function(response) {
+                            adminCategoryPage.dtTable.ajax.reload(null, false);
+                            swal({
+                                title: "Berhasil!",
+                                text: "Kategori telah dihapus",
+                                icon: "success"
+                            });
+                        }
+                    });
+                }
+            });
         },
-        editCategory: function (input) {
-            // $.ajax({
-                //     url: "",
-                //     type: "POST",
-                //     data: ,
-                //     contentType: false,
-                //     cache: false,
-                //     processData: false,
-                //     success: function (response) {
-                //         $(this).find("").val('');
-                //         $('#adminModalCategory').modal('hide');
-                //         swal({
-                //             title: "Success!",
-                //             text: "Kategori Berhasil Dirubah",
-                //             icon: "success"
-                //         });
-                //     },
-                //     error: function (response) {
-                //         if (typeof response.responseJSON.errors.file !== 'undefined') {
-                //             var error = response.responseJSON.errors.file[0]
-                //             $('#error_message').text(error);
-                //         }
-                //     }
-                // });
-            swal({
-                title: "Yakin akan menghapus item?",
-                text: "Item yang sudah dihapus tidak bisa di kembalikan !!",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal({
-                            title: "Item Berhasil Dihapus",
-                            icon: "success",
-                        });
-                    }
-                });
+        editCategory: function (e, dataId) {
+            e.preventDefault()
+            let data = $('#form-edit-category').serializeArray();
+            $.ajax({
+                url: "/admin/category/" + dataId,
+                data: data,
+                type: 'PUT',
+                success: function(response) {
+                    adminCategoryPage.dtTable.ajax.reload(null, false);
+                    $('#adminModalEditCategory').modal('hide');
+                    swal({
+                        title: "Berhasil!",
+                        text: "Kategori telah diubah",
+                        icon: "success"
+                    });
+                }
+            });
         },
-        addCategory: function(input) {
-            $(document).on('click', '.close', function () {
-                $('#adminModaAddlCategory').modal('hide');
-
-                swal("Berhasil menambahkan item!", "success");
+        addCategory: function(e) {
+            e.preventDefault()
+            let data = $('#form-add-category').serializeArray();
+            $.post('/admin/category', data)
+            .done(function () {
+                $('input[type=text]').val('')
+                adminCategoryPage.dtTable.ajax.reload(null, false);
+                $('#adminModalAddCategory').modal('hide');
+                swal({
+                    title: "Berhasil!",
+                    text: "Kategori telah ditambah",
+                    icon: "success"
+                });
             })
         },
         initDatatable: function () {
             var $table = $page.find('#adminCategoryDataTable');
             adminCategoryPage.dtTable = $table.DataTable({
-                // "aaSorting": [],
-                // "processing": true,
-                // "serverSide": true,
+                "aaSorting": [],
+                "pageLength": 5,
+                "processing": true,
+                "serverSide": true,
                 "searching": true,
-                "lengthChange": true,
-                "responsive": true,
+                "lengthChange": false,
+                "oLanguage": {
+                    "sSearch": "Cari Nama Kategori"
+                },
                 "columns": [
                     { data: 'name', name: 'name' },
                     { data: 'type', name: 'type' },
-                    { data: 'is_paid', name: 'is_paid' },
+                    { data: 'action', name: 'action' },
                 ],
+                "ajax": {
+                    url: "/admin/ajax/category",
+                    type: "POST",
+                    data: function (d) { d.mode = 'datatable'; }
+                },
                 "columnDefs": [
                     { targets: 'no-sort', orderable: false },
                     { targets: 'no-search', searchable: false },
@@ -1212,10 +1218,6 @@ $(document).ready(function () {
                     $('#transactionProofSection').hide()
                 }
                 $('#adminModalTransactions').modal('show');
-            })
-
-            $(document).on('click', '.close', function () {
-                $('#adminModalTransactions').modal('hide');
             })
 
             $(document).on('submit', '#form-edit-status-transaction', function (e) {

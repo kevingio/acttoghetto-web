@@ -28,10 +28,6 @@ $(document).ready(function () {
                 $('#adminModalTransactions').modal('show');
             })
 
-            $(document).on('click', '.close', function () {
-                $('#adminModalTransactions').modal('hide');
-            })
-
             $(document).on('submit', '#form-edit-status-transaction', function (e) {
                 e.preventDefault()
                 var data = $(this).serializeArray();
