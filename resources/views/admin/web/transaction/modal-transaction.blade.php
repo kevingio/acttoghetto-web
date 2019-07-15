@@ -11,6 +11,9 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body row">
+                    <div id="transactionProofSection" class="col-sm-12" style="display: none;">
+                        <img id="previewImage" class="pb-3 w-100" src="https://dummyimage.com/200x100/ffffff/fff" alt="your image" />
+                    </div>
                     <div class="col-sm-12 col-md-6">
                         <label>Status Pemesanan</label>
                         <select class="form-control" name="status">

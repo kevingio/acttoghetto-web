@@ -15,9 +15,16 @@ $(document).ready(function () {
                 let status = $(this).attr('status')
                 let isPaid = $(this).attr('is-paid')
                 let transactionNumber = $(this).attr('transaction-number')
+                let proofImage = $(this).attr('proof')
                 $('select[name=status]').val(status)
                 $('select[name=is_paid]').val(isPaid)
                 $('#transactionNumber').text(transactionNumber)
+                if (proofImage != '') {
+                    $('#previewImage').attr('src', proofImage)
+                    $('#transactionProofSection').show()
+                } else {
+                    $('#transactionProofSection').hide()
+                }
                 $('#adminModalTransactions').modal('show');
             })
 

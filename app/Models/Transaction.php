@@ -142,7 +142,7 @@ class Transaction extends Model
             })
             ->editColumn('action', function ($data) {
                 $html = '
-                <button id="adminButtonModalTransactions" class="btn btn-danger btn-admin-transactions btn-icon" proof="' . $data->proof . '" is-paid="' . $data->is_paid . '" transaction-number="' . $data->number . '" status="' . $data->status . '" data-id="' . $data->id .'">
+                <button id="adminButtonModalTransactions" class="btn btn-danger btn-admin-transactions btn-icon" proof="' . (!empty($data->proof) ? asset($data->proof) : '') . '" is-paid="' . $data->is_paid . '" transaction-number="' . $data->number . '" status="' . $data->status . '" data-id="' . $data->id .'">
                     Ubah Status
                 </button>';
                 return $data->status == 'selesai' ? '' : $html;
