@@ -48,3 +48,8 @@
 input {
     outline: #fff auto 0px;
 }
+
+
+body, #sidebar-menu > ul > li > a, .badge {
+    font-size: .8rem;
+}

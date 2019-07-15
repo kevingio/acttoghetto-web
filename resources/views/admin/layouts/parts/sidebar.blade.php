@@ -8,7 +8,7 @@
             <ul class="metismenu" id="side-menu">
 
                 <li>
-                    <a href="/admin/transactions" class="waves-effect">
+                    <a href="{{ url('/admin/transaction') }}" class="waves-effect">
                         <i class="mdi mdi-receipt"></i>
                         <span> Rekap Transaksi </span>
                     </a>
@@ -57,7 +57,7 @@
                                 <span> Category </span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="/admin/brands" class="waves-effect">
                                 <i class="mdi mdi-calendar-check"></i>
@@ -71,7 +71,7 @@
                                 <span> Size </span>
                             </a>
                         </li>
-                        
+
                     </ul>
                 </li>
 

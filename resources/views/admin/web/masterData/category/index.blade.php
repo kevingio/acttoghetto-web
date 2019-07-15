@@ -1,6 +1,6 @@
 @extends('admin.layouts.master')
 
-@section('title') 
+@section('title')
     Master Data Category
 @endsection
 

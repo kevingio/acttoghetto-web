@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
+use App\Models\Size;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class CategoryController extends Controller
+class SizeController extends Controller
 {
-
-    function __construct(Category $category) {
-        $this->category = $category;
+    function __construct(Size $size) {
+        $this->size = $size;
     }
 
     /**
@@ -19,8 +19,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = $this->category->all();
-        return $categories;
+        //
     }
 
     /**
@@ -42,30 +41,30 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $this->category->create($data);
+        $this->size->create($data);
         return response()->json([
             'status' => 'data created'
-        ], 200);
+        ], 201);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Size $size)
     {
-        return $category;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(Size $size)
     {
         //
     }
@@ -74,27 +73,27 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Size $size)
     {
         $data = $request->all();
-        $category->update($data);
+        $size->update($data);
         return response()->json([
-            'status' => 'updated'
+            'status' => 'edited'
         ], 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Size $size)
     {
-        $category->delete();
+        $size->delete();
         return response()->json([
             'status' => 'deleted'
         ], 200);

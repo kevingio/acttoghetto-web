@@ -18,8 +18,6 @@
                     <div class="col-sm-12">
                         <img id="previewImage" class="pt-3 w-100" src="https://dummyimage.com/200x100/ffffff/fff" alt="your image" />
                     </div>
-
-
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-danger"><i class="fas fa-upload mr-2"></i> Upload</button>

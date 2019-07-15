@@ -44,7 +44,6 @@ $(document).ready(function () {
                 "serverSide": true,
                 "searching": true,
                 "lengthChange": false,
-                "responsive": true,
                 "oLanguage": {
                     "sSearch": "Cari Nomor Transaksi"
                 },

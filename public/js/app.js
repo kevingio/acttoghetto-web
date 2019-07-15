@@ -3473,83 +3473,6 @@ $(document).ready(function () {
         }
     });
 
-    $('.header-cart-item').on('click', function () {
-        var data_id = $(this).attr('data-id');
-        var nameProduct = $(this).attr('name-product')
-        $.post('/removeFromCart', {id: data_id})
-        .done(function (response) {
-            if(response.status == 200) {
-                swal(nameProduct, "is removed from cart !", "success").then(function () {
-                    location.reload();
-                });
-            }
-        });
-    });
-
-    // $('.block2-overlay > .block2-btn-addcart').each(function () {
-    //     var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-    //     $(this).on('click', function () {
-    //         var data_id = $(this).attr('data-id');
-    //         var store_id = $(this).attr('store-id');
-    //         $.post('/addToCart', { id: data_id, qty: 1, store_id: store_id })
-    //             .done(function (response) {
-    //                 if (response.status == 200) {
-    //                     swal(nameProduct, "is added to cart !", "success").then(function () {
-    //                         location.reload();
-    //                     });
-    //                 }
-    //             });
-    //     });
-    // });
-
-    // $('.btn-addcart-product-detail').each(function(){
-    //     $(this).on('click', function(){
-    //         var nameProduct = $(this).attr('data-name');
-    //         var data_id = $(this).attr('data-id');
-    //         var store_id = $(this).attr('store-id');
-    //         $.post('/addToCart', {id: data_id, qty: 1, store_id: store_id})
-    //         .done(function (response) {
-    //             if(response.status == 200) {
-    //                 swal(nameProduct, "is added to cart !", "success").then(function () {
-    //                     location.reload();
-    //                 });
-    //             }
-    //         });
-    //     });
-    // });
-
-    $('.btn-addcart').each(function(){
-        var nameProduct = $(this).parent().parent().find('.s-name').html();
-        $(this).on('click', function(){
-            var data_id = $(this).attr('data-id');
-            var price = $(this).attr('price');
-            var store_id = $(this).attr('store-id');
-            $.post('/addToCart', {id: data_id, qty: 1, price: price, store_id: store_id})
-            .done(function (response) {
-                if(response.status == 200) {
-                    swal(nameProduct, "is added to cart !", "success").then(function () {
-                        location.reload();
-                    });
-                }
-            });
-        });
-    });
-
-    $('.block2-btn-addwishlist').each(function(){
-        var nameProduct = $(this).parent().parent().parent().find('.block2-name').html();
-        $(this).on('click', function(){
-            var data_id = $(this).attr('data-id');
-            $.post('/addToCart', {id: data_id, qty: 1})
-            .done(function (response) {
-                if(response.status == 200) {
-                    swal(nameProduct, "is added to cart !", "success").then(function () {
-                        location.reload();
-                    });
-                }
-            });
-        });
-    });
-
     var filterBar = document.getElementById('filter-bar');
 
     if(filterBar != null) {
@@ -4070,7 +3993,6 @@ $(document).ready(function () {
                             swal("Transaksi Berhasil", "Segera lakukan pembayaran terhadap transaksi Anda!", "success").then(function () {
                                 localStorage.clear();
                                 $('.header-cart-wrapitem').empty();
-                                $('.header-cart-wrapitem').empty();
                                 $('.header-cart-total span.total-cart').text('0');
                                 $('.cart-header span.header-icons-noti').text('0');
                                 $('#transaction-number').text(response.number);
@@ -4141,7 +4063,6 @@ $(document).ready(function () {
                 "serverSide": true,
                 "searching": true,
                 "lengthChange": false,
-                "responsive": true,
                 "oLanguage": {
                     "sSearch": "Cari Nomor Transaksi"
                 },
