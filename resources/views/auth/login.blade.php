@@ -6,6 +6,7 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+        <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>Login</title>
     </head>
     <body>
