@@ -52,10 +52,6 @@ Route::middleware(['role:3'])->group(function () {
 
     Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
 
-    Route::resource('brand', 'BrandController');
-
-    Route::resource('category', 'CategoryController');
-
     Route::resource('product', 'ProductController');
 
     Route::resource('transaction', 'TransactionController');
@@ -66,8 +62,12 @@ Route::middleware(['role:3'])->group(function () {
     });
 });
 
-Route::prefix('admin')->middleware(['auth', 'role:1,2'])->group(function () {
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(function () {
     Route::resource('transaction', 'Admin\TransactionController');
+
+    Route::resource('brand', 'Admin\BrandController');
+
+    Route::resource('category', 'Admin\CategoryController');
 
     /* Ajax from Admin Dashboard */
     Route::any('ajax/{page}', function ($page) {

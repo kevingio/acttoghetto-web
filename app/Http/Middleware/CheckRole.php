@@ -18,7 +18,7 @@ class CheckRole
         if (auth()->check()) {
             $user = auth()->user();
             if (!in_array($user->role_id, $roles))
-            return redirect('/');
+                return redirect('/');
         }
 
         return $next($request);

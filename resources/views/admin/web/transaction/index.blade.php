@@ -26,11 +26,11 @@
                 <div class="card mini-stat bg-danger">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
-                            <i class="mdi mdi-buffer float-right"></i>
+                            <i class="mdi mdi-briefcase-check float-right"></i>
                         </div>
                         <div class="text-white">
-                            <h6 class="text-uppercase mb-3">Omset</h6>
-                            <h4 class="mb-3">{{ $card['omzet'] }}</h4>
+                            <h6 class="text-uppercase mb-3">Barang Terjual</h6>
+                            <h4 class="mb-3">{{ $card['product_sold'] }} pcs</h4>
                             <i class="mdi mdi-refresh"></i> <span class="ml-2">Updated {{ date('F Y') }}</span>
                         </div>
                     </div>
@@ -40,11 +40,11 @@
                 <div class="card mini-stat bg-danger">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
-                            <i class="mdi mdi-briefcase-check float-right"></i>
+                            <i class="mdi mdi-buffer float-right"></i>
                         </div>
                         <div class="text-white">
-                            <h6 class="text-uppercase mb-3">Barang Terjual</h6>
-                            <h4 class="mb-3">{{ $card['product_sold'] }} pcs</h4>
+                            <h6 class="text-uppercase mb-3">Omset</h6>
+                            <h4 class="mb-3">{{ $card['omzet'] }}</h4>
                             <i class="mdi mdi-refresh"></i> <span class="ml-2">Updated {{ date('F Y') }}</span>
                         </div>
                     </div>

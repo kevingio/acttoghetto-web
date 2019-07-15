@@ -16,7 +16,7 @@ class TransactionController extends Controller
         $this->transaction = $transaction;
         $this->transactionDetail = $transactionDetail;
         $this->product = $product;
-        $this->middleware(['auth', 'role:3']);
+        $this->middleware('auth');
     }
 
     /**
