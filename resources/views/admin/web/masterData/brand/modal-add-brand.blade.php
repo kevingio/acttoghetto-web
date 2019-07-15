@@ -51,7 +51,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-admin-save-change-brand"><i class="fas fa-save mr-2"></i> Simpan</button>
+                    <button type="submit" class="btn btn-danger btn-admin-save-change-brand"><i class="fas fa-save mr-2"></i> Tambah</button>
                 </div>
             </form>
         </div>
