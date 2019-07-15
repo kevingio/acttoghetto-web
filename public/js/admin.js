@@ -1028,11 +1028,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-<<<<<<< HEAD
-    var $page = $('#rekapTransactionsPage');
-=======
     var $page = $('#size-page');
->>>>>>> front-end-admin
 
     var sizePage = {
         dtTable: {},
@@ -1040,16 +1036,9 @@ $(document).ready(function () {
             this.initDatatable();
         },
         initDatatable: function () {
-<<<<<<< HEAD
-            var $table = $page.find('#rekapTransactionDataTable');
-            
-            rekapTransactionsPage.dtTable = $table.DataTable({
-                "aaSorting": [],
-=======
             var $table = $page.find('#sizeDataTable');
             sizePage.dtTable = $table.DataTable({
                 // "aaSorting": [],
->>>>>>> front-end-admin
                 // "processing": true,
                 // "serverSide": true,
                 "searching": true,
