@@ -32,6 +32,7 @@ class TransactionsTableSeeder extends Seeder
             ]);
             TransactionDetail::create([
                 'product_id' => $product->id,
+                'transaction_id' => $transaction->id,
                 'qty' => 3,
                 'price' => $product->price,
                 'size_id' => $sizeIds[rand(0, count($sizeIds) - 1)]->id

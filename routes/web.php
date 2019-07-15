@@ -13,10 +13,6 @@
 
 Auth::routes();
 
-Route::get('/admin/transactions', function () {
-    return view('admin.web.transactions/index');
-});
-
 Route::get('/admin/products', function () {
     return view('admin.web.product');
 });
@@ -37,29 +33,44 @@ Route::get('/admin/size', function () {
     return view('admin.web.masterData.size');
 });
 
-Route::get('/checkout', 'HomeController@myCart');
-
 Route::get('/', 'HomeController@landing')->name('landing');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', function () {
+    return redirect('/admin/transaction');
+});
 
-Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
+Route::middleware(['role:3'])->group(function () {
+    Route::get('/checkout', 'HomeController@myCart');
 
-Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/transaction/{id}/upload', 'TransactionController@uploadProof')->name('upload-proof');
+    Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
-Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
+    Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
 
-Route::resource('brand', 'BrandController');
+    Route::post('/transaction/{id}/upload', 'TransactionController@uploadProof')->name('upload-proof');
 
-Route::resource('category', 'CategoryController');
+    Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
 
-Route::resource('product', 'ProductController');
+    Route::resource('brand', 'BrandController');
 
-Route::resource('transaction', 'TransactionController');
+    Route::resource('category', 'CategoryController');
 
-/* Ajax from Admin Dashboard */
-Route::any('ajax/{page}', function ($page) {
-    return app()->call('\App\Http\Controllers\\'.studly_case($page).'Controller@ajax');
+    Route::resource('product', 'ProductController');
+
+    Route::resource('transaction', 'TransactionController');
+
+    /* Ajax from Customer */
+    Route::any('ajax/{page}', function ($page) {
+        return app()->call('\App\Http\Controllers\\'.studly_case($page).'Controller@ajax');
+    });
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:1,2'])->group(function () {
+    Route::resource('transaction', 'Admin\TransactionController');
+
+    /* Ajax from Admin Dashboard */
+    Route::any('ajax/{page}', function ($page) {
+        return app()->call('\App\Http\Controllers\Admin\\'.studly_case($page).'Controller@ajax');
+    });
 });

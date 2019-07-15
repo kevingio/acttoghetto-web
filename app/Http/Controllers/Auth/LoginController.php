@@ -32,7 +32,7 @@ class LoginController extends Controller
                 break;
 
             default:
-                return '/admin';
+                return '/admin/transaction';
                 break;
         }
     }

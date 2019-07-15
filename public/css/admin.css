@@ -42038,3 +42038,7 @@ Invoice
 .btn-icon{
     border: 1px solid #fff!important;
 }
+
+body, #sidebar-menu > ul > li > a, .badge {
+    font-size: .8rem;
+}

@@ -1,13 +1,11 @@
 @extends('admin.layouts.master')
 
-@section('title') 
+@section('title')
     Master Data Category
 @endsection
 
 @section('content')
     <div class="container-fluid">
-
-        @include('admin.layouts.parts.card')
 
         <div class="row">
             <div class="col-xl-12">

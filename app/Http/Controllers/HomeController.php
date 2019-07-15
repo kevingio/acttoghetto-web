@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $this->brand = $brand;
         $this->user = $user;
-        $this->middleware('auth', ['except' => ['index', 'landing']]);
+        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing']]);
     }
 
     /**
