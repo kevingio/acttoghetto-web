@@ -28,7 +28,13 @@
                         <li>
                             <a href="/admin/products" class="waves-effect">
                                 <i class="mdi mdi-calendar-check"></i>
-                                <span> All Brand </span>
+                                <span> Man </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/admin/products" class="waves-effect">
+                                <i class="mdi mdi-calendar-check"></i>
+                                <span> Woman </span>
                             </a>
                         </li>
                     </ul>
