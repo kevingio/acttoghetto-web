@@ -14,7 +14,7 @@
 Auth::routes();
 
 Route::get('/admin/products', function () {
-    return view('admin.web.product');
+    return view('admin.web.product.index');
 });
 
 Route::get('/admin/banner-promo', function () {
