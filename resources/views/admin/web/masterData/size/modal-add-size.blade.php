@@ -10,17 +10,21 @@
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body row">
-                    <div class="col-sm-12">
+                    <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label for="nameEditSize">Nama Kategori</label>
-                            <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Nama Kategori">
+                            <select class="form-control" name="category_id" required>
+                                @foreach($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->name . ' - ' . ucwords($category->type) }}</option>
+                                @endforeach
+                            </select>
                         </div>
                     </div>
 
-                    <div class="col-sm-12">
+                    <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <label for="size">Size</label>
-                            <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Size">
+                            <input type="text" class="form-control" name="text" autocomplete="off" placeholder="Size" required>
                         </div>
                     </div>
                 </div>

@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Size;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class SizeController extends Controller
 {
-    function __construct(Size $size) {
+    function __construct(Size $size, Category $category) {
         $this->size = $size;
+        $this->category = $category;
     }
 
     /**
@@ -19,7 +21,8 @@ class SizeController extends Controller
      */
     public function index()
     {
-        //
+        $categories = $this->category->get();
+        return view('admin.web.masterData.size.index', compact('categories'));
     }
 
     /**
@@ -29,7 +32,7 @@ class SizeController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -55,7 +58,7 @@ class SizeController extends Controller
      */
     public function show(Size $size)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -66,7 +69,7 @@ class SizeController extends Controller
      */
     public function edit(Size $size)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -97,5 +100,19 @@ class SizeController extends Controller
         return response()->json([
             'status' => 'deleted'
         ], 200);
+    }
+
+    /**
+     * Handle all AJAX request
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajax(Request $request)
+    {
+        switch ($request->mode) {
+            case 'datatable':
+                return $this->size->datatableForAdmin();
+                break;
+        }
     }
 }

@@ -25,10 +25,6 @@ Route::get('/admin/brands', function () {
     return view('admin.web.masterData.brand.index');
 });
 
-Route::get('/admin/size', function () {
-    return view('admin.web.masterData.size.index');
-});
-
 Route::get('/', 'HomeController@landing')->name('landing');
 
 Route::get('/admin', function () {
@@ -64,6 +60,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(
     // Route::resource('brand', 'Admin\BrandController');
 
     Route::resource('category', 'Admin\CategoryController');
+
+    Route::resource('size', 'Admin\SizeController');
 
     /* Ajax from Admin Dashboard */
     Route::any('ajax/{page}', function ($page) {

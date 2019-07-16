@@ -6,6 +6,7 @@ $(document).ready(function () {
         init: function () {
             this.initDatatable();
             this.customFunction();
+            this.initSelect2();
         },
         customFunction: function () {
             let self = this;
@@ -13,10 +14,10 @@ $(document).ready(function () {
 
             $(document).on('click', '.btn-admin-edit-size', function () {
                 dataId = $(this).attr('data-id')
-                let name = $(this).attr('name')
-                let size = $(this).attr('size')
-                $('#form-edit-size input[name=name]').val(name)
-                $('#form-edit-size input[name=size]').val(size)
+                let size = $(this).attr('text')
+                let category = $(this).attr('category-id')
+                $('#form-edit-size input[name=text]').val(size)
+                $('#form-edit-size input[name=category_id]').val(category)
                 $('#adminModalEditSize').modal('show');
             })
 
@@ -47,67 +48,80 @@ $(document).ready(function () {
             })
                 .then((willDelete) => {
                     if (willDelete) {
-                        // $.ajax({
-                        //     url: "/admin/category/" + dataId,
-                        //     type: 'DELETE',
-                        //     success: function (response) {
-                        //         adminCategoryPage.dtTable.ajax.reload(null, false);
-                        //         swal({
-                        //             title: "Berhasil!",
-                        //             text: "Kategori telah dihapus",
-                        //             icon: "success"
-                        //         });
-                        //     }
-                        // });
+                        $.ajax({
+                            url: "/admin/size/" + dataId,
+                            type: 'DELETE',
+                            success: function (response) {
+                                sizePage.dtTable.ajax.reload(null, false);
+                                swal({
+                                    title: "Berhasil!",
+                                    text: "Size telah dihapus",
+                                    icon: "success"
+                                });
+                            }
+                        });
                     }
                 });
         },
         editSize: function (e, dataId) {
-            // e.preventDefault()
-            // let data = $('#form-edit-category').serializeArray();
-            // $.ajax({
-            //     url: "/admin/category/" + dataId,
-            //     data: data,
-            //     type: 'PUT',
-            //     success: function (response) {
-            //         adminCategoryPage.dtTable.ajax.reload(null, false);
-            //         $('#adminModalEditCategory').modal('hide');
+            e.preventDefault()
+            let data = $('#form-edit-size').serializeArray();
+            $.ajax({
+                url: "/admin/size/" + dataId,
+                data: data,
+                type: 'PUT',
+                success: function (response) {
+                    sizePage.dtTable.ajax.reload(null, false);
+                    $('#adminModalEditSize').modal('hide');
                     swal({
                         title: "Berhasil!",
                         text: "Kategori telah diubah",
                         icon: "success"
                     });
-            //     }
-            // });
+                }
+            });
         },
         addSize: function (e) {
-            // e.preventDefault()
-            // let data = $('#form-add-category').serializeArray();
-            // $.post('/admin/category', data)
-            //     .done(function () {
-            //         $('input[type=text]').val('')
-            //         adminCategoryPage.dtTable.ajax.reload(null, false);
-            //         $('#adminModalAddCategory').modal('hide');
+            e.preventDefault()
+            let data = $('#form-add-size').serializeArray();
+            $.post('/admin/size', data)
+                .done(function () {
+                    $('input[type=text]').val('')
+                    sizePage.dtTable.ajax.reload(null, false);
+                    $('#adminModalAddSize').modal('hide');
                     swal({
                         title: "Berhasil!",
-                        text: "Kategori telah ditambah",
+                        text: "Size telah ditambah",
                         icon: "success"
                     });
-                // })
+                })
+        },
+        initSelect2: function () {
+            $('select[name=category_id]').select2({
+                dropdownParent: $('.modal')
+            });
         },
         initDatatable: function () {
             var $table = $page.find('#adminSizeDataTable');
             sizePage.dtTable = $table.DataTable({
-                // "aaSorting": [],
-                // "processing": true,
-                // "serverSide": true,
+                "aaSorting": [],
+                "pageLength": 5,
+                "processing": true,
+                "serverSide": true,
                 "searching": true,
-                "lengthChange": true,
-                "responsive": true,
+                "lengthChange": false,
+                "oLanguage": {
+                    "sSearch": "Cari Size"
+                },
+                "ajax": {
+                    url: "/admin/ajax/size",
+                    type: "POST",
+                    data: function (d) { d.mode = 'datatable'; }
+                },
                 "columns": [
-                    { data: 'name', name: 'name' },
-                    { data: 'size', name: 'size' },
-                    { data: 'created_at', name: 'created_at' },
+                    { data: 'text', name: 'text' },
+                    { data: 'category', name: 'category' },
+                    { data: 'action', name: 'action' },
                 ],
                 "columnDefs": [
                     { targets: 'no-sort', orderable: false },

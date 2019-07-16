@@ -23,30 +23,12 @@
                             <table id="adminSizeDataTable" class="table table-striped table-bordered dataTable" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Nama Kategori</th>
-                                        <th class="no-search no-sort">Size</th>
+                                        <th class="no-sort">Size</th>
+                                        <th class="no-sort">Nama Kategori</th>
                                         <th width="15%" class="no-sort no-search text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>
-                                            <span>
-                                                <button type="button" class="btn btn-outline-warning btn-admin-edit-size btn-icon" data-id="" data-name="" data-size="">
-                                                     <i aria-hidden="true" class="mdi mdi-pencil"></i>
-                                                </button>
-                                            </span>
-                                            
-                                            <span>
-                                                <button type="button" class="btn btn-outline-danger btn-admin-delete-size btn-icon">
-                                                     <i aria-hidden="true" class="mdi mdi-delete"></i>
-                                                </button>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
