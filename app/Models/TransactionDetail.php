@@ -30,4 +30,13 @@ class TransactionDetail extends Model
     {
         return $this->belongsTo('App\Models\Size');
     }
+
+    /**
+     * Relation to Size
+     *
+     */
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
+    }
 }

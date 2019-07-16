@@ -85,4 +85,5 @@
 
     </div> <!-- container-fluid -->
     @include('admin.web.transaction.modal-transaction')
+    @include('admin.web.transaction.modal-preview-transaction')
 @endsection

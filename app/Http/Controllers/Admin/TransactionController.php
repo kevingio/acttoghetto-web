@@ -56,7 +56,8 @@ class TransactionController extends Controller
      */
     public function show($id)
     {
-        //
+        $transaction = $this->transaction->with(['user', 'details.product', 'details.size'])->find($id);
+        return $transaction;
     }
 
     /**

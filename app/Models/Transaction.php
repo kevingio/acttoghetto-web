@@ -121,6 +121,10 @@ class Transaction extends Model
     {
         $results = $this->with(['user', 'details'])->orderBy('number', 'desc')->get();
         return Datatables::of($results)
+             ->editColumn('number', function ($data) {
+                $html = '<a class="btn-admin-preview-transactions" data-id="'. $data->id .'">'. $data->number .'</a>';
+                return $html;
+            })
             ->editColumn('created_at', function ($data) {
                 return date('l, d F Y - H:i', strtotime($data->created_at));
             })
@@ -147,7 +151,7 @@ class Transaction extends Model
                 </button>';
                 return $data->status == 'selesai' ? '' : $html;
             })
-            ->rawColumns(['is_paid', 'action'])
+            ->rawColumns(['number','is_paid', 'action'])
             ->make(true);
     }
 }
