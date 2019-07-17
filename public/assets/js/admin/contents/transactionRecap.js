@@ -84,7 +84,7 @@ $(document).ready(function () {
                         })
                     }
                 })
-                =$('#adminModalPreviewTransactions').modal('show');
+                $('#adminModalPreviewTransactions').modal('show');
             })
         
             $(document).on('submit', '#form-edit-status-transaction', function (e) {
