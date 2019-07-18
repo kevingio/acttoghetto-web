@@ -9,45 +9,49 @@ $(document).ready(function () {
         },
         customFunction: function () {
             let self = this;
+            var dataId = null;
 
-            $("#editImageBrandUpload").on('change', function () {
+            $("#form-edit-brand input[name=image]").on('change', function () {
                 self.readEditURL(this);
             });
 
-            $("#addImageBrandUpload").on('change', function () {
+            $("#form-add-brand input[name=image]").on('change', function () {
                 self.readAddURL(this);
             });
-            
+
             $(document).on('click', '.btn-admin-edit-brand', function () {
-                let dataId = $(this).attr('data-id')
+                dataId = $(this).attr('data-id')
+                let brandName = $(this).attr('name')
+                let gender = $(this).attr('gender')
                 let dataImg = $(this).attr('data-img')
 
-                if (dataImg == '' || dataImg == null) {
-                    $('#previewEditImageBrandAdmin').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
-                } else {
-                    $('#previewEditImageBrandAdmin').attr('src', dataImg);
-                }
-                
-                // $('#form-upload-proof').attr('action', '/transaction/' + dataId + '/upload')
+                $('#previewEditImageBrandAdmin').attr('src', dataImg);
+                $('#form-edit-brand input[name=name]').val(brandName)
+                $('#form-edit-brand input[value=' + gender + ']').prop('checked', true)
                 $('#adminModalEditBrand').modal('show');
             })
 
             $(document).on('click', '.btn-admin-add-brand', function () {
-                let dataId = $(this).attr('data-id')
                 $('#previewAddImageBrandAdmin').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
                 $('#adminModalAddBrand').modal('show');
             })
 
+            $(document).on('submit', '#form-add-brand', function (e) {
+                e.preventDefault();
+				var formData = new FormData(this);
+                self.addBrand(formData);
+            })
+
             $(document).on('click', '.btn-admin-delete-brand', function () {
-                self.deleteBrand(this);
+                dataId = $(this).attr('data-id')
+                self.deleteBrand(dataId);
             })
 
-            $(document).on('click', '.close', function () {
-                $('#adminModalEditBrand').modal('hide');
-            })
-
-            $(document).on('click', '.btn-admin-save-change-brand', function () {
-                self.editBrand(this);
+            $(document).on('submit', '#form-edit-brand', function (e) {
+                e.preventDefault();
+				var formData = new FormData(this);
+				formData.append('_method', 'PATCH');
+                self.editBrand(formData, dataId);
             })
         },
         readEditURL: function (input) {
@@ -72,7 +76,7 @@ $(document).ready(function () {
                 reader.readAsDataURL(input.files[0]);
             }
         },
-        deleteBrand: function (input) {
+        deleteBrand: function (dataId) {
             swal({
                 title: "Yakin akan menghapus item?",
                 text: "Item yang sudah dihapus tidak bisa di kembalikan !!",
@@ -80,66 +84,86 @@ $(document).ready(function () {
                 buttons: true,
                 dangerMode: true,
             })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        swal({
-                            title: "Item Berhasil Dihapus",
-                            icon: "success",
-                        });
-                    }
-                });
-        },
-        addBrand: function (input) {
-            $(document).on('click', '.close', function () {
-                $('#adminModalAddBrand').modal('hide');
-
-                swal("Berhasil menambahkan item!", "success");
-            })
-        },
-        editBrand: function (input) {
-            // $.ajax({
-            //     url: "",
-            //     type: "POST",
-            //     data: ,
-            //     contentType: false,
-            //     cache: false,
-            //     processData: false,
-            //     success: function (response) {
-            //         $(this).find("").val('');
-            //         $('#adminModalEditBrand').modal('hide');
-            //         swal({
-            //             title: "Success!",
-            //             text: "Kategori Berhasil Dirubah",
-            //             icon: "success"
-            //         });
-            //     },
-            //     error: function (response) {
-            //         if (typeof response.responseJSON.errors.file !== 'undefined') {
-            //             var error = response.responseJSON.errors.file[0]
-            //             $('#error_message').text(error);
-            //         }
-            //     }
-            // });
-            swal({
-                title: "Item Berhasil Diperbaharui",
-                icon: "success",
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+					    url: '/admin/brand/' + dataId,
+					    type: 'DELETE',
+					    success: function(response) {
+							swal({
+								title: "Berhasil!",
+								text: "Brand berhasil dihapus!",
+								icon: "success"
+							});
+							brandsPage.dtTable.ajax.reload(null, false);
+					    }
+					});
+                }
             });
-                    
+        },
+        addBrand: function (data) {
+            $.ajax({
+                url: "/admin/brand",
+                type: "POST",
+                data:  data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(response) {
+                    $('#form-add-brand').find("input").val('');
+                    $('#form-add-brand select').val(null).trigger('change');
+                    $('button.close').click();
+                    brandsPage.dtTable.ajax.reload(null, false);
+                    swal({
+                        title: "Berhasil!",
+                        text: "Brand telah ditambah!",
+                        icon: "success"
+                    });
+                },
+            });
+        },
+        editBrand: function (data, dataId) {
+            $.ajax({
+                url: "/admin/brand/" + dataId,
+                type: "POST",
+                data:  data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function(response) {
+                    $('#form-edit-brand').find("input[type=text]").val('');
+                    $('button.close').click();
+                    swal({
+                        title: "Berhasil!",
+                        text: "Brand telah diubah!",
+                        icon: "success"
+                    });
+                    brandsPage.dtTable.ajax.reload(null, false);
+                },
+            });
         },
         initDatatable: function () {
             var $table = $page.find('#adminBrandDataTable');
             brandsPage.dtTable = $table.DataTable({
-                // "aaSorting": [],
-                // "processing": true,
-                // "serverSide": true,
+                "aaSorting": [],
+                "pageLength": 5,
+                "processing": true,
+                "serverSide": true,
                 "searching": true,
-                "lengthChange": true,
-                "responsive": true,
+                "lengthChange": false,
+                "oLanguage": {
+                    "sSearch": "Cari Brand"
+                },
+                "ajax": {
+                    url: "/admin/ajax/brand",
+                    type: "POST",
+                    data: function (d) { d.mode = 'datatable'; }
+                },
                 "columns": [
                     { data: 'name', name: 'name' },
                     { data: 'type', name: 'type' },
                     { data: 'image', name: 'image' },
-                    { data: 'actions', name: 'actions' },
+                    { data: 'action', name: 'action' },
                 ],
                 "columnDefs": [
                     { targets: 'no-sort', orderable: false },

@@ -4,8 +4,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="" method="POST" enctype="multipart/form-data" id="form-edit-brand">
-               
+            <form id="form-edit-brand">
                 <div class="modal-header">
                     <h6 class="modal-title font-weight-bold">Edit Brand</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -13,8 +12,8 @@
                 <div class="modal-body row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="nameEditBrand">Nama Brand</label>
-                            <input type="text" class="form-control" id="nameEditBrand" placeholder="Nama Brand">
+                            <label for="nameAddBrand">Nama Brand</label>
+                            <input type="text" class="form-control" name="name" placeholder="Nama Brand" autocomplete="off" required>
                         </div>
                     </div>
 
@@ -24,25 +23,25 @@
 
                     <div class="col-sm-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radioEditTypeBrandMan" value="option1" checked>
-                            <label class="form-check-label" for="radioEditTypeBrandMan">
+                            <input class="form-check-input" type="radio" name="type" value="man" checked>
+                            <label class="form-check-label" for="radioAddTypeBrandMan">
                                 Man
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radioEditTypeBrandWoman" value="option2">
-                            <label class="form-check-label" for="radioEditTypeBrandWoman">
+                            <input class="form-check-input" type="radio" name="type" value="woman">
+                            <label class="form-check-label" for="radioAddTypeBrandWoman">
                                 Woman
                             </label>
                         </div>
                     </div>
 
                     <div class="col-sm-12 mt-3">
-                        <input type='file' id="editImageBrandUpload" name="proof" accept=".png, .jpg, .jpeg" required/>
-                        <label for="editImageBrandUpload"></label>
+                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0" />
+                        <label for="addImageBrandUpload"></label>
                     </div>
 
                     <div class="col-sm-12">

@@ -4,8 +4,7 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form action="" method="POST" enctype="multipart/form-data" id="form-add-brand">
-               
+            <form id="form-add-brand">
                 <div class="modal-header">
                     <h6 class="modal-title font-weight-bold">Add Brand</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -14,7 +13,7 @@
                     <div class="col-sm-12">
                         <div class="form-group">
                             <label for="nameAddBrand">Nama Brand</label>
-                            <input type="text" class="form-control" id="nameAddBrand" placeholder="Nama Brand">
+                            <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Nama Brand">
                         </div>
                     </div>
 
@@ -24,16 +23,16 @@
 
                     <div class="col-sm-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radioAddTypeBrandMan" value="option1" checked>
+                            <input class="form-check-input" type="radio" name="type" value="man" checked>
                             <label class="form-check-label" for="radioAddTypeBrandMan">
                                 Man
                             </label>
                         </div>
                     </div>
-                    
+
                     <div class="col-sm-12">
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="exampleRadios" id="radioAddTypeBrandWoman" value="option2">
+                            <input class="form-check-input" type="radio" name="type" value="woman">
                             <label class="form-check-label" for="radioAddTypeBrandWoman">
                                 Woman
                             </label>
@@ -41,7 +40,7 @@
                     </div>
 
                     <div class="col-sm-12 mt-3">
-                        <input type='file' id="addImageBrandUpload" name="proof" accept=".png, .jpg, .jpeg" required/>
+                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0" required/>
                         <label for="addImageBrandUpload"></label>
                     </div>
 

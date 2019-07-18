@@ -24,8 +24,8 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Brand</th>
-                                        <th>Jenis Brand</th>
-                                        <th width="20%">Image</th>
+                                        <th class="no-sort">Jenis Brand</th>
+                                        <th width="20%" class="no-sort no-search">Image</th>
                                         <th width="15%" class="no-sort text-center">Actions</th>
                                     </tr>
                                 </thead>
@@ -42,7 +42,7 @@
                                                      <i aria-hidden="true" class="mdi mdi-pencil"></i>
                                                 </button>
                                             </span>
-                                            
+
                                             <span>
                                                 <button type="button" class="btn btn-outline-danger btn-admin-delete-brand btn-icon">
                                                      <i aria-hidden="true" class="mdi mdi-delete"></i>

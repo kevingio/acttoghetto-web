@@ -5,12 +5,14 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class BrandController extends Controller
 {
 
     function __construct(Brand $brand) {
-        $this->$brand = $brand;
+        $this->brand = $brand;
     }
 
     /**
@@ -31,7 +33,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -43,6 +45,14 @@ class BrandController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = str_random(28) . '.png';
+            $path = 'public/brands/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('png',75);
+            Storage::put($path, (string) $file);
+            $data['image'] = Storage::url($path);
+        }
         $this->brand->create($data);
         return response()->json([
             'status' => 'data created'
@@ -68,7 +78,7 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -81,9 +91,21 @@ class BrandController extends Controller
     public function update(Request $request, Brand $brand)
     {
         $data = $request->all();
+        if($request->hasFile('image')) {
+            if(!strpos($brand->image, 'http')) {
+                Storage::delete(str_replace('storage', 'public', $brand->image));
+            }
+
+            $image = $request->file('image');
+            $filename = str_random(28) . '.png';
+            $path = 'public/brands/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('png',75);
+            Storage::put($path, (string) $file);
+            $data['image'] = Storage::url($path);
+        }
         $brand->update($data);
         return response()->json([
-            'status' => 'edited'
+            'status' => 'data edited'
         ], 200);
     }
 
@@ -95,9 +117,26 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
+        if(!strpos($brand->image, 'http')) {
+            Storage::delete(str_replace('storage', 'public', $brand->image));
+        }
         $brand->delete();
         return response()->json([
-            'status' => 'deleted'
+            'status' => 'deleted',
         ], 200);
+    }
+
+    /**
+     * Handle all AJAX request
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajax(Request $request)
+    {
+        switch ($request->mode) {
+            case 'datatable':
+                return $this->brand->datatableForAdmin();
+                break;
+        }
     }
 }
