@@ -26,31 +26,10 @@
                                         <th>Nama Brand</th>
                                         <th class="no-sort">Jenis Brand</th>
                                         <th width="20%" class="no-sort no-search">Image</th>
-                                        <th width="15%" class="no-sort text-center">Actions</th>
+                                        <th width="15%" class="no-sort text-center">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>
-                                            <img src="https://picsum.photos/id/372/800/800" class="w-100" alt="">
-                                        </td>
-                                        <td>
-                                            <span>
-                                                <button type="button" class="btn btn-outline-warning btn-admin-edit-brand btn-icon" data-id="" data-img="https://picsum.photos/id/372/800/800">
-                                                     <i aria-hidden="true" class="mdi mdi-pencil"></i>
-                                                </button>
-                                            </span>
-
-                                            <span>
-                                                <button type="button" class="btn btn-outline-danger btn-admin-delete-brand btn-icon">
-                                                     <i aria-hidden="true" class="mdi mdi-delete"></i>
-                                                </button>
-                                            </span>
-                                        </td>
-                                    </tr>
-                                </tbody>
+                                <tbody></tbody>
                             </table>
                         </div>
                     </div>
