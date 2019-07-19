@@ -20,7 +20,7 @@
                         <span> 
                             Product
                             <span class="float-right menu-arrow">
-                                <i class="mdi mdi-receiptt"></i>
+                                <i class="mdi mdi-chevron-right"></i>
                             </span> 
                         </span>
                     </a> 

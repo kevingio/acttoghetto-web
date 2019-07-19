@@ -113,6 +113,9 @@ class SizeController extends Controller
             case 'datatable':
                 return $this->size->datatableForAdmin();
                 break;
+            case 'select-size':
+                return $this->size->getSizes($request->category_id);
+                break;
         }
     }
 }

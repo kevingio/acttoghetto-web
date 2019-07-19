@@ -54,4 +54,13 @@ class Size extends Model
             ->rawColumns(['action'])
             ->make(true);
     }
+
+    /**
+     * Get Sizes Data
+     * @return array
+     */
+    public function getSizes($category_id)
+    {
+        return $this->where('category_id', $category_id)->get();
+    }
 }

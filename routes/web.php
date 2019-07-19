@@ -17,14 +17,6 @@ Route::get('/admin/products', function () {
     return view('admin.web.product.index');
 });
 
-Route::get('/admin/products/add', function () {
-    return view('admin.web.product.add-product');
-});
-
-Route::get('/admin/products/edit', function () {
-    return view('admin.web.product.edit-product');
-});
-
 Route::get('/admin/banner-promo', function () {
     return view('admin.web.banner-promo');
 });

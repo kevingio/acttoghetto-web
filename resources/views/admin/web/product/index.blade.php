@@ -52,7 +52,7 @@
                     </div>
 
                     <div class="block2-txt pt-2">
-                        <a href="/admin/products/details" class="d-block pb-2">
+                        <a href="#" class="d-block pb-2">
                             name
                         </a>
                         <span class="d-block pb-2">

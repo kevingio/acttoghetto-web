@@ -7,12 +7,14 @@
 @section('content')
 
 <div class="container" id="editProductPage">
-    <form>
+    <form action="{{ route('admin.product.update', [$product->id])}}" method="POST" enctype="multipart/form-data">
+        {{ csrf_field() }}
+        @method('PATCH')
         <div class="row">
             <div class="col-sm-12 col-md-6 mt-3">
                 <div class="form-group">
                     <label for="editNameProduct">Nama Produk</label>
-                    <input type="text" class="form-control" id="editNameProduct" aria-describedby="emailHelp" value="{{ $product->name }}" placeholder="Nama Produk" required>
+                    <input type="text" class="form-control" name="name" aria-describedby="emailHelp" value="{{ $product->name }}" placeholder="Nama Produk">
                 </div>
                 
             </div>
@@ -20,7 +22,7 @@
             <div class="col-sm-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="editBrandProduct">Brand Produk</label>
-                    <select class="form-control" name="brand_id" required>
+                    <select class="form-control" name="brand_id">
                         @foreach($brands as $brand)
                             <option value="{{ $brand->id }}" @if($brand->id == $product->brand_id) selected @endif>{{ $brand->name }}</option>
                         @endforeach
@@ -31,8 +33,8 @@
             <div class="col-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="editCategoryProduct">Kategori Produk</label>
-                    <select class="form-control" name="category_id" required>
-                        @foreach($categorys as $category)
+                    <select class="form-control select-category" name="category_id">
+                        @foreach($categories as $category)
                             <option value="{{ $category->id }}" @if($category->id == $product->category_id) selected @endif>{{ $category->name }}</option>
                         @endforeach
                     </select>
@@ -42,29 +44,31 @@
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editPriceProduct">Harga Produk</label>
-                    <input type="text" class="form-control" id="editPriceProduct" value="{{ $product->price }}" placeholder="Harga Produk" required>
+                    <input type="text" class="form-control" name="price" value="{{ $product->price }}" placeholder="Harga Produk">
                 </div>
             </div>
 
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editQtyProduct">Jumlah Produk</label>
-                    <input type="text" class="form-control" id="editPriceProduct" value="{{ $product->qty }}" placeholder="Jumlah Produk" required>
+                    <input type="text" class="form-control" name="qty" value="{{ $product->qty }}" placeholder="Jumlah Produk">
                 </div>
             </div>
 
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editNumberProduct">SKU</label>
-                    <input type="text" class="form-control" id="editNumberProduct" value="{{ $product->sku }}" placeholder="SKU" required>
+                    <input type="text" class="form-control" name="sku" value="{{ $product->sku }}" placeholder="SKU">
                 </div>
             </div>
             
-            <div class="col-12 col-md-3 mt-3">
+            <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editSizeProduct">Size Produk</label>
-                    <select class="form-control" name="size_id" required>
-                        <option value="">1</option>
+                    <select class="form-control select-size" name="size_id">
+                        @foreach($sizes as $size)
+                            <option value="{{ $size->id }}" @if($size->id == $product->size_id) selected @endif>{{ $size->text }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -84,12 +88,12 @@
                                     <p class="m-0 mt-3">Main Image</p>
                                 </div>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="customFile2" name="filename[2]" accept=".png, .jpg, .jpeg" required>
-                                    <label class="custom-file-label" for="customFile2">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="customFile1" name="image[0]" accept=".png, .jpg, .jpeg">
+                                    <label class="custom-file-label" for="customFile1">Choose file</label>
                                 </div>
                             </td>
                             <td class="text-center pb-3 pt-3">
-                                <img src="" class="image-preview-custom-edit-product preview-image" alt="" for>
+                                <img src="{{ $product->images[0]->path }}" class="image-preview-custom-product preview-image" alt="" for>
                             </td>
                         </tr>
 
@@ -99,12 +103,12 @@
                                     <p class="m-0 mt-3">Image 2</p>
                                 </div>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="customFile3" name="filename[3]" accept=".png, .jpg, .jpeg" required>
-                                    <label class="custom-file-label" for="customFile3">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="customFile2" name="image[1]" accept=".png, .jpg, .jpeg">
+                                    <label class="custom-file-label" for="customFile2">Choose file</label>
                                 </div>
                             </td>
                             <td class="text-center pb-3 pt-3">
-                                <img src="" class="image-preview-custom-edit-product preview-image"alt="">
+                                <img src="{{ $product->images[1]->path }}" class="image-preview-custom-product preview-image"alt="">
                             </td>
                         </tr>
                         
@@ -114,12 +118,12 @@
                                     <p class="m-0 mt-3">Image 3</p>
                                 </div>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="customFile4" name="filename[4]" accept=".png, .jpg, .jpeg" required>
-                                    <label class="custom-file-label" for="customFile4">Choose file</label>
+                                    <input type="file" class="custom-file-input" id="customFile3" name="image[2]" accept=".png, .jpg, .jpeg">
+                                    <label class="custom-file-label" for="customFile3">Choose file</label>
                                 </div>
                             </td>
                             <td class="text-center pb-3 pt-3">
-                                <img src="" class="image-preview-custom-edit-product preview-image" alt="">
+                                <img src="{{ $product->images[2]->path }}" class="image-preview-custom-product preview-image" alt="">
                             </td>
                         </tr>
                     </tbody>
