@@ -152,7 +152,7 @@
                 </div>
             </div>
             <!-- Header Icon mobile -->
-            {{-- <div class="header-icons-mobile">
+            <div class="header-icons-mobile">
                 @if(auth()->check())
                 <a href="#" class="mr-3 js-show-header-dropdown">{{ auth()->user()->name }}</a>
                 <img src="{{ asset('assets/images/icons/icon-header-01.png') }}" class="header-icon1 js-show-header-dropdown" alt="ICON">
@@ -209,7 +209,7 @@
                     </div>
 
                 </div>
-            </div> --}}
+            </div>
 
             <div class="btn-show-menu-mobile hamburger hamburger--squeeze">
                 <span class="hamburger-box">

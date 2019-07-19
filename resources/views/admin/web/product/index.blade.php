@@ -52,12 +52,12 @@
                     </div>
 
                     <div class="block2-txt pt-2">
-                        <a href="" class="d-block pb-2">
+                        <a href="/admin/products/details" class="d-block pb-2">
                             name
                         </a>
-                        <a href="" class="d-block pb-2">
+                        <span class="d-block pb-2">
                             brand
-                        </a>
+                        </span>
 
                         <span class="d-block pb-2">
                             price

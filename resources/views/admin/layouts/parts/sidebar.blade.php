@@ -25,13 +25,13 @@
                         </span>
                     </a> 
                     <ul class="submenu">
-                        <li>
+                        <li @if(!empty(request()->type) && request()->type == 'man') class="active" @endif>
                             <a href="/admin/products" class="waves-effect">
                                 <i class="mdi mdi-calendar-check"></i>
                                 <span> Man </span>
                             </a>
                         </li>
-                        <li>
+                        <li @if(!empty(request()->type) && request()->type == 'woman') class="active" @endif>
                             <a href="/admin/products" class="waves-effect">
                                 <i class="mdi mdi-calendar-check"></i>
                                 <span> Woman </span>

@@ -125,3 +125,12 @@ body, #sidebar-menu > ul > li > a, .badge {
     border-top-left-radius: .3rem;
     border-top-right-radius: .3rem;
 }
+
+.list-style-none {
+    list-style-type: none;
+}
+
+.image-preview-custom-add-product {
+    width: auto;
+    max-height: 200px;
+}

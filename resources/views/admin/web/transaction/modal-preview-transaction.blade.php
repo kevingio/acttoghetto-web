@@ -4,8 +4,6 @@
 
         <!-- Modal content-->
         <div class="modal-content">
-            <form id="form-preview-transaction">
-
                 <div class="modal-header d-block">
                     <h6 class="modal-title font-weight-bold d-block">Transaksi <span class="preview-transactions-number"></span></h6>
                     <p class="d-block m-0">Pembeli : <span class="user-name"></span></p>
@@ -26,7 +24,7 @@
                     </div>
 
                     <div class="col-sm-12">
-                        <table width="100%">
+                        <table class="w-100">
                             <thead>
                                 <tr>
                                     <th class="text-left font-weight-bold" style="width: 30%;">Nama barang</th> 
@@ -53,9 +51,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-save-change-transaction-admin">Tutup</button>
+                    <button type="button" class="btn btn-danger btn-save-change-transaction-admin" data-dismiss="modal">Tutup</button>
                 </div>
-            </form>
         </div>
 
     </div>
