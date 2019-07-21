@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<div class="container pt-4">
+<div class="container-fluid pt-4">
     <div class="row">
         <div class="col-sm-12 col-md-2 mt-3">
             <ul class="list-style-none">
