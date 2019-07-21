@@ -13,16 +13,8 @@
 
 Auth::routes();
 
-Route::get('/admin/products', function () {
-    return view('admin.web.product.index');
-});
-
 Route::get('/admin/banner-promo', function () {
     return view('admin.web.banner-promo');
-});
-
-Route::get('/admin/brands', function () {
-    return view('admin.web.masterData.brand.index');
 });
 
 Route::get('/', 'HomeController@landing')->name('landing');
@@ -58,7 +50,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(
     Route::resource('transaction', 'Admin\TransactionController');
 
     Route::resource('brand', 'Admin\BrandController');
-    
+
     Route::resource('product', 'Admin\ProductController');
 
     Route::resource('category', 'Admin\CategoryController');

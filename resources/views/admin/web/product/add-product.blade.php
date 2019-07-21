@@ -7,7 +7,7 @@
 @section('content')
 
 <div class="container" id="addProductPage">
-    <form action="{{ route('admin.product')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
             <div class="col-sm-12 col-md-6 mt-3">
@@ -15,7 +15,7 @@
                     <label for="addNameProduct">Nama Produk</label>
                     <input type="text" class="form-control" id="addNameProduct" aria-describedby="emailHelp" placeholder="Nama Produk" required>
                 </div>
-                
+
             </div>
 
             <div class="col-sm-12 col-md-3 mt-3">
@@ -60,7 +60,7 @@
                     <input type="text" class="form-control" id="addNumberProduct" placeholder="SKU" required>
                 </div>
             </div>
-            
+
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editSizeProduct">Size Produk</label>
@@ -77,7 +77,7 @@
                     <thead>
                         <tr>
                             <th class="text-left font-weight-bold" style="width: 50%;">Actions</th>
-                            <th class="text-center font-weight-bold" style="width: 50%;">Image Preview</th> 
+                            <th class="text-center font-weight-bold" style="width: 50%;">Image Preview</th>
                         </tr>
                     </thead>
                     <tbody class="mt-3">
@@ -110,7 +110,7 @@
                                 <img src="" class="image-preview-custom-product preview-image"alt="">
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <td>
                                 <div>

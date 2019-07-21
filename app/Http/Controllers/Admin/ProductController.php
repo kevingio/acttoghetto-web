@@ -27,9 +27,23 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $products = $this->product->with(['category.sizes', 'brand', 'images']);
+        if(!empty($request->gender) && $request->gender != 'all') {
+            $products = $products->whereHas('brand', function ($query) use ($request) {
+                $query->where('type', $request->gender);
+            });
+        }
+        if(!empty($request->search)) {
+            $products = $products->where('name', 'like', "%{$request->search}%");
+        }
+
+        $products = $products->paginate(8);
+        $products->appends(request()->input())->links();
+        $brands = $this->brand->orderBy('name')->get(['name']);
+        $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
+        return view('admin.web.product.index', compact('products', 'categories', 'brands'));
     }
 
     /**
@@ -39,6 +53,9 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
+        if(empty($request->type)) {
+            return redirect()->back();
+        }
         $brands = $this->brand->where('type', $request->type)->get();
         $categories = $this->category->where('type', $request->type)->get();
         $sizes = $this->size->get();
@@ -65,7 +82,7 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = $this->product->with(['category.sizes' , 'brand', 'images'])->find($id);
-        
+
         return view('admin.web.product.detail', compact('product'));
     }
 
@@ -114,7 +131,7 @@ class ProductController extends Controller
                     'thumbnail' => $imageUrl,
                     'size' => $size
                 ]);
-                
+
             }
         }
         $product->update($data);
