@@ -7,6 +7,26 @@
 @section('content')
 <div class="container-fluid pt-4">
     <div class="row">
+        <!-- <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
+            <a href="{{ route('home') }}" class="s-text16">
+                Home
+                <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+            </a>
+
+            <a href="{{ url('/product?gender=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
+                {{ ucwords($product->brand->type) }}
+                <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+            </a>
+
+            <a href="{{ url('/product?category=') . urlencode(strtolower($product->category->name)) }}" class="s-text16">
+                {{ $product->category->name }}
+                <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+            </a>
+
+            <span class="s-text17">
+                {{ $product->name }}
+            </span>
+        </div> -->
         <div class="col-sm-12 col-md-2 mt-3">
             <ul class="list-style-none">
                 <li class="mb-3">
