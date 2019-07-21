@@ -1,7 +1,7 @@
 @extends('admin.layouts.master')
 
 @section('title')
-    Products
+    {{ ucwords(request()->type) }} Products
 @endsection
 
 @section('content')
@@ -9,11 +9,11 @@
         <div class="row justify-content-between">
             <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
                 <div class="wrapper-form-input mb-4">
-                    <form action="" method="get" autocomplete="off">
+                    <form action="{{ url('/admin/product') }}" method="get" autocomplete="off">
                         <input class="size-input rounded pl-4 pr-5" type="text" name="search" value="" placeholder="Search Products...">
-
-                        <input type="hidden" name="" value="" readonly>
-
+                        @foreach(request()->except('search') as $key => $item)
+                            <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
+                        @endforeach
                         <button type="submit" class="style-icon-input">
                             <i class="fs-12 fa fa-search" aria-hidden="true"></i>
                         </button>
