@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <div class="row justify-content-between">
             <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
                 <div class="wrapper-form-input mb-4">

@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container" id="editProductPage">
+<div class="container-fluid pt-4" id="editProductPage">
     <form action="{{ route('admin.product.update', [$product->id])}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         @method('PATCH')
@@ -16,7 +16,7 @@
                     <label for="editNameProduct">Nama Produk</label>
                     <input type="text" class="form-control" name="name" aria-describedby="emailHelp" value="{{ $product->name }}" placeholder="Nama Produk">
                 </div>
-                
+
             </div>
 
             <div class="col-sm-12 col-md-3 mt-3">
@@ -61,7 +61,7 @@
                     <input type="text" class="form-control" name="sku" value="{{ $product->sku }}" placeholder="SKU">
                 </div>
             </div>
-            
+
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editSizeProduct">Size Produk</label>
@@ -78,7 +78,7 @@
                     <thead>
                         <tr>
                             <th class="text-left font-weight-bold" style="width: 50%;">Actions</th>
-                            <th class="text-center font-weight-bold" style="width: 50%;">Image Preview</th> 
+                            <th class="text-center font-weight-bold" style="width: 50%;">Image Preview</th>
                         </tr>
                     </thead>
                     <tbody class="mt-3">
@@ -111,7 +111,7 @@
                                 <img src="{{ $product->images[1]->path }}" class="image-preview-custom-product preview-image"alt="">
                             </td>
                         </tr>
-                        
+
                         <tr>
                             <td>
                                 <div>

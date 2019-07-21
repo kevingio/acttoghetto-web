@@ -6,7 +6,7 @@
 
 @section('content')
 
-<div class="container" id="addProductPage">
+<div class="container-fluid pt-4" id="addProductPage">
     <form action="{{ route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">

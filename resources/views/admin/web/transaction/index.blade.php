@@ -6,7 +6,6 @@
 
 @section('content')
     <div class="container-fluid">
-
         <div class="row pt-4">
             <div class="col-xl-4 col-md-6">
                 <div class="card mini-stat bg-danger">
