@@ -16,17 +16,17 @@ class BannersTableSeeder extends Seeder
         Banner::create([
             'title' => 'Diskon Lebaran',
             'subtitle' => 'All item 50% off',
-            'image' => 'https://picsum.photos/id/4/250/1680'
+            'image' => 'https://picsum.photos/id/4/1680/250'
         ]);
         Banner::create([
             'title' => 'Diskon Natal',
             'subtitle' => 'All item 50% off',
-            'image' => 'https://picsum.photos/id/4/250/1680'
+            'image' => 'https://picsum.photos/id/4/1680/250'
         ]);
         Banner::create([
             'title' => 'Payday',
             'subtitle' => 'All item 50% off',
-            'image' => 'https://picsum.photos/id/4/250/1680'
+            'image' => 'https://picsum.photos/id/4/1680/250'
         ]);
     }
 }
