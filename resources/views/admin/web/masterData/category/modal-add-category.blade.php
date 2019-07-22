@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-save-add-category-admin"><i class="fas fa-save mr-2"></i> Tambah</button>
+                    <button type="submit" class="btn btn-danger btn-admin-save-add-category"><i class="fas fa-save mr-2"></i> Tambah</button>
                 </div>
             </form>
         </div>

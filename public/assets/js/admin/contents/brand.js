@@ -10,6 +10,7 @@ $(document).ready(function () {
         customFunction: function () {
             let self = this;
             var dataId = null;
+            var count = 1
 
             $("#form-edit-brand input[name=image]").on('change', function () {
                 self.readEditURL(this);
@@ -32,8 +33,21 @@ $(document).ready(function () {
             })
 
             $(document).on('click', '.btn-admin-add-brand', function () {
+                count = 1;
+                $('.btn-admin-save-add-brand').attr('type', 'submit')
+                $('.btn-admin-save-add-brand').attr('disabled', false)
+                $('.btn-admin-save-add-brand').text('Tambah')
                 $('#previewAddImageBrandAdmin').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
                 $('#adminModalAddBrand').modal('show');
+            })
+
+            $(document).on('click', '.btn-admin-save-add-brand', function () {
+                if(count == 2) {
+                    $(this).removeAttr('type')
+                    $(this).attr('disabled', true)
+                    $(this).text('Mohon tunggu')
+                }
+                count++
             })
 
             $(document).on('submit', '#form-add-brand', function (e) {
@@ -110,8 +124,7 @@ $(document).ready(function () {
                 cache: false,
                 processData: false,
                 success: function(response) {
-                    $('#form-add-brand').find("input").val('');
-                    $('#form-add-brand select').val(null).trigger('change');
+                    $('#form-add-brand').find("input[name!=type]").val('');
                     $('button.close').click();
                     brandsPage.dtTable.ajax.reload(null, false);
                     swal({

@@ -10,7 +10,8 @@ $(document).ready(function () {
         },
         customFunction: function () {
             let self = this;
-            let dataId = null
+            let dataId = null;
+            var count = 1;
 
             $(document).on('click', '.btn-admin-edit-size', function () {
                 dataId = $(this).attr('data-id')
@@ -22,6 +23,10 @@ $(document).ready(function () {
             })
 
             $(document).on('click', '.btn-admin-add-size', function () {
+                count = 1;
+                $('.btn-admin-save-add-size').attr('type', 'submit')
+                $('.btn-admin-save-add-size').attr('disabled', false)
+                $('.btn-admin-save-add-size').text('Tambah')
                 $('#adminModalAddSize').modal('show');
             })
 
@@ -36,6 +41,15 @@ $(document).ready(function () {
 
             $(document).on('submit', '#form-add-size', function (e) {
                 self.addSize(e);
+            })
+
+            $(document).on('click', '.btn-admin-save-add-size', function () {
+                if (count == 2) {
+                    $(this).removeAttr('type')
+                    $(this).attr('disabled', true)
+                    $(this).text('Mohon tunggu')
+                }
+                count++
             })
         },
         deleteSize: function (dataId) {

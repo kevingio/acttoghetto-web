@@ -134,3 +134,29 @@ body, #sidebar-menu > ul > li > a, .badge {
     width: auto;
     max-height: 200px;
 }
+
+.pagination {
+    margin-right: -6px;
+    margin-left: -6px;
+    display: inline-flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: .25rem;
+}
+
+.item-pagination {
+    
+    font-size: 13px;
+    color: black;
+    border-radius: .25rem;
+    border: 1px solid #eeeeee;
+    margin: 6px;
+    padding: 10px 15px;
+}
+
+.flex-c-m {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s;
+}

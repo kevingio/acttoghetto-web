@@ -13,7 +13,7 @@
             <div class="col-sm-12 col-md-6 mt-3">
                 <div class="form-group">
                     <label for="addNameProduct">Nama Produk</label>
-                    <input type="text" class="form-control" id="addNameProduct" aria-describedby="emailHelp" placeholder="Nama Produk" required>
+                    <input type="text" class="form-control" name="name" autocomplete="off" aria-describedby="emailHelp" placeholder="Nama Produk" required>
                 </div>
 
             </div>
@@ -21,7 +21,7 @@
             <div class="col-sm-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="addBrandProduct">Brand Produk</label>
-                    <select class="form-control" required>
+                    <select class="form-control" name="brand_id" required>
                         @foreach($brands as $brand)
                             <option value="{{ $brand->id }}">{{ $brand->name }}</option>
                         @endforeach
@@ -32,7 +32,7 @@
             <div class="col-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="addCategoryProduct">Kategori Produk</label>
-                    <select class="form-control" required>
+                    <select class="form-control" name="category_id" required>
                         @foreach($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                         @endforeach
@@ -43,28 +43,28 @@
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="addPriceProduct">Harga Produk</label>
-                    <input type="text" class="form-control" id="addPriceProduct" placeholder="Harga Produk" required>
+                    <input type="text" class="form-control" name="price" autocomplete="off" placeholder="Harga Produk" required>
                 </div>
             </div>
 
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="addQtyProduct">Jumlah Produk</label>
-                    <input type="text" class="form-control" id="addPriceProduct" placeholder="Jumlah Produk" required>
+                    <input type="text" class="form-control" name="qty" autocomplete="off" placeholder="Jumlah Produk" required>
                 </div>
             </div>
 
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="addNumberProduct">SKU</label>
-                    <input type="text" class="form-control" id="addNumberProduct" placeholder="SKU" required>
+                    <input type="text" class="form-control" name="sku" autocomplete="off" placeholder="SKU" required>
                 </div>
             </div>
 
             <div class="col-12 col-md-3">
                 <div class="form-group">
                     <label for="editSizeProduct">Size Produk</label>
-                    <select class="form-control select-size" name="size_id">
+                    <select class="form-control select-size" name="size_id" required>
                         @foreach($sizes as $size)
                             <option value="{{ $size->id }}">{{ $size->text }}</option>
                         @endforeach
@@ -87,7 +87,7 @@
                                     <p class="m-0 mt-3">Main Image</p>
                                 </div>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="customFile2" name="filename[2]" accept=".png, .jpg, .jpeg" required>
+                                    <input type="file" class="custom-file-input" id="customFile2" name="image[0]" accept=".png, .jpg, .jpeg" required>
                                     <label class="custom-file-label" for="customFile2">Choose file</label>
                                 </div>
                             </td>
@@ -102,7 +102,7 @@
                                     <p class="m-0 mt-3">Sub Image 2</p>
                                 </div>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="customFile3" name="filename[3]" accept=".png, .jpg, .jpeg" required>
+                                    <input type="file" class="custom-file-input" id="customFile3" name="image[1]" accept=".png, .jpg, .jpeg" required>
                                     <label class="custom-file-label" for="customFile3">Choose file</label>
                                 </div>
                             </td>
@@ -117,7 +117,7 @@
                                     <p class="m-0 mt-3">Sub Image 3</p>
                                 </div>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="customFile4" name="filename[4]" accept=".png, .jpg, .jpeg" required>
+                                    <input type="file" class="custom-file-input" id="customFile4" name="image[2]" accept=".png, .jpg, .jpeg" required>
                                     <label class="custom-file-label" for="customFile4">Choose file</label>
                                 </div>
                             </td>

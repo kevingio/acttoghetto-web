@@ -9,7 +9,9 @@ $(document).ready(function () {
         },
         customFunction: function () {
             let self = this;
-            let dataId = null
+            let dataId = null;
+            var count = 1
+
             $(document).on('click', '.btn-admin-edit-category', function () {
                 dataId = $(this).attr('data-id')
                 let name = $(this).attr('name')
@@ -20,6 +22,10 @@ $(document).ready(function () {
             })
 
             $(document).on('click', '.btn-admin-add-category', function () {
+                count = 1;
+                $('.btn-admin-save-add-category').attr('type', 'submit')
+                $('.btn-admin-save-add-category').attr('disabled', false)
+                $('.btn-admin-save-add-category').text('Tambah')
                 $('#adminModalAddCategory').modal('show');
             })
 
@@ -34,6 +40,15 @@ $(document).ready(function () {
 
             $(document).on('submit', '#form-add-category', function (e) {
                 self.addCategory(e);
+            })
+
+            $(document).on('click', '.btn-admin-save-add-category', function () {
+                if (count == 2) {
+                    $(this).removeAttr('type')
+                    $(this).attr('disabled', true)
+                    $(this).text('Mohon tunggu')
+                }
+                count++
             })
         },
         deleteCategory: function (dataId) {

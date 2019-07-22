@@ -9,9 +9,6 @@ $(document).ready(function () {
         initDatatable: function () {
             var $table = $page.find('#productsDataTable');
             productsPage.dtTable = $table.DataTable({
-                // "aaSorting": [],
-                // "processing": true,
-                // "serverSide": true,
                 "searching": true,
                 "lengthChange": true,
                 "responsive": true,
