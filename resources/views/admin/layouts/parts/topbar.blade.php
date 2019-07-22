@@ -25,7 +25,9 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->
-                        <a class="dropdown-item" href="#"><i class="mdi mdi-account-circle m-r-5"></i> Profile</a>
+                        <a class="dropdown-item btn-profile-admin" href="#" data-name="{{ auth()->user()->name }}" data-email="{{ auth()->user()->email }}"><i class="mdi mdi-account-circle m-r-5"></i> Profile</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item btn-password-admin" href="#"><i class="mdi mdi-lock m-r-5"></i> Password</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item text-danger" href="{{ route('logout') }}"
                             onclick="event.preventDefault();
@@ -51,6 +53,5 @@
         </ul>
 
     </nav>
-
 </div>
 <!-- Top Bar End -->

@@ -21,6 +21,8 @@
                 <!-- Start content -->
                 <div class="content">
                     @yield('content')
+                    @include('admin.layouts.parts.modal-profile')
+                    @include('admin.layouts.parts.modal-password')
                 </div> <!-- content -->
                 <footer class="footer">
                     © 2019 Acttoghetto

@@ -65,7 +65,7 @@
                         </li>
 
                         <li>
-                            <a href="/admin/brands" class="waves-effect">
+                            <a href="/admin/brand" class="waves-effect">
                                 <i class="mdi mdi-calendar-check"></i>
                                 <span> Brand </span>
                             </a>
