@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 use Image;
+use DB;
 
 class ProductController extends Controller
 {
@@ -70,7 +71,30 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        DB::transaction(function () {
+            $product = $this->product->create($data);
+            if($request->hasFile('image')) {
+                $images = $request->file('image');
+                foreach ($images as $key => $image) {
+                    $filename = str_random(28) . '.jpg';
+                    $path = 'public/products/' . $filename;
+                    $file = Image::make($image->getRealPath())->encode('jpg',75);
+                    $size = $file->filesize();
+                    Storage::put($path, (string) $file);
+
+                    $imageUrl = Storage::url($path);
+                    $this->productImage->create([
+                        'product_id' => $product->id,
+                        'path' => $imageUrl,
+                        'thumbnail' => $imageUrl,
+                        'size' => $size
+                    ]);
+
+                }
+            }
+        }, 3);
+        return redirect()->route('admin.product.show', [$product->id]);
     }
 
     /**
@@ -82,7 +106,9 @@ class ProductController extends Controller
     public function show($id)
     {
         $product = $this->product->with(['category.sizes' , 'brand', 'images'])->find($id);
-
+        if(!$product) {
+            return redirect()->back();
+        }
         return view('admin.web.product.detail', compact('product'));
     }
 
@@ -111,30 +137,32 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        $product = $this->product->find($id);
-        if($request->hasFile('image')) {
-            $oldImages = $this->productImage->where('product_id', $id)->get();
-            $images = $request->file('image');
-            foreach ($images as $key => $image) {
-                if(!strpos($oldImages[$key]->path, 'http')) {
-                    Storage::delete(str_replace('storage', 'public', $oldImages[$key]->path));
+        DB::transaction(function() {
+            $product = $this->product->find($id);
+            if($request->hasFile('image')) {
+                $oldImages = $this->productImage->where('product_id', $id)->get();
+                $images = $request->file('image');
+                foreach ($images as $key => $image) {
+                    if(!strpos($oldImages[$key]->path, 'http')) {
+                        Storage::delete(str_replace('storage', 'public', $oldImages[$key]->path));
+                    }
+                    $filename = str_random(28) . '.jpg';
+                    $path = 'public/products/' . $filename;
+                    $file = Image::make($image->getRealPath())->encode('jpg',75);
+                    $size = $file->filesize();
+                    Storage::put($path, (string) $file);
+
+                    $imageUrl = Storage::url($path);
+                    $this->productImage->find($oldImages[$key]->id)->update([
+                        'path' => $imageUrl,
+                        'thumbnail' => $imageUrl,
+                        'size' => $size
+                    ]);
+
                 }
-                $filename = str_random(28) . '.jpg';
-                $path = 'public/products/' . $filename;
-                $file = Image::make($image->getRealPath())->encode('jpg',75);
-                $size = $file->filesize();
-                Storage::put($path, (string) $file);
-
-                $imageUrl = Storage::url($path);
-                $this->productImage->find($oldImages[$key]->id)->update([
-                    'path' => $imageUrl,
-                    'thumbnail' => $imageUrl,
-                    'size' => $size
-                ]);
-
             }
-        }
-        $product->update($data);
+            $product->update($data);
+        }, 3);
         return redirect()->route('admin.product.show', [$id]);
     }
 
@@ -144,8 +172,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response()->json([
+            'status' => 'deleted'
+        ], 200);
     }
 }
