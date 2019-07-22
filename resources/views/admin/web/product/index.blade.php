@@ -55,8 +55,10 @@
                 </a>
             </div>
             @endforeach
-
-            {{ $products->links('vendor.pagination.simple') }}
+            <div class="col-sm-12 text-center">
+                {{ $products->links('vendor.pagination.simple') }}
+            </div>
+            
         </div>
         <!-- end row -->
 

@@ -10,37 +10,34 @@
             <div class="col-sm-12 col-md-10 mt-3">
                 <h5>Banner Promosi</h5>
             </div>
-            <div class="col-sm-12 col-md-2 mt-3">
-                <button class="btn btn-danger btn-admin-add-banner"> Tambah Banner </button>
-            </div>
-            <div class="col-sm-12 mt-3" id="adminBannerPage">
-                <table class="table table-bordered w-100">
-                    <thead>
-                        <tr>
-                            <th class="text-center font-weight-bold" style="width: 80%;">Image Preview</th> 
-                            <th class="text-left font-weight-bold" style="width: 20%;">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody class="mt-3">
-                        <tr>
-                            <td class="text-center pb-3 pt-3">
-                                <a href="#" class="pop">
-                                    <img src="https://picsum.photos/200/300" class="image-preview-banner preview-image" alt="" for>
-                                </a>
-                            </td>
-                            <td class=" text-center">
-                                <button type="button" class="btn btn-outline-warning btn-admin-edit-banner btn-icon">
-                                    <i aria-hidden="true" class="mdi mdi-pencil"></i>
-                                </button>
 
-                                <button type="button" class="btn btn-outline-danger btn-admin-delete-banner btn-icon">
-                                    <i aria-hidden="true" class="mdi mdi-delete"></i>
-                                </button>
-                            </td>
-                        </tr>
+            <div class="col-xl-12 mt-4">
+                <div class="card m-b-20">
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-sm-9">
+                                <h4 class="mt-0 header-title">Banner Promosi</h4>
+                            </div>
+                            <div class="col-sm-3 text-right">
+                                <button class="btn btn-danger w-100 btn-admin-add-banner" data-id=""> Tambah Banner </button>
+                            </div>
+                        </div>
 
-                    </tbody>
-                </table>
+                        <div class="table-overflow" id="adminBannerPage">
+                            <table id="adminBannerDataTable" class="table table-striped table-bordered dataTable" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th class="no-sort" width="15%">Title</th>
+                                        <th class="no-sort" width="15%">Sub Title</th>
+                                        <th class="no-sort  no-search">Image</th>
+                                        <th class="no-sort text-center" width="15%" class="no-sort text-center">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- end row -->
