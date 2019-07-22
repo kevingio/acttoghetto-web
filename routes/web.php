@@ -13,8 +13,8 @@
 
 Auth::routes();
 
-Route::get('/admin/banner-promo', function () {
-    return view('admin.web.banner-promo');
+Route::get('/admin/banner', function () {
+    return view('admin.web.banner.index');
 });
 
 Route::get('/', 'HomeController@landing')->name('landing');

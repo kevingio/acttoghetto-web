@@ -40,8 +40,8 @@
                     </ul>
                 </li>
 
-                <li class="active">
-                    <a href="/admin/banner-promo" class="waves-effect">
+                <li>
+                    <a href="/admin/banner" class="waves-effect">
                         <i class="mdi mdi-receipt"></i>
                         <span> Banner Promo </span></a>
                 </li>
