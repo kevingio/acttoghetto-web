@@ -12,30 +12,15 @@
                 <div class="modal-body row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="nameAddBanner">Nama Banner</label>
-                            <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Nama Banner">
+                            <label for="titleAddBanner">Title</label>
+                            <input type="text" class="form-control" name="title" autocomplete="off" placeholder="Title">
                         </div>
                     </div>
 
                     <div class="col-sm-12">
-                        <label>Jenis Banner</label>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" value="man" checked>
-                            <label class="form-check-label" for="radioAddTypeBannerMan">
-                                Man
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" value="woman">
-                            <label class="form-check-label" for="radioAddTypeBannerWoman">
-                                Woman
-                            </label>
+                        <div class="form-group">
+                            <label for="subTitleAddBanner">Sub Title</label>
+                            <input type="text" class="form-control" name="subtitle" autocomplete="off" placeholder="SubTitle">
                         </div>
                     </div>
 
@@ -50,7 +35,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-admin-save-change-banner"><i class="fas fa-save mr-2"></i> Tambah</button>
+                    <button type="submit" class="btn btn-danger btn-admin-save-add-banner"><i class="fas fa-save mr-2"></i> Tambah</button>
                 </div>
             </form>
         </div>

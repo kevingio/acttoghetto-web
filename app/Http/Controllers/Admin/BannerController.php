@@ -5,9 +5,15 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use Image;
 
 class BannerController extends Controller
 {
+    function __construct(Banner $banner) {
+        $this->banner = $banner;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +21,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.web.banner.index');
     }
 
     /**
@@ -25,7 +31,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -36,7 +42,19 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        if($request->hasFile('image')) {
+            $image = $request->file('image');
+            $filename = str_random(28) . '.png';
+            $path = 'public/banner/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('png',75);
+            Storage::put($path, (string) $file);
+            $data['image'] = Storage::url($path);
+        }
+        $this->banner->create($data);
+        return response()->json([
+            'status' => 'data created'
+        ], 201);
     }
 
     /**
@@ -45,9 +63,9 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Banner $banner)
     {
-        //
+        return $banner;
     }
 
     /**
@@ -56,9 +74,9 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Banner $banner)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -68,9 +86,25 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Banner $banner)
     {
-        //
+        $data = $request->all();
+        if($request->hasFile('image')) {
+            if(!strpos($banner->image, 'http')) {
+                Storage::delete(str_replace('storage', 'public', $banner->image));
+            }
+
+            $image = $request->file('image');
+            $filename = str_random(28) . '.png';
+            $path = 'public/brands/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('png',75);
+            Storage::put($path, (string) $file);
+            $data['image'] = Storage::url($path);
+        }
+        $banner->update($data);
+        return response()->json([
+            'status' => 'data edited'
+        ], 200);
     }
 
     /**
@@ -79,8 +113,28 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Banner $banner)
     {
-        //
+        if(!strpos($banner->image, 'http')) {
+            Storage::delete(str_replace('storage', 'public', $banner->image));
+        }
+        $banner->delete();
+        return response()->json([
+            'status' => 'deleted',
+        ], 200);
+    }
+
+    /**
+     * Handle all AJAX request
+     * @param  Request $request
+     * @return \Illuminate\Http\Response
+     */
+    public function ajax(Request $request)
+    {
+        switch ($request->mode) {
+            case 'datatable':
+                return $this->banner->datatableForAdmin();
+                break;
+        }
     }
 }

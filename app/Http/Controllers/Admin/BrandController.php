@@ -22,8 +22,7 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = $this->brand->all();
-        return $brands;
+        return view('admin.web.masterData.brand.index');
     }
 
     /**

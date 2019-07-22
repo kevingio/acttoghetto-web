@@ -12,35 +12,20 @@
                 <div class="modal-body row">
                     <div class="col-sm-12">
                         <div class="form-group">
-                            <label for="nameEditBanner">Nama Banner</label>
-                            <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Nama Banner">
+                            <label for="titleEditBanner">Title</label>
+                            <input type="text" class="form-control" name="title" autocomplete="off" placeholder="Title">
                         </div>
                     </div>
 
                     <div class="col-sm-12">
-                        <label>Jenis Banner</label>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" value="man" checked>
-                            <label class="form-check-label" for="radioEditTypeBannerMan">
-                                Man
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" value="woman">
-                            <label class="form-check-label" for="radioAddTypeBannerWoman">
-                                Woman
-                            </label>
+                        <div class="form-group">
+                            <label for="subTitleEditBanner">Sub Title</label>
+                            <input type="text" class="form-control" name="subtitle" autocomplete="off" placeholder="SubTitle">
                         </div>
                     </div>
 
                     <div class="col-sm-12 mt-3">
-                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0" required/>
+                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0"/>
                         <label for="editImageBannerUpload"></label>
                     </div>
 
