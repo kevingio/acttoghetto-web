@@ -59,6 +59,10 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(
 
     Route::resource('size', 'Admin\SizeController');
 
+    Route::post('update-profile', 'Admin\UserController@updateProfile');
+
+    Route::post('change-password', 'Admin\UserController@changePassword');
+
     /* Ajax from Admin Dashboard */
     Route::any('ajax/{page}', function ($page) {
         return app()->call('\App\Http\Controllers\Admin\\'.studly_case($page).'Controller@ajax');

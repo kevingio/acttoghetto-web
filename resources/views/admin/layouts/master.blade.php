@@ -20,6 +20,30 @@
             <div class="content-page">
                 <!-- Start content -->
                 <div class="content">
+                    <div class="container-fluid">
+                        <div class="row pt-4">
+                            <div class="col-sm-12">
+                                @if (session()->has('success'))
+                                    <div class="alert alert-success m-0">
+                                        @if(is_array(session()->get('success')))
+                                            @foreach (session()->get('success') as $message)
+                                                <p class="m-0">{{ $message }}</p>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                @endif
+                                @if (session()->has('error'))
+                                    <div class="alert alert-danger m-0">
+                                        @if(is_array(session()->get('error')))
+                                            @foreach (session()->get('error') as $message)
+                                                <p class="m-0">{{ $message }}</p>
+                                            @endforeach
+                                        @endif
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
                     @yield('content')
                     @include('admin.layouts.parts.modal-profile')
                     @include('admin.layouts.parts.modal-password')
