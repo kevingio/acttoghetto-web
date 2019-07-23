@@ -27,13 +27,11 @@
                     <ul class="submenu">
                         <li @if(!empty(request()->type) && request()->type == 'man') class="active" @endif>
                             <a href="/admin/product?type=man" class="waves-effect">
-                                <i class="mdi mdi-calendar-check"></i>
                                 <span> Man </span>
                             </a>
                         </li>
                         <li @if(!empty(request()->type) && request()->type == 'woman') class="active" @endif>
                             <a href="/admin/product?type=woman" class="waves-effect">
-                                <i class="mdi mdi-calendar-check"></i>
                                 <span> Woman </span>
                             </a>
                         </li>
@@ -59,21 +57,18 @@
                     <ul class="submenu">
                         <li>
                             <a href="/admin/category" class="waves-effect">
-                                <i class="mdi mdi-calendar-check"></i>
                                 <span> Category </span>
                             </a>
                         </li>
 
                         <li>
                             <a href="/admin/brand" class="waves-effect">
-                                <i class="mdi mdi-calendar-check"></i>
                                 <span> Brand </span>
                             </a>
                         </li>
 
                         <li>
                             <a href="/admin/size" class="waves-effect">
-                                <i class="mdi mdi-calendar-check"></i>
                                 <span> Size </span>
                             </a>
                         </li>

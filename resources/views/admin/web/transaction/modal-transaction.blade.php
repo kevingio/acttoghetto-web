@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-save-change-transaction-admin"><i class="fas fa-save mr-2"></i> Simpan</button>
+                    <button type="submit" class="btn btn-save-change-transaction-admin"><i class="fas fa-save mr-2"></i> Simpan</button>
                 </div>
             </form>
         </div>

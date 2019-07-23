@@ -51,7 +51,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-save-change-transaction-admin" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-save-change-transaction-admin" data-dismiss="modal">Tutup</button>
                 </div>
         </div>
 

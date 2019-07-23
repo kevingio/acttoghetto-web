@@ -26,6 +26,10 @@ $(document).ready(function () {
                 $('.select-size').empty();
                 self.initSize(optionSelected);
             });
+
+            $('.btn-back').on('click', function (e) {
+                window.location.replace("/admin/product/" + $(this).attr("data-id") + "?type=" + $(this).attr("data-type"));
+            });
         },
         readURL: function (input) {
             let self = input

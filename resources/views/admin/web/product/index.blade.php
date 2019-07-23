@@ -32,7 +32,7 @@
         <div class="row">
             @foreach($products as $product)
             <div class="col-sm-12 col-md-6 col-lg-3">
-                <a href="{{ route('admin.product.show', [$product->id]) }}">
+                <a href="/admin/product/{{ $product->id }}?type={{ $product->brand->type }}">
                     <div class="block2">
                         <div class="block2-img overflow-hidden position-relative">
                             <img src="{{ $product->images[0]->thumbnail }}" class="w-100" alt="IMG-PRODUCT">
@@ -55,7 +55,7 @@
                 </a>
             </div>
             @endforeach
-            <div class="col-sm-12 text-center">
+            <div class="col-sm-12 text-center my-3">
                 {{ $products->links('vendor.pagination.simple') }}
             </div>
             

@@ -10,6 +10,19 @@
     <form action="{{ route('admin.product.store')}}" method="POST" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="row">
+            <div class="col-sm-12">
+                <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
+                    <a href="{{ url('/admin/product?type=') . request()->type }}" class="s-text16">
+                        {{ ucwords(request()->type) }}
+                        <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+                    </a>
+
+                    <span class="s-text17">
+                        Tambah Produk
+                    </span>
+                </div>
+            </div>
+
             <div class="col-sm-12 col-md-6 mt-3">
                 <div class="form-group">
                     <label for="addNameProduct">Nama Produk</label>
@@ -130,7 +143,14 @@
             </div>
 
             <div class="col-sm-12 col-md-3 offset-md-9">
-                <button type="submit" class="btn btn-primary w-100"><i class="fas fa-save mr-2"></i>Simpan</button>
+                <button type="button" class="btn btn-back mr-3" data-type="{{ request()->type }}">
+                    <i class="fas fa-times mr-2"></i> 
+                    Cancel
+                </button>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-save mr-2"></i>
+                    Simpan
+                </button>
             </div>
         </div>
     </form>

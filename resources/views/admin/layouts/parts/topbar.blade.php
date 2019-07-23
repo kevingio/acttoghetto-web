@@ -20,8 +20,7 @@
             <li class="dropdown notification-list">
                 <div class="dropdown notification-list nav-pro-img">
                     <a class="dropdown-toggle nav-link arrow-none waves-effect nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <span class="mr-3">{{ auth()->user()->name }}</span>
-                        <img src="{{ URL::asset('assets/images/admin/user-1.jpg')}}" alt="user" class="rounded-circle">
+                        <span>{{ auth()->user()->name }}</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
                         <!-- item-->

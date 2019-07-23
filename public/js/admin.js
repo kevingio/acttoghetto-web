@@ -855,6 +855,10 @@ $(document).ready(function () {
                 $('.select-size').empty();
                 self.initSize(optionSelected);
             });
+
+            $('.btn-back').on('click', function (e) {
+                window.location.replace("/admin/product" + "?type=" + $(this).attr("data-type"));
+            });
         },
         readURL: function (input) {
             let self = input
@@ -1510,6 +1514,10 @@ $(document).ready(function () {
                 optionSelected = $("option:selected", this).val();
                 $('.select-size').empty();
                 self.initSize(optionSelected);
+            });
+
+            $('.btn-back').on('click', function (e) {
+                window.location.replace("/admin/product/" + $(this).attr("data-id") + "?type=" + $(this).attr("data-type"));
             });
         },
         readURL: function (input) {

@@ -145,13 +145,16 @@ body, #sidebar-menu > ul > li > a, .badge {
 }
 
 .item-pagination {
-    
     font-size: 13px;
     color: black;
     border-radius: .25rem;
     border: 1px solid #eeeeee;
     margin: 6px;
     padding: 10px 15px;
+}
+
+.active-pagination {
+    background-color: #ddd
 }
 
 .flex-c-m {

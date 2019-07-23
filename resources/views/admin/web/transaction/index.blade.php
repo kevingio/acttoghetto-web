@@ -11,7 +11,7 @@
                 <div class="card mini-stat bg-danger">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
-                            <i class="mdi mdi-cube-outline float-right"></i>
+                            <i class="mdi mdi-cart float-right"></i>
                         </div>
                         <div class="text-white">
                             <h6 class="text-uppercase mb-3">Transaksi</h6>
@@ -25,7 +25,7 @@
                 <div class="card mini-stat bg-danger">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
-                            <i class="mdi mdi-briefcase-check float-right"></i>
+                            <i class="mdi mdi-cube-outline float-right"></i>
                         </div>
                         <div class="text-white">
                             <h6 class="text-uppercase mb-3">Barang Terjual</h6>
@@ -39,7 +39,7 @@
                 <div class="card mini-stat bg-danger">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
-                            <i class="mdi mdi-buffer float-right"></i>
+                            <i class="mdi mdi-currency-usd float-right"></i>
                         </div>
                         <div class="text-white">
                             <h6 class="text-uppercase mb-3">Omset</h6>
