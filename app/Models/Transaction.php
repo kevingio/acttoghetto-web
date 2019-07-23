@@ -28,9 +28,9 @@ class Transaction extends Model
      * Relation to Transaction Detail
      *
      */
-    public function detail()
+    public function details()
     {
-        return $this->belongsTo('App\Models\TransactionDetail');
+        return $this->hasMany('App\Models\TransactionDetail');
     }
 
     /**
@@ -53,12 +53,44 @@ class Transaction extends Model
     }
 
     /**
+     * Retrieve only today's records
+     * @return string
+     */
+    public function scopeThisMonth($query)
+    {
+        return $query->whereMonth('created_at', date('m'))->whereYear('created_at', date('Y'));
+    }
+
+    /**
+     * Get card info
+     * @return string
+     */
+    public function getCardInfo()
+    {
+        $transactions = $this->with('details')->thisMonth()->get();
+        $transactionTotal = count($transactions);
+        $omzet = $productSold = 0;
+        foreach ($transactions as $transaction) {
+            $omzet += $transaction->total;
+            foreach ($transaction->details as $value) {
+                $productSold += $value->qty;
+            }
+        }
+
+        return [
+            'transaction' => $transactionTotal,
+            'product_sold' => $productSold,
+            'omzet' => 'Rp ' . number_format($omzet,0,',','.')
+        ];
+    }
+
+    /**
      * Get Datatable Data
      * @return array
      */
     public function datatable()
     {
-        $results = $this->with(['user', 'detail'])->where('user_id', auth()->id())->orderBy('number', 'desc')->get();
+        $results = $this->with(['user', 'details'])->where('user_id', auth()->id())->orderBy('number', 'desc')->get();
         return Datatables::of($results)
             ->editColumn('created_at', function ($data) {
                 return date('l, d F Y - H:i', strtotime($data->created_at));
@@ -78,6 +110,48 @@ class Transaction extends Model
                 return $html;
             })
             ->rawColumns(['is_paid'])
+            ->make(true);
+    }
+
+    /**
+     * Get Datatable Data for Admin
+     * @return array
+     */
+    public function datatableForAdmin()
+    {
+        $results = $this->with(['user', 'details'])->orderBy('number', 'desc')->get();
+        return Datatables::of($results)
+             ->editColumn('number', function ($data) {
+                $html = '<a class="btn-admin-preview-transactions" data-id="'. $data->id .'">'. $data->number .'</a>';
+                return $html;
+            })
+            ->editColumn('created_at', function ($data) {
+                return date('l, d F Y - H:i', strtotime($data->created_at));
+            })
+            ->editColumn('total', function ($data) {
+                return 'Rp '. number_format($data->total,0,',','.');
+            })
+            ->editColumn('status', function ($data) {
+                return strtoupper($data->status);
+            })
+            ->editColumn('is_paid', function ($data) {
+                if($data->is_paid == 1) {
+                    $html = '<span class="text-success">Terverifikasi</span>';
+                } else if(empty($data->proof)) {
+                    $html = '<span class="text-danger">Belum dibayar</span>';
+                } else {
+                    $html = '<span class="text-warning">Menunggu verifikasi penjual</span>';
+                }
+                return $html;
+            })
+            ->editColumn('action', function ($data) {
+                $html = '
+                <button id="adminButtonModalTransactions" class="btn btn-danger btn-admin-transactions btn-icon" proof="' . (!empty($data->proof) ? asset($data->proof) : '') . '" is-paid="' . $data->is_paid . '" transaction-number="' . $data->number . '" status="' . $data->status . '" data-id="' . $data->id .'">
+                    Ubah Status
+                </button>';
+                return $data->status == 'selesai' ? '' : $html;
+            })
+            ->rawColumns(['number','is_paid', 'action'])
             ->make(true);
     }
 }

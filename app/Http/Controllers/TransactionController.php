@@ -26,7 +26,7 @@ class TransactionController extends Controller
      */
     public function index()
     {
-        return view('web.user.transactions');
+        return view('web.user.transaction');
     }
 
     /**
@@ -36,7 +36,7 @@ class TransactionController extends Controller
      */
     public function create()
     {
-        //
+        abort(404);
     }
 
     /**
@@ -83,7 +83,7 @@ class TransactionController extends Controller
      */
     public function show(Transaction $transaction)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -94,7 +94,7 @@ class TransactionController extends Controller
      */
     public function edit(Transaction $transaction)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -106,7 +106,7 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -117,7 +117,7 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        abort(404);
     }
 
     /**

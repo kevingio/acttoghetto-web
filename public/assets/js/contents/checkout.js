@@ -38,7 +38,8 @@ $(document).ready(function () {
                             swal("Transaksi Berhasil", "Segera lakukan pembayaran terhadap transaksi Anda!", "success").then(function () {
                                 localStorage.clear();
                                 $('.header-cart-wrapitem').empty();
-                                $('.table-body-cart').empty();
+                                $('.header-cart-total span.total-cart').text('0');
+                                $('.cart-header span.header-icons-noti').text('0');
                                 $('#transaction-number').text(response.number);
                                 $('#transaction-total').text('Rp ' + totalInCart.toLocaleString(
                                     "de-DE", { minimumFractionDigits: 2 }

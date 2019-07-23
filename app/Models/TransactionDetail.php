@@ -15,6 +15,7 @@ class TransactionDetail extends Model
      */
     protected $fillable = [
         'product_id',
+        'transaction_id',
         'price',
         'qty',
         'size_id',
@@ -28,5 +29,14 @@ class TransactionDetail extends Model
     public function size()
     {
         return $this->belongsTo('App\Models\Size');
+    }
+
+    /**
+     * Relation to Size
+     *
+     */
+    public function product()
+    {
+        return $this->belongsTo('App\Models\Product');
     }
 }

@@ -36,7 +36,7 @@ $(document).ready(function () {
             }
         },
         initDatatable: function () {
-            $table = $page.find('#transactionDatatable');
+            var $table = $page.find('#transactionDatatable');
             myTransactionsPage.dtTable = $table.DataTable({
                 "aaSorting": [],
                 "pageLength": 5,
@@ -44,7 +44,6 @@ $(document).ready(function () {
                 "serverSide": true,
                 "searching": true,
                 "lengthChange": false,
-                "responsive": true,
                 "oLanguage": {
                     "sSearch": "Cari Nomor Transaksi"
                 },
