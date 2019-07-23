@@ -82,3 +82,5 @@ mix.scripts([
         'public/assets/css/admin/style.css',
         'public/assets/css/admin/custom.css',
     ], 'public/css/admin.css');
+
+    mix.version();
