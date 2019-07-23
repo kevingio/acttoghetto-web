@@ -27,28 +27,28 @@
 	</div>
 
 	<!-- Product Detail -->
-	<div class="container bgwhite p-t-35 p-b-80">
+	<div class="container bgwhite p-t-35 p-b-80" id="productDetailPage">
 		<div class="flex-w flex-sb">
 			<div class="w-size13 p-t-30 respon5">
 				<div class="wrap-slick3 flex-sb flex-w">
 					<div class="wrap-slick3-dots"></div>
 
 					<div class="slick3">
-						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}">
+						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : $product->images[0]->thumbnail }}">
 							<div class="wrap-pic-w">
-								<img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/720/960' }}" class="product-detail-main-img" alt="Image-1">
+								<img src="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : $product->images[0]->path }}" class="product-detail-main-img" alt="Image-1">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}">
+						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[1]->thumbnail) : $product->images[1]->thumbnail }}">
 							<div class="wrap-pic-w">
-								<img src="{{ count($product->images) > 0 ? asset($product->images[1]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/720/960' }}" alt="Image-2">
+								<img src="{{ count($product->images) > 0 ? asset($product->images[1]->thumbnail) : $product->images[1]->path }}" alt="Image-2">
 							</div>
 						</div>
 
-						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[0]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/240/320' }}">
+						<div class="item-slick3" data-thumb="{{ count($product->images) > 0 ? asset($product->images[2]->thumbnail) : $product->images[2]->thumbnail }}">
 							<div class="wrap-pic-w">
-								<img src="{{ count($product->images) > 0 ? asset($product->images[2]->thumbnail) : 'https://picsum.photos/id/' . rand(1,100) . '/720/960' }}" alt="Image-3">
+								<img src="{{ count($product->images) > 0 ? asset($product->images[2]->thumbnail) : $product->images[2]->path }}" alt="Image-3">
 							</div>
 						</div>
 					</div>

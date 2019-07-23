@@ -72,9 +72,7 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->all();
-        $this->product->create($data);
-        return 'sukses';
+        abort(404);
     }
 
     /**
@@ -97,7 +95,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        abort(404);
     }
 
     /**
@@ -109,9 +107,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        $data = $request->all();
-        $product->update($data);
-        return 'sukses';
+        abort(404);
     }
 
     /**
@@ -122,7 +118,6 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        $product->delete();
-        return 'sukses';
+        abort(404);
     }
 }

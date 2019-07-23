@@ -24,7 +24,7 @@ class RedirectIfAuthenticated
                     break;
 
                 default:
-                    return redirect('/admin');
+                    return redirect('/admin/transaction');
                     break;
             }
         }

@@ -13,29 +13,58 @@
 
 Auth::routes();
 
-Route::get('/checkout', 'HomeController@myCart');
+Route::get('/admin/banner', function () {
+    return view('admin.web.banner.index');
+});
 
 Route::get('/', 'HomeController@landing')->name('landing');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', function () {
+    return redirect('/admin/transaction');
+});
 
-Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
+Route::middleware(['role:3'])->group(function () {
+    Route::get('/checkout', 'HomeController@myCart');
 
-Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::post('/transaction/{id}/upload', 'TransactionController@uploadProof')->name('upload-proof');
+    Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
-Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
+    Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
 
-Route::resource('brand', 'BrandController');
+    Route::post('/transaction/{id}/upload', 'TransactionController@uploadProof')->name('upload-proof');
 
-Route::resource('category', 'CategoryController');
+    Route::post('/change-password', 'HomeController@changePassword')->name('change-password');
 
-Route::resource('product', 'ProductController');
+    Route::resource('product', 'ProductController');
 
-Route::resource('transaction', 'TransactionController');
+    Route::resource('transaction', 'TransactionController');
 
-/* Ajax from Admin Dashboard */
-Route::any('ajax/{page}', function ($page) {
-    return app()->call('\App\Http\Controllers\\'.studly_case($page).'Controller@ajax');
+    /* Ajax from Customer */
+    Route::any('ajax/{page}', function ($page) {
+        return app()->call('\App\Http\Controllers\\'.studly_case($page).'Controller@ajax');
+    });
+});
+
+Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(function () {
+    Route::resource('transaction', 'Admin\TransactionController');
+
+    Route::resource('brand', 'Admin\BrandController');
+
+     Route::resource('banner', 'Admin\BannerController');
+
+    Route::resource('product', 'Admin\ProductController');
+
+    Route::resource('category', 'Admin\CategoryController');
+
+    Route::resource('size', 'Admin\SizeController');
+
+    Route::post('update-profile', 'Admin\UserController@updateProfile');
+
+    Route::post('change-password', 'Admin\UserController@changePassword');
+
+    /* Ajax from Admin Dashboard */
+    Route::any('ajax/{page}', function ($page) {
+        return app()->call('\App\Http\Controllers\Admin\\'.studly_case($page).'Controller@ajax');
+    });
 });
