@@ -163,3 +163,8 @@ body, #sidebar-menu > ul > li > a, .badge {
     align-items: center;
     transition: all 0.4s;
 }
+
+.nav-user img {
+    width: 30px!important;
+    height: 30px!important;
+}

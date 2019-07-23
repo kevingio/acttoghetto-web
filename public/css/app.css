@@ -10852,3 +10852,32 @@ textarea{
         margin-left: 25%;
     }
 }
+
+
+.bar1 {
+    -webkit-transform: rotate(-90deg) translate(-5px, 0px);
+    transform: rotate(-90deg) translate(-5px, 0px);
+}
+
+.bar2 {
+    -webkit-transform: rotate(0deg) translate(0px, -5px);
+    transform: rotate(0deg) translate( 0px, -5px);
+}
+
+.bar1, .bar2 {
+    width: 35px;
+    height: 5px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+.change .bar1 {
+    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+    transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+.change .bar2 {
+    -webkit-transform: rotate(45deg) translate(0px, 0px);
+    transform: rotate(45deg) translate(-2px, 0px);
+}
