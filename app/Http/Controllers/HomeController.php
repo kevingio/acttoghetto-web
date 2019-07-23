@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\User;
+use App\Models\Banner;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -14,10 +15,11 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Brand $brand, User $user)
+    public function __construct(Brand $brand, User $user, Banner $banner)
     {
         $this->brand = $brand;
         $this->user = $user;
+        $this->banner = $banner;
         $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing']]);
     }
 
@@ -30,7 +32,8 @@ class HomeController extends Controller
     {
         $brandsForMan = $this->brand->where('type', 'man')->orderBy('name')->get();
         $brandsForWoman = $this->brand->where('type', 'woman')->orderBy('name')->get();
-        return view('web.home', compact('brandsForMan', 'brandsForWoman'));
+        $banners = $this->banner->get();
+        return view('web.home', compact('brandsForMan', 'brandsForWoman', 'banners'));
     }
 
     /**
