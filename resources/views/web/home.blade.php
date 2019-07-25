@@ -191,7 +191,7 @@
                                     <img src="{{ empty($brand->image) ? asset('assets/images/item-02.jpg') : $brand->image  }}" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <div class="block2-btn-see-more w-size1 trans-0-4">
                                             <!-- Button -->
                                             <a href="{{ url('/product?brand=') . urlencode(strtolower($brand->name)) }}" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                 See More
@@ -222,7 +222,7 @@
                                     <img src="{{ empty($brand->image) ? asset('assets/images/item-02.jpg') : $brand->image  }}" alt="IMG-PRODUCT">
 
                                     <div class="block2-overlay trans-0-4">
-                                        <div class="block2-btn-addcart w-size1 trans-0-4">
+                                        <div class="block2-btn-see-more w-size1 trans-0-4">
                                             <a href="{{ url('/product?brand=') . urlencode(strtolower($brand->name)) }}" class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4">
                                                 See More
                                             </a>

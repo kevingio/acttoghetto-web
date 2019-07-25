@@ -1833,25 +1833,6 @@ $(document).ready(function () {
     }
 });
 
-$(document).ready(function () {
-    var $page = $('#topbarMenu');
-
-    var topbarMenu = {
-        init: function () {
-            this.customFunction();
-        },
-        customFunction: function () {
-            $('#top-bar').on('click', function (e) {
-                $(this).classList.toogle('change');
-            });
-        },
-    };
-
-    if ($page.length) {
-        topbarMenu.init();
-    }
-});
-
 
 
 $(document).ready(function () {
