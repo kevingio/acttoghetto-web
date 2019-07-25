@@ -1,14 +1,12 @@
 $(document).ready(function () {
-    var $page = $('#topbarMenu');
+    var $page = $('.nav-menu');
 
     var topbarMenu = {
         init: function () {
             this.customFunction();
         },
         customFunction: function () {
-            $('#topbarMenu .btn-show-menu-mobile').on('click', function (e) {
-                console.log('masuk');
-                
+            $('.nav-menu .btn-show-menu-mobile').on('click', function (e) {
                 if($(this).hasClass('change')){
                     $(this).removeClass('change')
                 } else {

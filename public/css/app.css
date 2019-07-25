@@ -8896,7 +8896,6 @@ iframe {
 ///////////////////////////////////////////////////////////
 */
 .header1 {
-  height: 125px;
   -webkit-transition: all 0.3s;
   -o-transition: all 0.3s;
   -moz-transition: all 0.3s;
@@ -9509,11 +9508,11 @@ li.sale-noti > a {
   display: none;
 }
 
-@media (min-width: 992px){
-  .wrap-side-menu {
-    display: none;
-  }
+
+.wrap-side-menu {
+  display: none;
 }
+
 
 /* ------------------------------------ */
 .item-topbar-mobile {
@@ -9717,19 +9716,6 @@ li.sale-noti > a {
     display: -moz-box;
     display: -ms-flexbox;
     display: flex !important;
-  }
-  .wrap_header {display: none;}
-
-  .container-menu-header-v3,
-  .container-menu-header-v2,
-  .container-menu-header
-  {display: none;}
-
-  .top-bar {display: none;}
-  header {height: auto !important;}
-
-  .container1-page {
-    margin-left: 0px;
   }
 }
 
@@ -10873,11 +10859,51 @@ textarea{
 }
 
 .change .bar1 {
-    -webkit-transform: rotate(-45deg) translate(-9px, 6px);
-    transform: rotate(-45deg) translate(-9px, 6px);
+    -webkit-transform: rotate(-45deg) translate(-8px, -0px);
+    transform: rotate(-45deg) translate(-8px, 0px);
 }
 
 .change .bar2 {
-    -webkit-transform: rotate(45deg) translate(0px, 0px);
-    transform: rotate(45deg) translate(-2px, 0px);
+    -webkit-transform: rotate(45deg) translate(-7px, 0px);
+    transform: rotate(45deg) translate(-7px, 0px);
+}
+
+.logo-home {
+    left: 52px;
+    top: 50%;
+    display: block;
+}
+
+.logo-home img {
+    max-height: 27px;
+}
+.nav-menu {
+    display: block;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.wrap-side-menu {
+    margin-top: 100px;
+}
+
+.block2-btn-see-more {
+    position: absolute;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    bottom: -45px;
+}
+
+.block2-overlay:hover .block2-btn-see-more {
+  bottom: 20px;
 }
