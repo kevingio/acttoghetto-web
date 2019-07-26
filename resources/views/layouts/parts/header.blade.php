@@ -1,6 +1,6 @@
 <header class="header1">
     <!-- Header desktop -->
-    <div class="container-menu-header">
+    <div class="container-menu-header position-inherit">
         <div class="wrap_header">
 
             <!-- Logo -->
@@ -58,11 +58,7 @@
         </div>
     </div>
 
-    <!-- Header Mobile -->
-    
-
-    <!-- Menu Mobile -->
-    <div class="wrap-side-menu" >
+    <div class="wrap-side-menu mt-0" >
         <nav class="side-menu">
             <ul class="main-menu text-center">
 

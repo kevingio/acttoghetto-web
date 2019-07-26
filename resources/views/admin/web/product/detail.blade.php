@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-                <a href="{{ url('/product?gender=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
+                <a href="{{ url('/product?type=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
                     {{ ucwords($product->brand->type) }}
                     <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
                 </a>
@@ -19,7 +19,7 @@
                 </span>
             </div>
         </div>
-        
+
         <div class="col-sm-12 col-md-2 mt-3">
             <ul class="list-style-none">
                 <li class="mb-3">
@@ -60,7 +60,7 @@
 
             <div class="row">
                 <div class="col-sm-12 col-md-6">
-                    <button type="button" onclick="window.location.href = '/admin/product/{{ $product->id }}/edit?type={{ $product->brand->type }}'" class="btn btn-warning w-100">Edit</button>  
+                    <button type="button" onclick="window.location.href = '/admin/product/{{ $product->id }}/edit?type={{ $product->brand->type }}'" class="btn btn-warning w-100">Edit</button>
                 </div>
                 <div class="col-sm-12 col-md-6">
                     <button class="btn btn-danger btn-admin-delete-product w-100" data-id="{{ $product->id }}" gender="{{ $product->brand->type }}">Delete</button>
