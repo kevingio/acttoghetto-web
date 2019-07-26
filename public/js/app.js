@@ -4093,7 +4093,7 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
-    var $page = $('.nav-menu');
+    var $page = $('.header1');
 
     var topbarMenu = {
         init: function () {
