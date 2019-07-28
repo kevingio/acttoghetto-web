@@ -3392,16 +3392,18 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
     }
 
     $(window).resize(function(){
-        // if($(window).width() >= 992){
-        //     if($('.wrap-side-menu').css('display') == 'block'){
-        //         $('.wrap-side-menu').css('display','none');
-        //         $('.btn-show-menu-mobile').toggleClass('is-active');
-        //     }
-        //     if($('.sub-menu').css('display') == 'block'){
-        //         $('.sub-menu').css('display','none');
-        //         $('.arrow-main-menu').removeClass('turn-arrow');
-        //     }
-        // }
+        if($(window).width() <= 600){
+            $('.logo-home img').css('width', '150px');
+            $('.linedivide1').css('display', 'none');
+
+            if ($(window).width() <= 300) {
+                $('.logo-home img').css('width', '100px');
+                $('.linedivide1').css('display', 'none');
+            }
+        } else {
+            $('.logo-home img').css('width', '242px');
+            $('.linedivide1').css('display', 'block');
+        }
     });
 
 
