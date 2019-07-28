@@ -196,3 +196,7 @@ textarea{
 .container-menu-header {
     position: relative;
 }
+
+nav .main-menu a {
+    padding: 0px!important;
+}
