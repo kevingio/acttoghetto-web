@@ -1503,9 +1503,19 @@ $(document).ready(function () {
             $("#form-edit-collection input[name=image]").on('change', function () {
                 self.readEditURL(this);
             });
-
+ 
             $("#form-add-collection input[name=image]").on('change', function () {
                 self.readAddURL(this);
+            });
+
+            $(document).on("click", '.pop', function () {
+                var $dialog = $('#imagePreviewModal').find(".modal-dialog");
+                var offset = ($(window).height() / 4);
+                let img = $(this).attr('src')
+                $dialog.css("margin-top", offset);
+
+                $('#imagePreview').attr('src', img);
+                $('#imagePreviewModal').modal('show');
             });
 
             $(document).on('click', '.btn-admin-edit-collection', function () {

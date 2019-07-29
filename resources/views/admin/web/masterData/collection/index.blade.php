@@ -45,8 +45,8 @@
                                 <tbody>
                                     <tr>
                                         <td class="text-center">1</td>
-                                        <td>
-                                            <img class="w-100" src="https://images.unsplash.com/photo-1486308510493-aa64833637bc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=60" alt="IMG-BENNER">
+                                        <td class="text-center">
+                                            <img class="img-small pop" src="https://images.unsplash.com/photo-1486308510493-aa64833637bc?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=700&amp;q=60" alt="IMG-BENNER">
                                         </td>
                                         <td class=" text-center">
                                             <button type="button" class="btn btn-outline-warning btn-admin-edit-collection btn-icon" data-img="" gender="" name="" data-id="">
@@ -68,5 +68,6 @@
         <!-- end row -->
         @include('admin.web.masterData.collection.modal-edit-collection')
         @include('admin.web.masterData.collection.modal-add-collection')
+        @include('admin.web.masterData.collection.preview')
     </div> <!-- container-fluid -->
 @endsection
