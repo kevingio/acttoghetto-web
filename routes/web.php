@@ -17,6 +17,14 @@ Route::get('/admin/banner', function () {
     return view('admin.web.banner.index');
 });
 
+Route::get('/admin/collection', function () {
+    return view('admin.web.masterData.collection.index');
+});
+
+Route::get('/collection', function () {
+    return view('web.collection.index');
+});
+
 Route::get('/', 'HomeController@landing')->name('landing');
 
 Route::get('/admin', function () {
