@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Brand;
 use App\Models\User;
 use App\Models\Banner;
+use App\Models\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -15,12 +16,13 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Brand $brand, User $user, Banner $banner)
+    public function __construct(Brand $brand, User $user, Banner $banner, Collection $collection)
     {
         $this->brand = $brand;
         $this->user = $user;
         $this->banner = $banner;
-        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing']]);
+        $this->collection = $collection;
+        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing', 'showCollection']]);
     }
 
     /**
@@ -64,6 +66,20 @@ class HomeController extends Controller
     public function myCart()
     {
         return view('web.user.checkout');
+    }
+
+    /**
+     * Show user cart
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showCollection(Request $request)
+    {
+        if(empty($request->volume)) {
+            return redirect('/home');
+        }
+        $collections = $this->collection->where('volume', $request->volume)->get();
+        return view('web.collection.index', compact('collections'));
     }
 
     /**
