@@ -13,14 +13,6 @@
 
 Auth::routes();
 
-Route::get('/admin/banner', function () {
-    return view('admin.web.banner.index');
-});
-
-Route::get('/admin/collection', function () {
-    return view('admin.web.masterData.collection.index');
-});
-
 Route::get('/collection', function () {
     return view('web.collection.index');
 });
@@ -66,6 +58,8 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(
     Route::resource('category', 'Admin\CategoryController');
 
     Route::resource('size', 'Admin\SizeController');
+
+    Route::resource('collection', 'Admin\CollectionController');
 
     Route::post('update-profile', 'Admin\UserController@updateProfile');
 

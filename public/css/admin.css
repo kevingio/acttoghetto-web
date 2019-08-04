@@ -42212,3 +42212,7 @@ body, #sidebar-menu > ul > li > a, .badge {
     width: 100px;
     height: auto;
 }
+
+.pointer {
+    cursor: pointer;
+}

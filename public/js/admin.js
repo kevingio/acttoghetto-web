@@ -897,8 +897,8 @@ $(document).ready(function () {
         dtTable: {},
         lengthTable: 0,
         init: function () {
-            this.customFunction(); 
-            this.initDatatable(); 
+            this.customFunction();
+            this.initDatatable();
         },
         customFunction: function () {
             let self = this;
@@ -957,11 +957,11 @@ $(document).ready(function () {
                 let title = $(this).attr('data-title')
                 let subtitle = $(this).attr('data-subTitle')
                 let image = $(this).attr('data-img')
-                
+
                 $('.wrapper-preview #previewEditImageBannerAdmin').attr('src', image);
                 $("#form-edit-banner input[name=title]").val(title);
                 $("#form-edit-banner input[name=subtitle]").val(subtitle);
-                
+
                 $('#adminModalEditBanner').modal('show');
             })
 
@@ -1015,7 +1015,7 @@ $(document).ready(function () {
              * Membatasi untuk menambah banner
              * jika banner yang sudah ada berjumlah 3
              */
-
+            adminBannerPage.lengthTable = adminBannerPage.dtTable.data().count()
             if ( adminBannerPage.lengthTable >= 3 ) {
                 adminBannerPage.dtTable.ajax.reload(null, false);
                 $('#form-add-banner').find("input[name!=type]").val('');
@@ -1044,7 +1044,7 @@ $(document).ready(function () {
                         });
 
                          /**
-                         * adminBannerPage.lengthTable 
+                         * adminBannerPage.lengthTable
                          * tampungan jumlah item data table
                          * menggunakan data().count()
                          * untuk mengambil jumlah item data table
@@ -1079,7 +1079,6 @@ $(document).ready(function () {
                              * menggunakan data().count()
                              * untuk mengambil jumlah item data table
                              */
-                            adminBannerPage.lengthTable = adminBannerPage.dtTable.data().count();
                             adminBannerPage.dtTable.ajax.reload(null, false);
                         }
                     });
@@ -1133,10 +1132,6 @@ $(document).ready(function () {
                     { targets: 'text-center', className: 'text-center' },
                 ]
             });
-            
-            // if (adminBannerPage.dtTable ==) {
-            //     alert('Empty table');
-            // }
         }
     };
 
@@ -1500,10 +1495,14 @@ $(document).ready(function () {
             let dataId = null;
             var count = 1
 
+            $(document).on('change', 'select[name=volume]', function () {
+                adminCollectionPage.dtTable.ajax.reload(null, false);
+            });
+
             $("#form-edit-collection input[name=image]").on('change', function () {
                 self.readEditURL(this);
             });
- 
+
             $("#form-add-collection input[name=image]").on('change', function () {
                 self.readAddURL(this);
             });
@@ -1520,6 +1519,11 @@ $(document).ready(function () {
 
             $(document).on('click', '.btn-admin-edit-collection', function () {
                 dataId = $(this).attr('data-id')
+                let volume = $(this).attr('data-volume')
+                let dataImg = $(this).attr('data-img')
+
+                $('#previewEditImageCollectionAdmin').attr('src', dataImg);
+                $('#form-edit-collection select[name=volume]').val(volume)
                 $('#adminModalEditCollection').modal('show');
             })
 
@@ -1537,11 +1541,16 @@ $(document).ready(function () {
             })
 
             $(document).on('submit', '#form-edit-collection', function (e) {
-                self.editCollection(e, dataId);
+                e.preventDefault()
+                var formData = new FormData(this);
+                formData.append('_method', 'PATCH')
+                self.editCollection(dataId, formData);
             })
 
             $(document).on('submit', '#form-add-collection', function (e) {
-                self.addCollection(e);
+                e.preventDefault();
+                var formData = new FormData(this);
+                self.addCollection(formData);
             })
 
             $(document).on('click', '.btn-admin-save-add-collection', function () {
@@ -1583,78 +1592,98 @@ $(document).ready(function () {
                 buttons: true,
                 dangerMode: true,
             })
-                // .then((willDelete) => {
-                //     if (willDelete) {
-                //         $.ajax({
-                //             url: "/admin/collection/" + dataId,
-                //             type: 'DELETE',
-                //             success: function (response) {
-                //                 adminCollectionPage.dtTable.ajax.reload(null, false);
-                //                 swal({
-                //                     title: "Berhasil!",
-                //                     text: "Collection telah dihapus",
-                //                     icon: "success"
-                //                 });
-                //             }
-                //         });
-                //     }
-                // });
+            .then((willDelete) => {
+                if (willDelete) {
+                    $.ajax({
+                        url: "/admin/collection/" + dataId,
+                        type: 'DELETE',
+                        success: function (response) {
+                            adminCollectionPage.dtTable.ajax.reload(null, false);
+                            swal({
+                                title: "Berhasil!",
+                                text: "Collection telah dihapus",
+                                icon: "success"
+                            });
+                        }
+                    });
+                }
+            });
         },
-        editCollection: function (e, dataId) {
-            e.preventDefault()
-            let data = $('#form-edit-collection').serializeArray();
-            // $.ajax({
-            //     url: "/admin/collection/" + dataId,
-            //     data: data,
-            //     type: 'PUT',
-            //     success: function (response) {
-            //         adminCollectionPage.dtTable.ajax.reload(null, false);
-            //         $('#adminModalEditCollection').modal('hide');
-            //         swal({
-            //             title: "Berhasil!",
-            //             text: "Collection telah diubah",
-            //             icon: "success"
-            //         });
-            //     }
-            // });
+        editCollection: function (dataId, data) {
+            $.ajax({
+                url: "/admin/collection/" + dataId,
+                type: "POST",
+                data: data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (response) {
+                    $('#form-edit-collection').find("input").val('');
+                    $('button.close').click();
+                    adminCollectionPage.dtTable.ajax.reload(null, false);
+                    $('#previewEditImageCollectionAdmin').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
+                    swal({
+                        title: "Berhasil!",
+                        text: "Collection telah diubah!",
+                        icon: "success"
+                    });
+                },
+                error: function (reponse) {
+                    swal({
+                        title: "Gagal!",
+                        text: "Ada masalah pada server!",
+                        icon: "success"
+                    });
+                }
+            });
         },
-        addCollection: function (e) {
-            e.preventDefault()
-            let data = $('#form-add-collection').serializeArray();
-            // $.post('/admin/collection', data)
-            //     .done(function () {
-            //         $('input[type=text]').val('')
-            //         adminCollectionPage.dtTable.ajax.reload(null, false);
-            //         $('#adminModalAddCollection').modal('hide');
-            //         swal({
-            //             title: "Berhasil!",
-            //             text: "Collection telah ditambah",
-            //             icon: "success"
-            //         });
-            //     })
+        addCollection: function (data) {
+            $.ajax({
+                url: "/admin/collection",
+                type: "POST",
+                data: data,
+                contentType: false,
+                cache: false,
+                processData: false,
+                success: function (response) {
+                    $('#form-add-collection').find("input").val('');
+                    $('button.close').click();
+                    adminCollectionPage.dtTable.ajax.reload(null, false);
+                    $('#previewAddImageCollectionAdmin').attr('src', 'https://dummyimage.com/200x100/ffffff/fff');
+                    swal({
+                        title: "Berhasil!",
+                        text: "Collection telah ditambah!",
+                        icon: "success"
+                    });
+                },
+                error: function (reponse) {
+                    swal({
+                        title: "Gagal!",
+                        text: "Telah mencapai 10 gambar pada edisi ini!",
+                        icon: "success"
+                    });
+                }
+            });
         },
         initDatatable: function () {
             var $table = $page.find('#adminCollectionDataTable');
             adminCollectionPage.dtTable = $table.DataTable({
                 "aaSorting": [],
                 "pageLength": 5,
-                // "processing": true,
-                // "serverSide": true,
+                "processing": true,
+                "serverSide": true,
                 "searching": false,
                 "lengthChange": false,
-                "oLanguage": {
-                    "sSearch": "Cari Edisi :"
-                },
                 "columns": [
-                    { data: 'name', name: 'name' },
-                    { data: 'type', name: 'type' },
+                    { data: 'volume', name: 'volume' },
+                    { data: 'image', name: 'image' },
                     { data: 'action', name: 'action' },
                 ],
-                // "ajax": {
-                //     url: "/admin/ajax/collection",
-                //     type: "POST",
-                //     data: function (d) { d.mode = 'datatable'; }
-                // },
+                "ajax": {
+                    url: "/admin/ajax/collection",
+                    type: "POST",
+                    data: function (d) { d.mode = 'datatable'; d.volume = $('select[name=volume]').val() }
+                },
                 "columnDefs": [
                     { targets: 'no-sort', orderable: false },
                     { targets: 'no-search', searchable: false },

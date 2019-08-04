@@ -12,16 +12,15 @@
                 <div class="modal-body row">
                     <div class="col-sm-12">
                         <label class="mr-sm-2">Edisi</label>
-                        <select class="custom-select mr-sm-2" name="">
-                            <option selected>Choose...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <select class="custom-select mr-sm-2" name="volume" required>
+                            @for($i = 1; $i <= 5; $i++)
+                            <option value="{{ $i }}">Edisi {{ $i }}</option>
+                            @endfor
                         </select>
                     </div>
 
                     <div class="col-sm-12 mt-3">
-                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0" required/>
+                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0"/>
                         <label for="editImageCollectionUpload"></label>
                     </div>
 

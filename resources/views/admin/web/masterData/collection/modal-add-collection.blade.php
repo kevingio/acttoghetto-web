@@ -12,11 +12,10 @@
                 <div class="modal-body row">
                     <div class="col-sm-12">
                         <label class="mr-sm-2">Edisi</label>
-                        <select class="custom-select mr-sm-2" name="">
-                            <option selected>Choose...</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                        <select class="custom-select mr-sm-2" name="volume">
+                            @for($i = 1; $i <= 5; $i++)
+                            <option value="{{ $i }}">Edisi {{ $i }}</option>
+                            @endfor
                         </select>
                     </div>
 
@@ -31,7 +30,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger btn-admin-save-add-collection"><i class="fas fa-save mr-2"></i> Simpan</button>
+                    <button type="submit" class="btn btn-danger btn-admin-save-add-collection"><i class="fas fa-save mr-2"></i> Tambah</button>
                 </div>
             </form>
         </div>

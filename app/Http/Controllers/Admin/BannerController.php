@@ -45,9 +45,9 @@ class BannerController extends Controller
         $data = $request->all();
         if($request->hasFile('image')) {
             $image = $request->file('image');
-            $filename = str_random(28) . '.png';
-            $path = 'public/banner/' . $filename;
-            $file = Image::make($image->getRealPath())->encode('png',75);
+            $filename = str_random(28) . '.jpg';
+            $path = 'public/banners/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('jpg',75);
             Storage::put($path, (string) $file);
             $data['image'] = Storage::url($path);
         }
@@ -95,9 +95,9 @@ class BannerController extends Controller
             }
 
             $image = $request->file('image');
-            $filename = str_random(28) . '.png';
-            $path = 'public/brands/' . $filename;
-            $file = Image::make($image->getRealPath())->encode('png',75);
+            $filename = str_random(28) . '.jpg';
+            $path = 'public/banners/' . $filename;
+            $file = Image::make($image->getRealPath())->encode('jpg',75);
             Storage::put($path, (string) $file);
             $data['image'] = Storage::url($path);
         }

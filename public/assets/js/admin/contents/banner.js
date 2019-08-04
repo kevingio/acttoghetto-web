@@ -5,8 +5,8 @@ $(document).ready(function () {
         dtTable: {},
         lengthTable: 0,
         init: function () {
-            this.customFunction(); 
-            this.initDatatable(); 
+            this.customFunction();
+            this.initDatatable();
         },
         customFunction: function () {
             let self = this;
@@ -65,11 +65,11 @@ $(document).ready(function () {
                 let title = $(this).attr('data-title')
                 let subtitle = $(this).attr('data-subTitle')
                 let image = $(this).attr('data-img')
-                
+
                 $('.wrapper-preview #previewEditImageBannerAdmin').attr('src', image);
                 $("#form-edit-banner input[name=title]").val(title);
                 $("#form-edit-banner input[name=subtitle]").val(subtitle);
-                
+
                 $('#adminModalEditBanner').modal('show');
             })
 
@@ -123,7 +123,7 @@ $(document).ready(function () {
              * Membatasi untuk menambah banner
              * jika banner yang sudah ada berjumlah 3
              */
-
+            adminBannerPage.lengthTable = adminBannerPage.dtTable.data().count()
             if ( adminBannerPage.lengthTable >= 3 ) {
                 adminBannerPage.dtTable.ajax.reload(null, false);
                 $('#form-add-banner').find("input[name!=type]").val('');
@@ -152,7 +152,7 @@ $(document).ready(function () {
                         });
 
                          /**
-                         * adminBannerPage.lengthTable 
+                         * adminBannerPage.lengthTable
                          * tampungan jumlah item data table
                          * menggunakan data().count()
                          * untuk mengambil jumlah item data table
@@ -187,7 +187,6 @@ $(document).ready(function () {
                              * menggunakan data().count()
                              * untuk mengambil jumlah item data table
                              */
-                            adminBannerPage.lengthTable = adminBannerPage.dtTable.data().count();
                             adminBannerPage.dtTable.ajax.reload(null, false);
                         }
                     });
@@ -241,10 +240,6 @@ $(document).ready(function () {
                     { targets: 'text-center', className: 'text-center' },
                 ]
             });
-            
-            // if (adminBannerPage.dtTable ==) {
-            //     alert('Empty table');
-            // }
         }
     };
 
