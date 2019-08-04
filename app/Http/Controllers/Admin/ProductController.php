@@ -59,7 +59,7 @@ class ProductController extends Controller
         }
         $brands = $this->brand->where('type', $request->type)->get();
         $categories = $this->category->where('type', $request->type)->get();
-        $sizes = $this->size->get();
+        $sizes = $this->size->where('category_id', $categories[0]->id)->get();
         return view('admin.web.product.add-product', compact('brands', 'categories', 'sizes'));
     }
 

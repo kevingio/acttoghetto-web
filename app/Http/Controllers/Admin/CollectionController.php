@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Banner;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Collection;
 use Illuminate\Support\Facades\Storage;
 use Image;
 
-class BannerController extends Controller
+class CollectionController extends Controller
 {
-    function __construct(Banner $banner) {
-        $this->banner = $banner;
+
+    function __construct(Collection $collection) {
+        $this->collection = $collection;
     }
 
     /**
@@ -21,7 +22,7 @@ class BannerController extends Controller
      */
     public function index()
     {
-        return view('admin.web.banner.index');
+        return view('admin.web.masterData.collection.index');
     }
 
     /**
@@ -43,18 +44,26 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        if($request->hasFile('image')) {
-            $image = $request->file('image');
-            $filename = str_random(28) . '.jpg';
-            $path = 'public/banners/' . $filename;
-            $file = Image::make($image->getRealPath())->encode('jpg',75);
-            Storage::put($path, (string) $file);
-            $data['image'] = Storage::url($path);
+        $count = $this->collection->where('volume', $data['volume'])->count();
+        if($count <= 10) {
+            if($request->hasFile('image')) {
+                $image = $request->file('image');
+                $filename = str_random(28) . '.jpg';
+                $path = 'public/collections/' . $filename;
+                $file = Image::make($image->getRealPath())->encode('jpg',75);
+                Storage::put($path, (string) $file);
+                $data['path'] = Storage::url($path);
+                $data['size'] = $file->filesize();
+            }
+            $this->collection->create($data);
+            return response()->json([
+                'status' => 'data created'
+            ], 201);
+        } else {
+            return response()->json([
+                'message' => 'sudah melewati kuota'
+            ], 400);
         }
-        $this->banner->create($data);
-        return response()->json([
-            'status' => 'data created'
-        ], 201);
     }
 
     /**
@@ -63,9 +72,9 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Banner $banner)
+    public function show($id)
     {
-        return $banner;
+        abort(404);
     }
 
     /**
@@ -74,7 +83,7 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Banner $banner)
+    public function edit($id)
     {
         abort(404);
     }
@@ -86,22 +95,22 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Banner $banner)
+    public function update(Request $request, Collection $collection)
     {
         $data = $request->all();
         if($request->hasFile('image')) {
-            if(!strpos($banner->image, 'http')) {
-                Storage::delete(str_replace('storage', 'public', $banner->image));
+            if(!strpos($collection->path, 'http')) {
+                Storage::delete(str_replace('storage', 'public', $collection->path));
             }
 
             $image = $request->file('image');
             $filename = str_random(28) . '.jpg';
-            $path = 'public/banners/' . $filename;
+            $path = 'public/brands/' . $filename;
             $file = Image::make($image->getRealPath())->encode('jpg',75);
             Storage::put($path, (string) $file);
-            $data['image'] = Storage::url($path);
+            $data['path'] = Storage::url($path);
         }
-        $banner->update($data);
+        $collection->update($data);
         return response()->json([
             'status' => 'data edited'
         ], 200);
@@ -113,12 +122,13 @@ class BannerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Banner $banner)
+    public function destroy($id)
     {
-        if(!strpos($banner->image, 'http')) {
-            Storage::delete(str_replace('storage', 'public', $banner->image));
+        $collection = $this->collection->find($id);
+        if(!strpos($collection->path, 'http')) {
+            Storage::delete(str_replace('storage', 'public', $collection->path));
         }
-        $banner->delete();
+        $collection->delete();
         return response()->json([
             'status' => 'deleted',
         ], 200);
@@ -133,7 +143,7 @@ class BannerController extends Controller
     {
         switch ($request->mode) {
             case 'datatable':
-                return $this->banner->datatableForAdmin();
+                return $this->collection->datatableForAdmin($request->volume);
                 break;
         }
     }
