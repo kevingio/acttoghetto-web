@@ -52,14 +52,12 @@
     <div class="wrap-side-menu mt-0" >
         <nav class="side-menu">
             <ul class="main-menu text-center">
-                
+
                 <li>
                     <h5 class="text-danger font-weight-bold mt-3">Look Book</h5>
-                    <a href="#" class="rounded-style my-2">1</a>
-                    <a href="#" class="rounded-style my-2">2</a>
-                    <a href="#" class="rounded-style my-2">3</a>
-                    <a href="#" class="rounded-style my-2">4</a>
-                    <a href="#" class="rounded-style my-2">5</a>
+                    @for($i = 1; $i <= 5; $i++)
+                    <a href="{{ '/collection?volume=' . $i }}" class="rounded-style my-2">{{ $i }}</a>
+                    @endfor
                 </li>
                 <li @if(request()->is('home')) class="item-menu-mobile" @endif>
                     <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-danger" @endif>Home</a>
@@ -71,14 +69,14 @@
 
                 @if(auth()->check())
                 <li @if(request()->is('profile')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('show-profile') }}" 
+                    <a href="{{ route('show-profile') }}"
                         @if(!request()->is('profile')) class="text-danger" @endif>
                         Profile
                     </a>
                 </li>
-                    
+
                 <li @if(request()->is('transaction')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('transaction.index') }}" 
+                    <a href="{{ route('transaction.index') }}"
                         @if(!request()->is('transaction')) class="text-danger" @endif>
                         My Transactions
                     </a>
@@ -96,7 +94,7 @@
                         {{ csrf_field() }}
                     </form>
                 </li>
-                
+
                 @else
                 <li class="mb-1">
                     <a href="{{ route('login') }}" class="text-danger font-weight-bold">
