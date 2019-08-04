@@ -111,8 +111,12 @@ $(document).ready(function () {
                 })
         },
         initSelect2: function () {
-            $('select[name=category_id]').select2({
-                dropdownParent: $('.modal')
+            $('#form-add-size select[name=category_id]').select2({
+                dropdownParent: $('#adminModalAddSize')
+            });
+
+            $('#form-edit-size select[name=category_id]').select2({
+                dropdownParent: $('#adminModalEditSize')
             });
         },
         initDatatable: function () {

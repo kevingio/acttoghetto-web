@@ -34,7 +34,7 @@ class Banner extends Model
                 return $data->subtitle;
             })
             ->editColumn('image', function ($data) {
-                $html = '<img src="' . $data->image . '" class="img-fluid pop" data-img="' . $data->image . '" />';
+                $html = '<img src="' . $data->image . '" class="img-fluid pop pointer" data-img="' . $data->image . '" />';
                 return $html;
             })
             ->editColumn('action', function ($data) {

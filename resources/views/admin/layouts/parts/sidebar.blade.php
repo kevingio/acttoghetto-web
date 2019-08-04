@@ -73,6 +73,12 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="/admin/collection" class="waves-effect">
+                                <span> Collection </span>
+                            </a>
+                        </li>
+
                     </ul>
                 </li>
 

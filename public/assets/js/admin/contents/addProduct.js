@@ -19,7 +19,7 @@ $(document).ready(function () {
                $(this).siblings().text(fileName);
                 self.readURL(this);
             });
-
+            
             $('.select-category').on('change', function (e) {
                 optionSelected = $("option:selected", this).val();
                 $('.select-size').empty();
@@ -48,7 +48,6 @@ $(document).ready(function () {
                 url: '/admin/ajax/size',
                 data: { mode: 'select-size', category_id: value },
             }).done((res) => {
-                console.log(res);
                 res.map((item, index) => {
                     $('.select-size').append('<option>' + item.text + '</option>');
                 });

@@ -14,15 +14,6 @@
                     <div class="bar1"></div>
                     <div class="bar2"></div>
                 </div>
-                <!-- <ul class="main_menu">
-                    <li @if(request()->is('home')) class="sale-noti" @endif>
-                        <a href="{{ route('home') }}">Home</a>
-                    </li>
-
-                    <li @if(request()->is('product') || request()->is('product/*')) class="sale-noti" @endif>
-                        <a href="{{ url('/product') }}">Products</a>
-                    </li>
-                </ul> -->
             </nav>
 
             <!-- Header Icon -->
@@ -61,7 +52,15 @@
     <div class="wrap-side-menu mt-0" >
         <nav class="side-menu">
             <ul class="main-menu text-center">
-
+                
+                <li>
+                    <h5 class="text-danger font-weight-bold mt-3">Look Book</h5>
+                    <a href="#" class="rounded-style my-2">1</a>
+                    <a href="#" class="rounded-style my-2">2</a>
+                    <a href="#" class="rounded-style my-2">3</a>
+                    <a href="#" class="rounded-style my-2">4</a>
+                    <a href="#" class="rounded-style my-2">5</a>
+                </li>
                 <li @if(request()->is('home')) class="item-menu-mobile" @endif>
                     <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-danger" @endif>Home</a>
                 </li>

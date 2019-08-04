@@ -10915,3 +10915,18 @@ textarea{
 nav .main-menu a {
     padding: 0px!important;
 }
+
+.rounded-style {
+    color: #dc3545!important;
+    line-height: 20px!important;
+    border: 1px solid #dc3545;
+    border-radius: 100%;
+    height: 20px;
+    width: 20px;
+    display: inline-block;
+}
+
+.rounded-style:hover {
+    background-color: #dc3545;
+    color: #fff!important;
+}

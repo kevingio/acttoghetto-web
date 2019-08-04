@@ -168,3 +168,12 @@ body, #sidebar-menu > ul > li > a, .badge {
     width: 30px!important;
     height: 30px!important;
 }
+
+.img-small {
+    width: 100px;
+    height: auto;
+}
+
+.pointer {
+    cursor: pointer;
+}
