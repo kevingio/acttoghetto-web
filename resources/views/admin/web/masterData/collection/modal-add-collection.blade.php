@@ -11,6 +11,17 @@
                 </div>
                 <div class="modal-body row">
                     <div class="col-sm-12">
+                        <div class="alert alert-warning alert-dismissible">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                            <strong>Warning!</strong> Urutan upload menentukan tampilan pada bagian collections. <strong>Upload</strong>, dimulai dari atas ke bawah.
+                            <div class="text-center">
+                                <p>< Gambar 1 ></p>
+                                <p>< Gambar 2 > , < Gambar 3 > </p>
+                                <p>< Gambar 4 > , < Gambar 5 > , < Gambar 6 > </p>
+                                <p>< Gambar 7 > , < Gambar 8 > </p>
+                                <p>< Gambar 9 ></p>
+                            </div>
+                        </div>
                         <label class="mr-sm-2">Edisi</label>
                         <select class="custom-select mr-sm-2" name="volume">
                             @for($i = 1; $i <= 5; $i++)
