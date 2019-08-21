@@ -13,10 +13,6 @@
 
 Auth::routes();
 
-Route::get('/collection', function () {
-    return view('web.collection.index');
-});
-
 Route::get('/', 'HomeController@landing')->name('landing');
 
 Route::get('/admin', function () {
@@ -29,6 +25,8 @@ Route::middleware(['role:3'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
+
+    Route::get('/lookbook/{volume}', 'HomeController@showLookbook')->name('show-lookbook');
 
     Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
 

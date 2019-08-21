@@ -31,7 +31,7 @@
                     </div>
 
                     <div class="col-sm-12 mt-3">
-                        <input type="file" name="image" accept=".png, .jpg, .jpeg" style="border: 0" required/>
+                        <input type="file" name="image" accept="image/*" style="border: 0" required/>
                         <label for="editImageCollectionUpload"></label>
                     </div>
 

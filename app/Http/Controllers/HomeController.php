@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use App\Models\User;
+use App\Models\Collection;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,12 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Brand $brand, User $user)
+    public function __construct(Brand $brand, User $user, Collection $collection)
     {
         $this->brand = $brand;
         $this->user = $user;
-        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing']]);
+        $this->collection = $collection;
+        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing', 'showLookbook']]);
     }
 
     /**
@@ -51,6 +53,20 @@ class HomeController extends Controller
     public function getProfile()
     {
         return view('web.user.profile');
+    }
+
+    /**
+     * Show look book
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    public function showLookbook($volume)
+    {
+        $collection = $this->collection->where('volume', $volume)->oldest()->get();
+        if(sizeof($collection) === 0) {
+            abort(404);
+        }
+        return view('web.collection.index', compact('collection'));
     }
 
     /**
