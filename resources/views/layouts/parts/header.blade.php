@@ -53,11 +53,11 @@
         <nav class="side-menu">
             <ul class="main-menu text-center">
 
-                <li>
+                <li class="mb-2">
                     <h5 class="text-danger font-weight-bold mt-3">Look Book</h5>
-                    @for($i = 1; $i <= 5; $i++)
-                    <a href="{{ '/collection?volume=' . $i }}" class="rounded-style my-2">{{ $i }}</a>
-                    @endfor
+                    @foreach($collections as $collection)
+                    <a href="{{ url('/lookbook/' . $collection->volume) }}" class="rounded-style my-2">{{ $collection->volume }}</a>
+                    @endforeach
                 </li>
                 <li @if(request()->is('home')) class="item-menu-mobile" @endif>
                     <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-danger" @endif>Home</a>

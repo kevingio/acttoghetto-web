@@ -21,8 +21,7 @@ class HomeController extends Controller
         $this->brand = $brand;
         $this->user = $user;
         $this->banner = $banner;
-        $this->collection = $collection;
-        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing', 'showCollection']]);
+        $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing', 'showLookbook']]);
     }
 
     /**
@@ -59,13 +58,17 @@ class HomeController extends Controller
     }
 
     /**
-     * Show user cart
+     * Show look book
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function myCart()
+    public function showLookbook($volume)
     {
-        return view('web.user.checkout');
+        $collection = $this->collection->where('volume', $volume)->oldest()->get();
+        if(sizeof($collection) === 0) {
+            abort(404);
+        }
+        return view('web.collection.index', compact('collection'));
     }
 
     /**
@@ -73,13 +76,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function showCollection(Request $request)
+    public function myCart()
     {
-        if(empty($request->volume)) {
-            return redirect('/home');
-        }
-        $collections = $this->collection->where('volume', $request->volume)->get();
-        return view('web.collection.index', compact('collections'));
+        return view('web.user.checkout');
     }
 
     /**

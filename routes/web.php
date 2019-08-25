@@ -28,6 +28,8 @@ Route::middleware(['role:3'])->group(function () {
 
     Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
+    Route::get('/lookbook/{volume}', 'HomeController@showLookbook')->name('show-lookbook');
+
     Route::post('/profile', 'HomeController@updateProfile')->name('update-profile');
 
     Route::post('/transaction/{id}/upload', 'TransactionController@uploadProof')->name('upload-proof');
