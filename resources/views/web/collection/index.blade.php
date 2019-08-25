@@ -20,7 +20,7 @@
         <div class="row">
             <div class="col-sm-12 p-0">
                 <div class="block1 hov-img-zoom pos-relative m-b-30 max-h-img-fluid">
-                    <img class="max-h-img-fluid" src="{{ asset($collection[0]->path) }}" alt="IMG-BANNER">
+                    <img class="fit-cover" src="{{ asset($collection[0]->path) }}" alt="IMG-BANNER">
                 </div>
             </div>
         </div>
@@ -30,8 +30,10 @@
         <div class="row">
             @foreach($collection as $key => $value)
                 @if($key > 0 && $key < 8)
-                <div class="col-sm-12 {{ in_array($key, [3,4,5]) === true ? 'col-md-4' : 'col-md-6' }} hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ $value->path }}"
+                <div class="col-sm-12 {{ in_array($key, [3,4,5]) === true ? 'col-md-4 max-h-img-sm' : 'col-md-6 max-h-img-md' }} hov-img-zoom pos-relative m-b-30">
+                    <img
+                        class="fit-cover {{ in_array($key, [3,4,5]) === true ? '' : '' }}"
+                        src="{{ $value->path }}"
                         alt="IMG-BANNER">
                 </div>
                 @endif
@@ -44,8 +46,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 p-0">
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img class="max-h-img-fluid" src="{{ asset($collection[8]->path) }}" alt="IMG-BANNER">
+                <div class="block1 hov-img-zoom pos-relative m-b-30 max-h-img-fluid">
+                    <img class="fit-cover" src="{{ asset($collection[8]->path) }}" alt="IMG-BANNER">
                 </div>
             </div>
         </div>
