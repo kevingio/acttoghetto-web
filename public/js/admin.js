@@ -1544,7 +1544,7 @@ $(document).ready(function () {
                 e.preventDefault()
                 var formData = new FormData(this);
                 formData.append('_method', 'PATCH')
-                self.editCollection(dataId, formData);
+                self.editCollection(e, formData);
             })
 
             $(document).on('submit', '#form-add-collection', function (e) {
@@ -1659,8 +1659,8 @@ $(document).ready(function () {
                 error: function (reponse) {
                     swal({
                         title: "Gagal!",
-                        text: "Telah mencapai 10 gambar pada edisi ini!",
-                        icon: "success"
+                        text: "Telah mencapai 9 gambar pada edisi ini!",
+                        icon: "error"
                     });
                 }
             });

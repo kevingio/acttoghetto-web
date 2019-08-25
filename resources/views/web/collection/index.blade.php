@@ -19,8 +19,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 p-0">
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset($collection[0]->path) }}" alt="IMG-BANNER">
+                <div class="block1 hov-img-zoom pos-relative m-b-30 max-h-img-fluid">
+                    <img class="max-h-img-fluid" src="{{ asset($collection[0]->path) }}" alt="IMG-BANNER">
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
         <div class="row">
             <div class="col-sm-12 p-0">
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset($collection[8]->path) }}" alt="IMG-BANNER">
+                    <img class="max-h-img-fluid" src="{{ asset($collection[8]->path) }}" alt="IMG-BANNER">
                 </div>
             </div>
         </div>
