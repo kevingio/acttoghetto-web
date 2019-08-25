@@ -24,6 +24,8 @@ Route::middleware(['role:3'])->group(function () {
 
     Route::get('/home', 'HomeController@index')->name('home');
 
+    Route::get('/collection', 'HomeController@showCollection');
+
     Route::get('/profile', 'HomeController@getProfile')->name('show-profile');
 
     Route::get('/lookbook/{volume}', 'HomeController@showLookbook')->name('show-lookbook');
@@ -49,7 +51,7 @@ Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(
 
     Route::resource('brand', 'Admin\BrandController');
 
-     Route::resource('banner', 'Admin\BannerController');
+    Route::resource('banner', 'Admin\BannerController');
 
     Route::resource('product', 'Admin\ProductController');
 
