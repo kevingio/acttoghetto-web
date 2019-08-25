@@ -1495,7 +1495,7 @@ $(document).ready(function () {
             let dataId = null;
             var count = 1
 
-            $(document).on('change', 'select[name=volume]', function () {
+            $(document).on('change', 'select[name=volume].custom-select', function () {
                 adminCollectionPage.dtTable.ajax.reload(null, false);
             });
 
