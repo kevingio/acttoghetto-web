@@ -23,7 +23,7 @@
                             </div>
                         </div>
                         <label class="mr-sm-2">Edisi</label>
-                        <select class="custom-select mr-sm-2" name="volume">
+                        <select class="form-control mr-sm-2" name="volume">
                             @for($i = 1; $i <= 5; $i++)
                             <option value="{{ $i }}">Edisi {{ $i }}</option>
                             @endfor
