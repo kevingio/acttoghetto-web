@@ -28,11 +28,13 @@
 
     <div class="container">
         <div class="row">
-            @foreach($collection as $key => $collection)
-            <div class="col-sm-12 {{ in_array($key, [3,4,5]) ? 'col-md-4' : 'col-md-6' }} hov-img-zoom pos-relative m-b-30">
-                <img class="{{ in_array($key, [3,4,5]) ? 'col-sm-12 col-md-4 max-h-img-sm' : 'col-sm-12 col-md-6 max-h-img-md' }}" src="https://images.unsplash.com/photo-1486308510493-aa64833637bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
-                    alt="IMG-BANNER">
-            </div>
+            @foreach($collection as $key => $value)
+                @if($key > 0 && $key < 8)
+                <div class="col-sm-12 {{ in_array($key, [3,4,5]) === true ? 'col-md-4' : 'col-md-6' }} hov-img-zoom pos-relative m-b-30">
+                    <img src="{{ $value->path }}"
+                        alt="IMG-BANNER">
+                </div>
+                @endif
             @endforeach
         </div>
     </div>
