@@ -19,8 +19,8 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12 p-0">
-                <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset($collection[0]->path) }}" alt="IMG-BANNER">
+                <div class="block1 hov-img-zoom pos-relative m-b-30 max-h-img-fluid">
+                    <img class="max-h-img-fluid" src="{{ asset($collection[0]->path) }}" alt="IMG-BANNER">
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="row">
             @foreach($collection as $key => $collection)
             <div class="col-sm-12 {{ in_array($key, [3,4,5]) ? 'col-md-4' : 'col-md-6' }} hov-img-zoom pos-relative m-b-30">
-                <img src="https://images.unsplash.com/photo-1486308510493-aa64833637bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
+                <img class="{{ in_array($key, [3,4,5]) ? 'col-sm-12 col-md-4 max-h-img-sm' : 'col-sm-12 col-md-6 max-h-img-md' }}" src="https://images.unsplash.com/photo-1486308510493-aa64833637bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60"
                     alt="IMG-BANNER">
             </div>
             @endforeach
@@ -43,7 +43,7 @@
         <div class="row">
             <div class="col-sm-12 p-0">
                 <div class="block1 hov-img-zoom pos-relative m-b-30">
-                    <img src="{{ asset($collection[8]->path) }}" alt="IMG-BANNER">
+                    <img class="max-h-img-fluid" src="{{ asset($collection[8]->path) }}" alt="IMG-BANNER">
                 </div>
             </div>
         </div>

@@ -215,3 +215,15 @@ nav .main-menu a {
     background-color: #dc3545;
     color: #fff!important;
 }
+
+.max-h-img-fluid {
+    max-height: 450px!important;
+}
+
+.max-h-img-md {
+    max-height: 355px!important;
+}
+
+.max-h-img-sm {
+    max-height: 230px!important;
+}
