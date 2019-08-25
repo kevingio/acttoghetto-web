@@ -132,27 +132,15 @@
 <section class="slide1-promo">
     <div class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" data-interval="500">
-                <img class="d-block w-100" src="{{ asset('https://images.unsplash.com/photo-1523194258983-4ef0203f0c47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60') }}" alt="1">
+            @foreach($banners as $banner)
+            <div class="carousel-item @if($loop->first) active @endif" data-interval="300">
+                <img class="d-block w-100" src="{{ asset($banner->image) }}" alt="{{ $banner->id }}">
                 <div class="carousel-caption">
-                    <h3>Come and Feel</h3>
-                    <p>25% off for first time</p>
+                    <h3>{{ $banner->title }}</h3>
+                    <p>{{ $banner->subtitle }}</p>
                 </div>
             </div>
-            <div class="carousel-item" data-interval="500">
-                <img class="d-block w-100" src="{{ asset('https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60') }}" alt="2">
-                <div class="carousel-caption">
-                    <h3>Buy 1 Get 1</h3>
-                    <p>All item minimal purchase Rp 200.000</p>
-                </div>
-            </div>
-            <div class="carousel-item" >
-                <img class="d-block w-100" src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=60" alt="3">
-                <div class="carousel-caption">
-                    <h3>Ramadha Discount</h3>
-                    <p>70% off</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
