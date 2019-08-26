@@ -45,7 +45,7 @@ class CollectionController extends Controller
     {
         $data = $request->all();
         $count = $this->collection->where('volume', $data['volume'])->count();
-        if($count < 10) {
+        if($count < 9) {
             if($request->hasFile('image')) {
                 $image = $request->file('image');
                 $filename = str_random(28) . '.jpg';

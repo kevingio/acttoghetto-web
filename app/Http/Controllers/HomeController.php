@@ -21,6 +21,7 @@ class HomeController extends Controller
         $this->brand = $brand;
         $this->user = $user;
         $this->banner = $banner;
+        $this->collection = $collection;
         $this->middleware(['auth', 'role:3'], ['except' => ['index', 'landing', 'showLookbook']]);
     }
 
