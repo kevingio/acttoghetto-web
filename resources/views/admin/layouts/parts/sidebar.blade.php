@@ -16,7 +16,7 @@
 
                 <li @if(request()->is('admin/product') || request()->is('admin/product/*')) class="active" @endif>
                     <a href="javascript:void(0);" class="waves-effect">
-                        <i class="mdi mdi-google-pages"></i>
+                        <i class="mdi mdi-tshirt-crew"></i>
                         <span>
                             Product
                             <span class="float-right menu-arrow">
@@ -40,13 +40,13 @@
 
                 <li>
                     <a href="/admin/banner" class="waves-effect">
-                        <i class="mdi mdi-receipt"></i>
+                        <i class="mdi mdi-image-multiple"></i>
                         <span> Banner Promo </span></a>
                 </li>
 
                 <li>
                     <a href="javascript:void(0);" class="waves-effect">
-                        <i class="mdi mdi-google-pages"></i>
+                        <i class="mdi mdi-database"></i>
                         <span>
                             Master Data
                             <span class="float-right menu-arrow">

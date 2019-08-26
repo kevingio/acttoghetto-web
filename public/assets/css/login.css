@@ -1,17 +1,12 @@
 
 /* BASIC */
 
-@font-face {
-  font-family: Montserrat-Regular;
-  src: url('../fonts/montserrat/Montserrat-Regular.ttf');
-}
-
 html {
   background-color: #e65540;
 }
 
 body {
-  font-family: Montserrat-Regular, sans-serif;
+  font-family: Loew, sans-serif;
   height: 100vh;
   background: url('https://images.unsplash.com/photo-1462392246754-28dfa2df8e6b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=60');
   background-position: center;
