@@ -10946,3 +10946,12 @@ nav .main-menu a {
 .fit-cover {
     object-fit: cover;
 }
+
+@font-face {
+    font-family: 'Loew';
+    src: url('../assets/fonts/loew/Loew-Regular.otf') format('opentype');
+}
+
+h1, h2, h3, h4, h5, h6, p, body, a, li {
+    font-family: 'Loew', sans-serif !important;
+}
