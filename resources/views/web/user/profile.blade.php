@@ -63,7 +63,7 @@
             							<input class="sizefull s-text7 p-l-15 p-r-15" type="email" name="email" autocomplete="off" value="{{ auth()->user()->email }}" required>
             						</div>
                                     <div class="text-right">
-                                        <button type="submit" class="btn btn-danger">
+                                        <button type="submit" class="btn btn-black">
                                             <i class="fas fa-save mr-2"></i>
                                             Save Changes
                                         </button>
@@ -110,7 +110,7 @@
             							<input class="sizefull s-text7 p-l-15 p-r-15" type="password" name="rePassword" autocomplete="off" required>
             						</div>
                                     <div class="text-right">
-                                        <button type="submit" class="btn btn-danger">
+                                        <button type="submit" class="btn btn-black">
                                             <i class="fas fa-save mr-2"></i>
                                             Confirm
                                         </button>

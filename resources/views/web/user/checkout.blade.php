@@ -131,7 +131,7 @@ My Cart
                 <p class="text-black">Metode pembayaran melalui rekening: </p>
                 <img src="{{ asset('/assets/images/rekening.png') }}" class="img-fluid" alt="rekening" />
                 <div class="text-center">
-                    <a href="{{ route('transaction.index') }}" class="btn btn-primary mt-3">Konfirmasi Pembayaran</a>
+                    <a href="{{ route('transaction.index') }}" class="btn btn-primary mt-5">Konfirmasi Pembayaran</a>
                 </div>
             </div>
         </div>

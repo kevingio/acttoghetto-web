@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-danger"><i class="fas fa-upload mr-2"></i> Upload</button>
+                    <button type="submit" class="btn hov-text-black btn-black"><i class="fas fa-upload hov-text-black mr-2"></i> Upload</button>
                 </div>
             </form>
         </div>

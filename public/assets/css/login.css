@@ -6,10 +6,6 @@
   src: url('../fonts/montserrat/Montserrat-Regular.ttf');
 }
 
-html {
-  background-color: #e65540;
-}
-
 body {
   font-family: Montserrat-Regular, sans-serif;
   height: 100vh;
@@ -97,8 +93,8 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 button[type=button], button[type=submit], button[type=reset]  {
-  background-color: #e65540;
-  border: none;
+  background-color: #000;
+  border: 1px solid #000;
   color: white;
   padding: 15px 80px;
   text-align: center;
@@ -106,8 +102,6 @@ button[type=button], button[type=submit], button[type=reset]  {
   display: inline-block;
   text-transform: uppercase;
   font-size: 13px;
-  -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-  box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
   -webkit-border-radius: 5px 5px 5px 5px;
   border-radius: 5px 5px 5px 5px;
   margin: 5px 20px 40px 20px;
@@ -120,7 +114,9 @@ button[type=button], button[type=submit], button[type=reset]  {
 }
 
 input[type=button]:hover, button[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #d15e4e;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 
 input[type=button]:active, button[type=submit]:active, input[type=reset]:active  {
@@ -252,7 +248,7 @@ input[type=text]:placeholder, input[type=password]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #e65540;
+  background-color: #000;
   content: "";
   transition: width 0.2s;
 }

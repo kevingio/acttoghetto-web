@@ -49,5 +49,5 @@
             </div>
         </div>
     </div>
-    <button type="submit" class="btn btn-success w-100 mt-3">Filter</button>
+    <button type="submit" class="btn btn-black w-100 mt-3">Filter</button>
 </form>
