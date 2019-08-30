@@ -1,14 +1,8 @@
 
 /* BASIC */
 
-<<<<<<< HEAD
-@font-face {
-  font-family: Montserrat-Regular;
-  src: url('../fonts/montserrat/Montserrat-Regular.ttf');
-=======
 html {
-  background-color: #e65540;
->>>>>>> front-end-admin
+  background-color: #000;
 }
 
 body {
@@ -47,7 +41,7 @@ h2 {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  min-height: 100%;
+  min-height: 80%;
   padding: 20px;
 }
 
@@ -98,8 +92,8 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 button[type=button], button[type=submit], button[type=reset]  {
-  background-color: #000;
-  border: 1px solid #000;
+  background-color: #333;
+  border: 1px solid #333;
   color: white;
   padding: 15px 80px;
   text-align: center;
@@ -120,8 +114,8 @@ button[type=button], button[type=submit], button[type=reset]  {
 
 input[type=button]:hover, button[type=submit]:hover, input[type=reset]:hover  {
   background-color: #fff;
-  color: #000;
-  border: 1px solid #000;
+  color: #333;
+  border: 1px solid #333;
 }
 
 input[type=button]:active, button[type=submit]:active, input[type=reset]:active  {
