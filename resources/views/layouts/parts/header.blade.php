@@ -54,30 +54,30 @@
             <ul class="main-menu text-center">
 
                 <li class="mb-2">
-                    <h5 class="text-danger font-weight-bold mt-3">Look Book</h5>
+                    <h5 class="text-dark font-weight-bold mt-3">Look Book</h5>
                     @foreach($collections as $collection)
                     <a href="{{ url('/lookbook/' . $collection->volume) }}" class="rounded-style my-2">{{ $collection->volume }}</a>
                     @endforeach
                 </li>
                 <li @if(request()->is('home')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-danger" @endif>Home</a>
+                    <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-dark" @endif>Home</a>
                 </li>
 
                 <li @if(request()->is('product') || request()->is('product/*')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('product.index') }}" @if(!request()->is('product') && !request()->is('product/*')) class="text-danger" @endif>Products</a>
+                    <a href="{{ route('product.index') }}" @if(!request()->is('product') && !request()->is('product/*')) class="text-dark" @endif>Products</a>
                 </li>
 
                 @if(auth()->check())
                 <li @if(request()->is('profile')) class="item-menu-mobile" @endif>
                     <a href="{{ route('show-profile') }}"
-                        @if(!request()->is('profile')) class="text-danger" @endif>
+                        @if(!request()->is('profile')) class="text-dark" @endif>
                         Profile
                     </a>
                 </li>
 
                 <li @if(request()->is('transaction')) class="item-menu-mobile" @endif>
                     <a href="{{ route('transaction.index') }}"
-                        @if(!request()->is('transaction')) class="text-danger" @endif>
+                        @if(!request()->is('transaction')) class="text-dark" @endif>
                         My Transactions
                     </a>
                 </li>
@@ -86,7 +86,7 @@
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"
-                        class="text-danger">
+                        class="text-dark">
                         Logout
                     </a>
 
@@ -97,7 +97,7 @@
 
                 @else
                 <li class="mb-1">
-                    <a href="{{ route('login') }}" class="text-danger font-weight-bold">
+                    <a href="{{ route('login') }}" class="text-dark font-weight-bold">
                         Login
                     </a>
                 </li>

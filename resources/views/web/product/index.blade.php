@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <!-- Title Page -->
-	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('https://images.unsplash.com/photo-1501236570302-906143a7c9f8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80');">
+	<section class="bg-title-page p-t-50 p-b-40 flex-col-c-m" style="background-image: url('https://images.unsplash.com/photo-1507247174579-ae7086d18512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1398&q=80');">
 		<h2 class="l-text2 t-center">
 			Product
 		</h2>
@@ -29,7 +29,7 @@
                                     <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
                                 @endforeach
                                 <button type="submit" class="flex-c-m size5 ab-r-m color2 color0-hov trans-0-4">
-                                    <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                                    <i class="fs-12 fa fa-search hov-text-black" aria-hidden="true"></i>
                                 </button>
                             </form>
                         </div>
@@ -78,7 +78,7 @@
                                         <div class="block2-overlay trans-0-4">
                                             <div class="block2-btn-addcart w-size1 trans-0-4" data-id="{{ $product->id }}" data-price="{{ $product->price }}" size="{{ $product->category->sizes[0]->text }}" sizeOption="{{ json_encode($product->category->sizes) }}">
                                                 <!-- Button -->
-                                                <button class="flex-c-m size1 bg4 bo-rad-23 hov1 s-text1 trans-0-4 btn-add" >
+                                                <button class="flex-c-m size1 btn-black bo-rad-23 hov1 s-text1 trans-0-4 btn-add hov-bg-white-outline-off" >
                                                     Add to Cart
                                                 </button>
                                             </div>

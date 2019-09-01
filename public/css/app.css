@@ -7685,7 +7685,7 @@ TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT
 /*[  ]
 -----------------------------------------------------------
 */
-.color0-hov:hover {color: #e65540;}
+.color0-hov:hover {color: #000;}
 
 
 
@@ -7960,7 +7960,7 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 .bg0 {background-color: #e65540;}
 .bg1 {background-color: #222222;}
 .bg3 {background-color: rgba(255,255,255,0.95);}
-.bg4 {background-color: #111111;}
+.bg4 {background-color: #000000;}
 .bg5 {background-color: #f2f2f2;}
 .bg6 {background-color: #f0f0f0;}
 .bg7 {background-color: #333333;}
@@ -7976,7 +7976,7 @@ SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE SHAPE
 /*[  ]
 -----------------------------------------------------------
 */
-.bg0-hov:hover {background-color: #e65540;}
+.bg0-hov:hover {background-color: #000;}
 
 
 
@@ -8212,7 +8212,7 @@ EFFECT   EFFECT   EFFECT   EFFECT   EFFECT   EFFECT  EFFECT
 ///////////////////////////////////////////////////////////
 */
 .hov1:hover {
-    background-color: #e65540;
+    background-color: #000000;
   	color: white;
 }
 
@@ -8504,7 +8504,7 @@ a:focus {
 
 a:hover {
 	text-decoration: none;
-	color: #e65540;
+	color: #fff;
 }
 
 /* ------------------------------------ */
@@ -8601,7 +8601,7 @@ iframe {
     -o-animation: ball-scale infinite linear .75s;
     animation: ball-scale infinite linear .75s;
     border-radius: 100%;
-    background-color: #e65540;
+    background-color: #333;
 }
 
 @-webkit-keyframes ball-scale {
@@ -8799,12 +8799,12 @@ iframe {
 }
 
 .select2-container .select2-results__option[aria-selected="true"] {
-  background-color: #e65540;
+  background-color: #333;
   color: white;
 }
 
 .select2-container .select2-results__option--highlighted[aria-selected] {
-  background-color: #e65540;
+  background-color: #333;
   color: white;
 }
 
@@ -9124,7 +9124,7 @@ li.sale-noti > a {
 }
 
 .sub_menu > li:hover > a {
-  color: #e65540;
+  color: #fff;
   text-decoration: none;
 }
 
@@ -9443,7 +9443,7 @@ li.sale-noti > a {
 .side-menu .main-menu {margin-bottom: 0;}
 
 .item-menu-mobile {
-  background-color: #e65540;
+  background-color: #000;
 }
 
 .side-menu .main-menu > li > a {
@@ -9500,7 +9500,7 @@ li.sale-noti > a {
 .side-menu .sub-menu a:hover {
   text-decoration: none;
   padding-left: 20px;
-  color: #e65540 !important;
+  color: #fff !important;
 }
 
 .side-menu .sub-menu {
@@ -9752,7 +9752,7 @@ li.sale-noti > a {
   font-size: 18px;
   color: white;
   position: absolute;
-  background-color: black;
+  background-color: #333;
   opacity: 0;
 
   top: 50%;
@@ -9775,7 +9775,7 @@ li.sale-noti > a {
 }
 
 .arrow-slick1:hover {
-  background-color: #e65540;
+  background-color: #000;
 }
 
 .next-slick1 {
@@ -9946,7 +9946,7 @@ li.sale-noti > a {
 }
 
 .swal-button {
-    background-color: #e65540;
+    background-color: #333;
     font-family: Montserrat-Regular;
     font-size: 15px;
     color: white;
@@ -9961,10 +9961,12 @@ li.sale-noti > a {
 
 .swal-button:hover {
     background-color: #333333;
+    border: 1px solid #333;
+    color: #fff;
 }
 
 .swal-button:active {
-    background-color: #e65540;
+    background-color: #333;
 }
 
 .swal-title {
@@ -10245,7 +10247,7 @@ li.sale-noti > a {
   padding-left: 15px;
   padding-right: 15px;
   background-repeat: no-repeat;
-  background-position: center 0;
+  background-position: center;
   background-size: cover;
 }
 
@@ -10713,12 +10715,32 @@ input.num-product::-webkit-inner-spin-button {
     margin: 0;
 }
 
+.carousel-caption {
+    position: absolute;
+    right: auto!important;
+    bottom: auto!important;
+    left: 50%!important;
+    top: 50%!important;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
 .carousel-caption p {
     color: white;
 }
 
 .carousel-inner, .carousel-item {
-    height: 250px;
+    max-height: 350px;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
 }
 
 .dataTables_filter input {
@@ -10735,7 +10757,7 @@ input.num-product::-webkit-inner-spin-button {
 
 i:hover{
     text-decoration: none;
-    color: #e65540;
+    color: #fff;
 }
 
 .max-w-200{
@@ -10917,9 +10939,9 @@ nav .main-menu a {
 }
 
 .rounded-style {
-    color: #dc3545!important;
+    color: #000!important;
     line-height: 20px!important;
-    border: 1px solid #dc3545;
+    border: 1px solid #000;
     border-radius: 100%;
     height: 20px;
     width: 20px;
@@ -10927,7 +10949,7 @@ nav .main-menu a {
 }
 
 .rounded-style:hover {
-    background-color: #dc3545;
+    background-color: #000;
     color: #fff!important;
 }
 
@@ -10954,4 +10976,77 @@ nav .main-menu a {
 
 h1, h2, h3, h4, h5, h6, p, body, a, li {
     font-family: 'Loew', sans-serif !important;
+}
+
+
+.bg-black {
+    background-color: #000;
+    color: #fff;
+}
+
+.hov-text-black:hover {
+    color: #333!important;
+}
+
+.hov-bg-white:hover {
+    color: #000!important;
+    background-color: #fff!important;
+    border: 1px solid #000!important;
+}
+
+.hov-bg-white-outline-off:hover {
+    color: #000!important;
+    background-color: #fff!important;
+}
+
+.hov-bg-black:hover {
+    color: #fff!important;
+    background-color: #000!important;
+}
+
+.hov-border-black:hover {
+    padding: 5px!important;
+    text-decoration: none!important;
+    color: #333!important;
+    border: 1px solid #333!important;
+    border-radius: 5px 5px 5px 5px!important;
+}
+
+.hov-border-black {
+    text-decoration: none!important;
+    color: #333!important;
+}
+
+.btn-black {
+    color: #fff!important;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+
+.btn-black:hover {
+    color: #333!important;
+    background-color: #fff!important;
+    border-color: #333!important;
+}
+
+.btn-white {
+    color: #333!important;
+    background-color: #fff!important;
+    border-color: #333!important;
+}
+
+.btn-white:hover {
+    color: #fff!important;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+
+.page-item.active .page-link {
+    color: #fff!important;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+
+.page-link {
+    color: #000!important;
 }

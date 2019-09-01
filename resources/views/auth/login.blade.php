@@ -29,14 +29,14 @@
                     {{ csrf_field() }}
                     <input type="text" id="login" class="fadeIn second" name="email" autocomplete="off" placeholder="email" required>
                     <input type="password" id="password" class="fadeIn third" name="password" autocomplete="off" placeholder="password" required>
-                    <button type="submit" class="fadeIn fourth">Log In</button>
+                    <button type="submit" class="fadeIn fourth btn-black mt-3">Log In</button>
                     <br>
-                    <a href="{{ route('register') }}" class="my-4">Register</a>
+                    <a href="{{ route('register') }}" class="my-4 hov-border-black">Register</a>
                 </form>
 
                 <!-- Remind Passowrd -->
                 <div id="formFooter">
-                    <a class="underlineHover" href="{{ route('home') }}">Go to the Site</a>
+                    <a class="underlineHover text-black hov-text-black" href="{{ route('home') }}">Go to the Site</a>
                 </div>
 
             </div>

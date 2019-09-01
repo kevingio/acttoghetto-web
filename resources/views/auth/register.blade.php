@@ -31,14 +31,14 @@
               <input type="text" class="fadeIn second" name="name" autocomplete="off" placeholder="name" required>
               <input type="password" class="fadeIn third" name="password" autocomplete="off" placeholder="password" required>
               <input type="password" class="fadeIn third" name="password_confirmation" autocomplete="off" placeholder="confirm password" required>
-              <button type="submit" class="fadeIn fourth mb-2">Register</button>
+              <button type="submit" class="fadeIn fourth btn-black mt-3">Register</button>
               <br>
-              <a href="{{ route('login') }}" class="my-4">Login</a>
+              <a href="{{ route('login') }}" class="my-4 hov-border-black">Login</a>
             </form>
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
-              <a class="underlineHover" href="{{ route('home') }}">Go to the Site</a>
+              <a class="underlineHover text-black hov-text-black" href="{{ route('home') }}">Go to the Site</a>
             </div>
 
           </div>
