@@ -6,17 +6,17 @@
 @section('content')
 <!-- breadcrumb -->
 	<div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-		<a href="{{ route('home') }}" class="s-text16">
+		<a href="{{ route('home') }}" class="s-text16 hov-text-black">
 			Home
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
-		<a href="{{ url('/product?gender=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
+		<a href="{{ url('/product?gender=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16 hov-text-black">
 			{{ ucwords($product->brand->type) }}
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
 
-		<a href="{{ url('/product?category=') . urlencode(strtolower($product->category->name)) }}" class="s-text16">
+		<a href="{{ url('/product?category=') . urlencode(strtolower($product->category->name)) }}" class="s-text16 hov-text-black">
 			{{ $product->category->name }}
 			<i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 		</a>
@@ -101,7 +101,7 @@
 
 							<div class="btn-addcart-product-detail size9 trans-0-4 m-t-10 m-b-10" data-id="{{ $product->id }}" data-price="{{ $product->price }}" sizeOption="{{ json_encode($product->category->sizes) }}">
 								<!-- Button -->
-								<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4">
+								<button class="flex-c-m sizefull bg1 bo-rad-23 hov1 s-text1 trans-0-4 hov-bg-white">
 									Add to Cart
 								</button>
 							</div>

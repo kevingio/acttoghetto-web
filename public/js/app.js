@@ -2522,8 +2522,8 @@ if(this.$element.prop("multiple"))this.current(function(d){var e=[];a=[a],a.push
             autoplaySpeed: 6000,
             arrows: true,
             appendArrows: $('.wrap-slick1'),
-            prevArrow:'<button class="arrow-slick1 prev-slick1"><i class="fa  fa-angle-left" aria-hidden="true"></i></button>',
-            nextArrow:'<button class="arrow-slick1 next-slick1"><i class="fa  fa-angle-right" aria-hidden="true"></i></button>',  
+            prevArrow:'<button class="arrow-slick1 prev-slick1"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
+            nextArrow:'<button class="arrow-slick1 next-slick1"><i class="fa fa-angle-right" aria-hidden="true"></i></button>',  
         });
 
         $('.slick1').on('afterChange', function(event, slick, currentSlide){ 

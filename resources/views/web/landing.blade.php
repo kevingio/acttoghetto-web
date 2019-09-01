@@ -23,10 +23,11 @@
         /* Center and scale the image nicely */
         background-position: center;
         background-repeat: no-repeat;
-        background-size: cover;
+        background-size: contain;
         }
 
         .btn-enter-site {
+            background-color: #fff;
             position: absolute;
             left: 50%;
             transform: translate(-50%, -50%);

@@ -1,9 +1,29 @@
+.carousel-caption {
+    position: absolute;
+    right: auto!important;
+    bottom: auto!important;
+    left: 50%!important;
+    top: 50%!important;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+
 .carousel-caption p {
     color: white;
 }
 
 .carousel-inner, .carousel-item {
-    height: 250px;
+    max-height: 350px;
+}
+
+.carousel-item.active,
+.carousel-item-next,
+.carousel-item-prev {
+  display: block;
 }
 
 .dataTables_filter input {
@@ -20,7 +40,7 @@
 
 i:hover{
     text-decoration: none;
-    color: #e65540;
+    color: #fff;
 }
 
 .max-w-200{
@@ -202,9 +222,9 @@ nav .main-menu a {
 }
 
 .rounded-style {
-    color: #dc3545!important;
+    color: #000!important;
     line-height: 20px!important;
-    border: 1px solid #dc3545;
+    border: 1px solid #000;
     border-radius: 100%;
     height: 20px;
     width: 20px;
@@ -212,7 +232,7 @@ nav .main-menu a {
 }
 
 .rounded-style:hover {
-    background-color: #dc3545;
+    background-color: #000;
     color: #fff!important;
 }
 
@@ -239,4 +259,77 @@ nav .main-menu a {
 
 h1, h2, h3, h4, h5, h6, p, body, a, li {
     font-family: 'Loew', sans-serif !important;
+}
+
+
+.bg-black {
+    background-color: #000;
+    color: #fff;
+}
+
+.hov-text-black:hover {
+    color: #333!important;
+}
+
+.hov-bg-white:hover {
+    color: #000!important;
+    background-color: #fff!important;
+    border: 1px solid #000!important;
+}
+
+.hov-bg-white-outline-off:hover {
+    color: #000!important;
+    background-color: #fff!important;
+}
+
+.hov-bg-black:hover {
+    color: #fff!important;
+    background-color: #000!important;
+}
+
+.hov-border-black:hover {
+    padding: 5px!important;
+    text-decoration: none!important;
+    color: #333!important;
+    border: 1px solid #333!important;
+    border-radius: 5px 5px 5px 5px!important;
+}
+
+.hov-border-black {
+    text-decoration: none!important;
+    color: #333!important;
+}
+
+.btn-black {
+    color: #fff!important;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+
+.btn-black:hover {
+    color: #333!important;
+    background-color: #fff!important;
+    border-color: #333!important;
+}
+
+.btn-white {
+    color: #333!important;
+    background-color: #fff!important;
+    border-color: #333!important;
+}
+
+.btn-white:hover {
+    color: #fff!important;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+
+.page-item.active .page-link {
+    color: #fff!important;
+    background-color: #333!important;
+    border-color: #333!important;
+}
+
+.page-link {
+    color: #000!important;
 }
