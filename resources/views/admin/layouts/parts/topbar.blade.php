@@ -2,7 +2,7 @@
 <div class="topbar">
 
     <!-- LOGO -->
-    <div class="topbar-left">
+    <div class="topbar-left bg-white">
         <a href="{{ url('/admin/transaction') }}" class="logo">
             <span>
                 <img src="{{ URL::asset('assets/images/admin/logo-light.png')}}" alt="" height="18">

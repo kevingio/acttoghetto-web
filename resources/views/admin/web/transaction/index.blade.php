@@ -8,7 +8,7 @@
     <div class="container-fluid">
         <div class="row pt-4">
             <div class="col-xl-4 col-md-6">
-                <div class="card mini-stat bg-danger">
+                <div class="card mini-stat bg-dark">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
                             <i class="mdi mdi-cart float-right"></i>
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-6">
-                <div class="card mini-stat bg-danger">
+                <div class="card mini-stat bg-dark">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
                             <i class="mdi mdi-cube-outline float-right"></i>
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="col-xl-4 col-md-12">
-                <div class="card mini-stat bg-danger">
+                <div class="card mini-stat bg-dark">
                     <div class="card-body mini-stat-img">
                         <div class="mini-stat-icon">
                             <i class="mdi mdi-currency-usd float-right"></i>
