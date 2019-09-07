@@ -49,8 +49,6 @@ Route::middleware(['role:3'])->group(function () {
 Route::prefix('admin')->name('admin.')->middleware(['auth', 'role:1,2'])->group(function () {
     Route::resource('transaction', 'Admin\TransactionController');
 
-    Route::resource('brand', 'Admin\BrandController');
-
     Route::resource('banner', 'Admin\BannerController');
 
     Route::resource('product', 'Admin\ProductController');

@@ -62,12 +62,6 @@
                         </li>
 
                         <li>
-                            <a href="/admin/brand" class="waves-effect">
-                                <span> Brand </span>
-                            </a>
-                        </li>
-
-                        <li>
                             <a href="/admin/size" class="waves-effect">
                                 <span> Size </span>
                             </a>
