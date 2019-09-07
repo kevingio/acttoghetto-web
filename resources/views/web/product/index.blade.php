@@ -99,7 +99,7 @@
 
                         @endforeach
                     </div>
-
+                    
                     {{ $products->links('vendor.pagination.simple') }}
                 </div>
             </div>
