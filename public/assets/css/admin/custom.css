@@ -18,11 +18,6 @@ a:hover{
     background: transparent;
     position: absolute;
     right: 20px;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
-    transform: translateY(-100%);
 }
 
 .style-icon-input:hover {
