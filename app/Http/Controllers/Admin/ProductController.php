@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Product;
 use App\Models\ProductImage;
 use App\Models\Category;
-use App\Models\Brand;
 use App\Models\Size;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -15,10 +14,9 @@ use DB;
 
 class ProductController extends Controller
 {
-    function __construct(Product $product, ProductImage $productImage, Brand $brand, Category $category, Size $size) {
+    function __construct(Product $product, ProductImage $productImage, Category $category, Size $size) {
         $this->product = $product;
         $this->productImage = $productImage;
-        $this->brand = $brand;
         $this->category = $category;
         $this->size = $size;
     }
@@ -30,21 +28,15 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->product->with(['category.sizes', 'brand', 'images']);
-        if(!empty($request->gender) && $request->gender != 'all') {
-            $products = $products->whereHas('brand', function ($query) use ($request) {
-                $query->where('type', $request->gender);
-            });
-        }
+        $products = $this->product->with(['category.sizes', 'images']);
         if(!empty($request->search)) {
             $products = $products->where('name', 'like', "%{$request->search}%");
         }
 
         $products = $products->paginate(8);
         $products->appends(request()->input())->links();
-        $brands = $this->brand->orderBy('name')->get(['name']);
         $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
-        return view('admin.web.product.index', compact('products', 'categories', 'brands'));
+        return view('admin.web.product.index', compact('products', 'categories'));
     }
 
     /**
@@ -54,13 +46,9 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        if(empty($request->type)) {
-            return redirect()->back();
-        }
-        $brands = $this->brand->where('type', $request->type)->get();
-        $categories = $this->category->where('type', $request->type)->get();
+        $categories = $this->category->get();
         $sizes = $this->size->where('category_id', $categories[0]->id)->get();
-        return view('admin.web.product.add-product', compact('brands', 'categories', 'sizes'));
+        return view('admin.web.product.add-product', compact('categories', 'sizes'));
     }
 
     /**
@@ -105,7 +93,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = $this->product->with(['category.sizes' , 'brand', 'images'])->find($id);
+        $product = $this->product->with(['category.sizes' , 'images'])->find($id);
         if(!$product) {
             return redirect()->back();
         }
@@ -120,11 +108,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        $product = $this->product->with(['category.sizes' , 'brand', 'images'])->find($id);
-        $brands = $this->brand->where('type', $product->brand->type)->get();
-        $categories = $this->category->where('type', $product->category->type)->get();
+        $product = $this->product->with(['category.sizes', 'images'])->find($id);
+        $categories = $this->category->get();
         $sizes = $this->size->where('category_id', $product->size->category_id)->get();
-        return view('admin.web.product.edit-product', compact('product', 'brands', 'categories', 'sizes'));
+        return view('admin.web.product.edit-product', compact('product', 'categories', 'sizes'));
     }
 
     /**

@@ -105,7 +105,7 @@ class CollectionController extends Controller
 
             $image = $request->file('image');
             $filename = str_random(28) . '.jpg';
-            $path = 'public/brands/' . $filename;
+            $path = 'public/collections/' . $filename;
             $file = Image::make($image->getRealPath())->encode('jpg',75);
             Storage::put($path, (string) $file);
             $data['path'] = Storage::url($path);

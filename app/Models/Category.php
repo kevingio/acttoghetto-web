@@ -17,7 +17,6 @@ class Category extends Model
     protected $fillable = [
         'name',
         'image',
-        'type',
     ];
 
     /**
@@ -37,9 +36,6 @@ class Category extends Model
     {
         $results = $this->orderBy('id', 'desc')->get();
         return Datatables::of($results)
-            ->editColumn('type', function ($data) {
-                return ucwords($data->type);
-            })
             ->editColumn('action', function ($data) {
                 $html = '
                 <button type="button" class="btn btn-outline-warning btn-admin-edit-category btn-icon" gender="' . $data->type . '" name="' . $data->name . '" data-id="' . $data->id . '">

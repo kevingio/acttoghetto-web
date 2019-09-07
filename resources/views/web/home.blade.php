@@ -136,7 +136,7 @@
     </div>
 </section>
 
-<section class="slide1-promo mb-5">
+<section class="slide1-promo">
     <div class="carousel slide" data-ride="">
         <div class="carousel-inner">
             @foreach($banners as $banner)

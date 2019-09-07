@@ -14,15 +14,8 @@ class CategoriesTableSeeder extends Seeder
     {
         Category::truncate();
         $categories = ['Kaos', 'Gelang', 'Sepatu', 'Celana', 'Kemeja', 'Kalung'];
-        foreach ($categories as $key => $category) {
-            Category::create([
-                'name' => $category,
-                'type' => 'man'
-            ]);
-            Category::create([
-                'name' => $category,
-                'type' => 'woman'
-            ]);
+        foreach ($categories as $category) {
+            Category::create(['name' => $category]);
         }
     }
 }
