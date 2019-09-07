@@ -24,7 +24,6 @@
                                 <thead>
                                     <tr>
                                         <th>Nama Kategori</th>
-                                        <th class="no-search no-sort">Jenis Kategori</th>
                                         <th width="15%" class="no-sort no-search text-center">Action</th>
                                     </tr>
                                 </thead>

@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-                <a href="{{ url('/product') }}" class="s-text16">
+                <a href="{{ url('/admin/product') }}" class="s-text16">
                     Products
                     <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
                 </a>

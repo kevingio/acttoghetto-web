@@ -31,17 +31,6 @@
 
             </div>
 
-            <div class="col-sm-12 col-md-3 mt-3">
-                <div class="form-group">
-                    <label for="addBrandProduct">Brand Produk</label>
-                    <select class="form-control" name="brand_id" required>
-                        @foreach($brands as $brand)
-                            <option value="{{ $brand->id }}">{{ $brand->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
             <div class="col-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="addCategoryProduct">Kategori Produk</label>
@@ -53,7 +42,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="addPriceProduct">Harga Produk</label>
                     <input type="text" class="form-control" name="price" autocomplete="off" placeholder="Harga Produk" required>

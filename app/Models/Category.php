@@ -38,7 +38,7 @@ class Category extends Model
         return Datatables::of($results)
             ->editColumn('action', function ($data) {
                 $html = '
-                <button type="button" class="btn btn-outline-warning btn-admin-edit-category btn-icon" gender="' . $data->type . '" name="' . $data->name . '" data-id="' . $data->id . '">
+                <button type="button" class="btn btn-outline-warning btn-admin-edit-category btn-icon" name="' . $data->name . '" data-id="' . $data->id . '">
                      <i aria-hidden="true" class="mdi mdi-pencil"></i>
                 </button>
 

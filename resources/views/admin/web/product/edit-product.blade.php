@@ -13,12 +13,8 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-                    <a href="{{ url('/admin/product?type=') . urlencode(strtolower($product->brand->type)) }}" class="s-text16">
-                        {{ ucwords($product->brand->type) }}
-                        <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
-                    </a>
             
-                    <a href="/admin/product/{{ $product->id }}?type={{ $product->brand->type }}" class="s-text16">
+                    <a href="/admin/product/{{ $product->id }}" class="s-text16">
                         {{ $product->name }}
                         <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
                     </a>
@@ -37,17 +33,6 @@
 
             </div>
 
-            <div class="col-sm-12 col-md-3 mt-3">
-                <div class="form-group">
-                    <label for="editBrandProduct">Brand Produk</label>
-                    <select class="form-control" name="brand_id">
-                        @foreach($brands as $brand)
-                            <option value="{{ $brand->id }}" @if($brand->id == $product->brand_id) selected @endif>{{ $brand->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-
             <div class="col-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="editCategoryProduct">Kategori Produk</label>
@@ -59,7 +44,7 @@
                 </div>
             </div>
 
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mt-3">
                 <div class="form-group">
                     <label for="editPriceProduct">Harga Produk</label>
                     <input type="text" class="form-control" name="price" value="{{ $product->price }}" placeholder="Harga Produk">
@@ -149,7 +134,7 @@
             </div>
 
             <div class="col-sm-12 col-md-3 offset-md-9">
-                <button type="button" class="btn btn-back mr-3" data-id="{{ $product->id }}" data-type="{{ $product->brand->type }}">
+                <button type="button" class="btn btn-back mr-3" data-id="{{ $product->id }}">
                     <i class="fas fa-times mr-2"></i> 
                     Cancel
                 </button>
