@@ -11050,3 +11050,8 @@ h1, h2, h3, h4, h5, h6, p, body, a, li {
 .page-link {
     color: #000!important;
 }
+
+a.block2-name:hover {
+    color: black;
+    font-weight: bold;
+}
