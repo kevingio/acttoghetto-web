@@ -261,6 +261,13 @@ h1, h2, h3, h4, h5, h6, p, body, a, li {
     font-family: 'Loew', sans-serif !important;
 }
 
+small {
+    color: #888!important;
+}
+
+a small:hover{
+    color: #fff!important;
+}
 
 .bg-black {
     background-color: #000;
@@ -341,4 +348,54 @@ a.block2-name:hover {
 
 .bread-crumb a:hover {
     font-weight: bold;
+}
+
+@media only screen and (min-width: 650px) {
+    .title-banner-promo {
+        font-size: xx-large;
+    } 
+
+    .subtitle-banner-promo {
+        font-size: larger;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+    .title-banner-promo {
+        font-size: x-large;
+    } 
+
+    .subtitle-banner-promo {
+        font-size: medium;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+    .title-banner-promo {
+        font-size: larger;
+    } 
+
+    .subtitle-banner-promo {
+        font-size: smaller;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+    .title-banner-promo {
+        font-size: medium;
+    } 
+
+    .subtitle-banner-promo {
+        font-size: small;
+  }
+}
+
+@media only screen and (max-width: 270px) {
+    .title-banner-promo {
+        font-size: smaller;
+    } 
+
+    .subtitle-banner-promo {
+        font-size: x-small;
+  }
 }

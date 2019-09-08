@@ -143,8 +143,8 @@
             <div class="carousel-item @if($loop->first) active @endif" data-interval="300">
                 <img class="d-block w-100" src="{{ asset($banner->image) }}" alt="{{ $banner->id }}">
                 <div class="carousel-caption w-100">
-                    <h2 class="font-weight-bold w-100 mb-2">{{ $banner->title }}</h2>
-                    <h5 class="w-100">{{ $banner->subtitle }}</h5>
+                    <p class="font-weight-bold w-100 title-banner-promo">{{ $banner->title }}</p>
+                    <p class="w-100 subtitle-banner-promo">{{ $banner->subtitle }}</p>
                 </div>
             </div>
             @endforeach
