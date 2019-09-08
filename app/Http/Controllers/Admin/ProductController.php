@@ -28,7 +28,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->product->with(['category.sizes', 'images']);
+        $products = $this->product->with(['category.sizes', 'images'])->latest();
         if(!empty($request->search)) {
             $products = $products->where('name', 'like', "%{$request->search}%");
         }
@@ -60,8 +60,9 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        DB::transaction(function () {
-            $product = $this->product->create($data);
+        $product = $this->product;
+        DB::transaction(function () use ($data, $request, $product) {
+            $product = $product->create($data);
             if($request->hasFile('image')) {
                 $images = $request->file('image');
                 foreach ($images as $key => $image) {
@@ -124,7 +125,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        DB::transaction(function() {
+        DB::transaction(function() use ($id, $data, $request) {
             $product = $this->product->find($id);
             if($request->hasFile('image')) {
                 $oldImages = $this->productImage->where('product_id', $id)->get();

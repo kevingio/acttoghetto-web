@@ -13,11 +13,17 @@
         <div class="row">
             <div class="col-sm-12">
                 <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
-            
+                    <a href="{{ url('/admin/product') }}" class="s-text16">
+                        Products
+                    </a>
+
+                    <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
+
                     <a href="/admin/product/{{ $product->id }}" class="s-text16">
                         {{ $product->name }}
-                        <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
                     </a>
+
+                    <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 
                     <span class="s-text17">
                         Edit Produk
@@ -133,7 +139,7 @@
                 </table>
             </div>
 
-            <div class="col-sm-12 col-md-3 offset-md-9">
+            <div class="col-sm-12 text-right pb-3">
                 <button type="button" class="btn btn-back mr-3" data-id="{{ $product->id }}">
                     <i class="fas fa-times mr-2"></i> 
                     Cancel

@@ -11055,3 +11055,7 @@ a.block2-name:hover {
     color: black;
     font-weight: bold;
 }
+
+.bread-crumb a:hover {
+    font-weight: bold;
+}

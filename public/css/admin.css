@@ -38601,6 +38601,7 @@ a:focus {
   position: absolute;
   right: 0;
   left: 240px;
+  margin-top: 20px;
   background-color: #fafafa;
   -webkit-box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.05);
           box-shadow: 0px -1px 2px 0px rgba(0, 0, 0, 0.05);
@@ -42219,4 +42220,8 @@ body, #sidebar-menu > ul > li > a, .badge {
 
 h1, h2, h3, h4, h5, h6, p, body, a, li {
     font-family: 'Loew', sans-serif !important;
+}
+
+.table-overflow {
+    overflow: auto;
 }

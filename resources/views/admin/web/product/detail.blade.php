@@ -11,8 +11,9 @@
             <div class="bread-crumb bgwhite flex-w p-l-52 p-r-15 p-t-30 p-l-15-sm">
                 <a href="{{ url('/admin/product') }}" class="s-text16">
                     Products
-                    <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
                 </a>
+                
+                <i class="fa fa-angle-right m-l-8 m-r-9" aria-hidden="true"></i>
 
                 <span class="s-text17">
                     {{ $product->name }}
@@ -21,7 +22,7 @@
         </div>
 
         <div class="col-sm-12 col-md-2 mt-3">
-            <ul class="list-style-none">
+            <ul class="pl-0 list-style-none">
                 <li class="mb-3">
                     <img src="{{ $product->images[0]->path }}" class="w-100 image-detail-preview" alt="{{ $product->images[0]->path }}">
                 </li>
@@ -37,7 +38,7 @@
 
         </div>
 
-        <div class="col-sm-12 col-md-5 mt-3">
+        <div class="col-sm-12 col-md-5 mt-3 d-none d-block-sm">
             <img src="{{ $product->images[0]->path }}" class="w-100 main-image-detail-preview" alt="main-image">
         </div>
 
@@ -58,8 +59,8 @@
             <p>SKU : <span>{{ $product->sku }}</span></p>
             <p>{{ $product->description }}</p>
 
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
+            <div class="row mb-4">
+                <div class="col-sm-12 col-md-6 mb-3 mb-sm-0">
                     <button type="button" onclick="window.location.href = '/admin/product/{{ $product->id }}/edit'" class="btn btn-warning w-100">Edit</button>
                 </div>
                 <div class="col-sm-12 col-md-6">
