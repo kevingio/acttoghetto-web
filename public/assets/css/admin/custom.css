@@ -16,8 +16,8 @@ a:hover{
     outline: none !important;
     border: none;
     background: transparent;
-    position: absolute;
-    right: 20px;
+    position: relative;
+    transform: translateY(-100%);
 }
 
 .style-icon-input:hover {

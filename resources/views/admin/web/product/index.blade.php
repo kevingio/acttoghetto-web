@@ -6,21 +6,23 @@
 
 @section('content')
     <div class="container-fluid">
-        <div class="row justify-content-between">
-            <div class="col-sm-12 col-md-4 col-lg-3 mt-4">
-                <div class="wrapper-form-input mb-4">
-                    <form action="{{ url('/admin/product') }}" method="get" autocomplete="off">
-                        <input class="size-input rounded pl-4 pr-5" type="text" name="search" value="" placeholder="Search Products...">
-                        @foreach(request()->except('search') as $key => $item)
-                            <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
-                        @endforeach
-                        <button type="submit" class="style-icon-input">
-                            <i class="fs-12 fa fa-search" aria-hidden="true"></i>
-                        </button>
+        <div class="row justify-content-between mt-3">
+            <div class="col-sm-12 col-md-4 col-lg-3">
+                <div class="wrapper-form-input">
+                    <form class="form-inline" action="{{ url('/admin/product') }}" method="get" autocomplete="off">
+                        <div class="text-right w-100">
+                            <input class="size-input rounded pl-4 pr-5" type="text" name="search" value="" placeholder="Search Products...">
+                            @foreach(request()->except('search') as $key => $item)
+                                <input type="hidden" name="{{ $key }}" value="{{ $item }}" readonly>
+                            @endforeach
+                            <button type="submit" class="style-icon-input">
+                                <i class="fs-12 fa fa-search" aria-hidden="true"></i>
+                            </button>
+                        </div>
                     </form>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-2 mt-4">
+            <div class="col-sm-12 col-md-6 col-lg-2 mb-4">
                 <div class="mb-3 mb-sm-0">
                     <button type="button" class="btn btn-danger btn-block btn-admin-add-product" onclick="window.location.href = '/admin/product/create'" >
                         Add Product
