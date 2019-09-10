@@ -17,27 +17,6 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-12">
-                        <label>Jenis Kategori</label>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" value="man" checked>
-                            <label class="form-check-label" for="radioTypeCategoryMan">
-                                Man
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-12">
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="type" value="woman">
-                            <label class="form-check-label" for="radioTypeCategoryWoman">
-                                Woman
-                            </label>
-                        </div>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-danger btn-admin-save-add-category"><i class="fas fa-save mr-2"></i> Tambah</button>

@@ -3,16 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Models\Brand;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
 
-    function __construct(Product $product, Brand $brand, Category $category) {
+    function __construct(Product $product, Category $category) {
         $this->product = $product;
-        $this->brand = $brand;
         $this->category = $category;
     }
 
@@ -24,17 +22,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        $products = $this->product->with(['category.sizes', 'brand', 'images']);
-        if(!empty($request->brand) && $request->brand != 'all') {
-            $products = $products->whereHas('brand', function ($query) use ($request) {
-                $query->where('name', $request->brand);
-            });
-        }
-        if(!empty($request->gender) && $request->gender != 'all') {
-            $products = $products->whereHas('brand', function ($query) use ($request) {
-                $query->where('type', $request->gender);
-            });
-        }
+        $products = $this->product->with(['category.sizes', 'images']);
         if(!empty($request->category) && $request->category != 'all') {
             $products = $products->whereHas('category', function ($query) use ($request) {
                 $query->where('name', $request->category);
@@ -49,9 +37,8 @@ class ProductController extends Controller
 
         $products = $products->paginate(9);
         $products->appends(request()->input())->links();
-        $brands = $this->brand->orderBy('name')->get(['name']);
         $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
-        return view('web.product.index', compact('brands', 'categories', 'products'));
+        return view('web.product.index', compact('categories', 'products'));
     }
 
     /**
@@ -83,7 +70,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        $product = $product->with(['category.sizes', 'brand'])->find($product->id);
+        $product = $product->with(['category.sizes'])->find($product->id);
         return view('web.product.detail', compact('product'));
     }
 

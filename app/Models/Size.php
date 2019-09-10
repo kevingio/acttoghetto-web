@@ -37,7 +37,7 @@ class Size extends Model
         $results = $this->with('category')->orderBy('id', 'desc')->get();
         return Datatables::of($results)
             ->editColumn('category', function ($data) {
-                return ucwords($data->category->name);
+                return ucwords($data->category);
             })
             ->editColumn('action', function ($data) {
                 $html = '
