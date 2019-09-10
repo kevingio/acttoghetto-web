@@ -18,12 +18,11 @@ $(document).ready(function () {
 
             $(document).on('click', '.btn-admin-delete-product', function () {
                 dataId = $(this).attr('data-id')
-                let gender = $(this).attr('gender')
                 
-                self.deleteProduct(dataId, gender);
+                self.deleteProduct(dataId);
             })
         },
-        deleteProduct: function (dataId, gender) {
+        deleteProduct: function (dataId) {
             swal({
                 title: "Yakin akan menghapus item?",
                 text: "Item yang sudah dihapus tidak bisa di kembalikan",
@@ -42,7 +41,7 @@ $(document).ready(function () {
                                 icon: "success"
                             }).then((isConfirm) => { 
                                 if (isConfirm) {
-                                    window.location.href = '/admin/product?type=' + gender
+                                    window.location.href = '/admin/product'
                                 }
                             });
                             

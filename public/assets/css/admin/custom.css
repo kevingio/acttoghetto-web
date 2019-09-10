@@ -16,12 +16,7 @@ a:hover{
     outline: none !important;
     border: none;
     background: transparent;
-    position: absolute;
-    right: 20px;
-    -webkit-transform: translateY(-100%);
-    -moz-transform: translateY(-100%);
-    -ms-transform: translateY(-100%);
-    -o-transform: translateY(-100%);
+    position: relative;
     transform: translateY(-100%);
 }
 
@@ -185,4 +180,8 @@ body, #sidebar-menu > ul > li > a, .badge {
 
 h1, h2, h3, h4, h5, h6, p, body, a, li {
     font-family: 'Loew', sans-serif !important;
+}
+
+.table-overflow {
+    overflow: auto;
 }

@@ -14,28 +14,10 @@
                     </a>
                 </li>
 
-                <li @if(request()->is('admin/product') || request()->is('admin/product/*')) class="active" @endif>
-                    <a href="javascript:void(0);" class="waves-effect">
+                <li>
+                    <a href="/admin/product" class="waves-effect">
                         <i class="mdi mdi-tshirt-crew"></i>
-                        <span>
-                            Product
-                            <span class="float-right menu-arrow">
-                                <i class="mdi mdi-chevron-right"></i>
-                            </span>
-                        </span>
-                    </a>
-                    <ul class="submenu">
-                        <li @if(!empty(request()->type) && request()->type == 'man') class="active" @endif>
-                            <a href="/admin/product?type=man" class="waves-effect">
-                                <span> Man </span>
-                            </a>
-                        </li>
-                        <li @if(!empty(request()->type) && request()->type == 'woman') class="active" @endif>
-                            <a href="/admin/product?type=woman" class="waves-effect">
-                                <span> Woman </span>
-                            </a>
-                        </li>
-                    </ul>
+                        <span> Products </span></a>
                 </li>
 
                 <li>
@@ -58,12 +40,6 @@
                         <li>
                             <a href="/admin/category" class="waves-effect">
                                 <span> Category </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="/admin/brand" class="waves-effect">
-                                <span> Brand </span>
                             </a>
                         </li>
 

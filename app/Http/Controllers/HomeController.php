@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Brand;
 use App\Models\User;
 use App\Models\Banner;
 use App\Models\Collection;
@@ -16,9 +15,8 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Brand $brand, User $user, Banner $banner, Collection $collection)
+    public function __construct(User $user, Banner $banner, Collection $collection)
     {
-        $this->brand = $brand;
         $this->user = $user;
         $this->banner = $banner;
         $this->collection = $collection;
@@ -32,10 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $brandsForMan = $this->brand->where('type', 'man')->orderBy('name')->get();
-        $brandsForWoman = $this->brand->where('type', 'woman')->orderBy('name')->get();
         $banners = $this->banner->get();
-        return view('web.home', compact('brandsForMan', 'brandsForWoman', 'banners'));
+        return view('web.home', compact('banners'));
     }
 
     /**

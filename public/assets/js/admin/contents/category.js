@@ -15,9 +15,7 @@ $(document).ready(function () {
             $(document).on('click', '.btn-admin-edit-category', function () {
                 dataId = $(this).attr('data-id')
                 let name = $(this).attr('name')
-                let type = $(this).attr('gender')
                 $('#form-edit-category input[name=name]').val(name)
-                $('#form-edit-category input[name=type]').val(type)
                 $('#adminModalEditCategory').modal('show');
             })
 
@@ -123,7 +121,6 @@ $(document).ready(function () {
                 },
                 "columns": [
                     { data: 'name', name: 'name' },
-                    { data: 'type', name: 'type' },
                     { data: 'action', name: 'action' },
                 ],
                 "ajax": {

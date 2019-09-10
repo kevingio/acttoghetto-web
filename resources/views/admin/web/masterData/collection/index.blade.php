@@ -26,8 +26,8 @@
                                 </div>
 
                             </div>
-                            <div class="col-sm-3 text-right">
-                                <button class="btn btn-danger w-100 btn-admin-add-collection" data-id=""> Tambah Collection </button>
+                            <div class="col-sm-3 text-right mt-3 mt-sm-0">
+                                <button class="btn btn-danger w-100 btn-admin-add-collection"> Tambah Collection </button>
                             </div>
                         </div>
 

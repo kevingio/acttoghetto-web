@@ -13,7 +13,6 @@ class Product extends Model
      */
     protected $fillable = [
         'category_id',
-        'brand_id',
         'sku',
         'name',
         'price',
@@ -21,15 +20,6 @@ class Product extends Model
         'qty',
         'description',
     ];
-
-    /**
-     * Relation to Brand
-     *
-     */
-    public function brand()
-    {
-        return $this->belongsTo('App\Models\Brand');
-    }
 
     /**
      * Relation to Category
