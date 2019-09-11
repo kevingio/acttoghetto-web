@@ -13,7 +13,7 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         Category::truncate();
-        $categories = ['Kaos', 'Gelang', 'Sepatu', 'Celana', 'Kemeja', 'Kalung'];
+        $categories = ['Kaos', 'Gelang', 'Sepatu'];
         foreach ($categories as $category) {
             Category::create(['name' => $category]);
         }
