@@ -41,6 +41,9 @@ class HomeController extends Controller
      */
     public function landing()
     {
+        if(auth()->check()) {
+            return redirect('/admin/transaction');
+        }
         return view('web.landing');
     }
 
