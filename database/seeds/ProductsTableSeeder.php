@@ -17,7 +17,7 @@ class ProductsTableSeeder extends Seeder
         Product::truncate();
         $faker = Faker::create('id_ID');
         for ($i=0; $i < 500; $i++) {
-            $category = Category::find(rand(1,6));
+            $category = Category::find(rand(1,3));
             Product::create([
                 'category_id' => $category->id,
                 'sku' => 'ACHT-' . ($i + 1),
