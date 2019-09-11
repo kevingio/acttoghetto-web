@@ -137,7 +137,7 @@
 </section>
 
 <section class="slide1-promo">
-    <div class="carousel slide" data-ride="">
+    <div class="carousel slide">
         <div class="carousel-inner">
             @foreach($banners as $banner)
             <div class="carousel-item @if($loop->first) active @endif" data-interval="300">

@@ -20,6 +20,7 @@ Route::get('/admin', function () {
 });
 
 Route::middleware(['role:3'])->group(function () {
+
     Route::get('/checkout', 'HomeController@myCart');
 
     Route::get('/home', 'HomeController@index')->name('home');
