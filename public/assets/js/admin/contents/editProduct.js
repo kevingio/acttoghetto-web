@@ -52,7 +52,7 @@ $(document).ready(function () {
             }).done((res) => {
                 console.log(res);
                 res.map((item, index) => {
-                    $('.select-size').append('<option>' + item.text + '</option>');
+                    $('.select-size').append('<option value="' + item.id +'">' + item.text + '</option>');
                 });
             })
         },
