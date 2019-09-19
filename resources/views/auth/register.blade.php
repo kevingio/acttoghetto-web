@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Register</title>
-    </head>
-    <body>
+<head>
+    <meta charset="utf-8">
+    <!-- <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"> -->
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>Register</title>
+</head>
+<body>
 
-        <div class="wrapper fadeInDown">
-          <div id="formContent">
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
             <!-- Tabs Titles -->
 
             <!-- Icon -->
             <div class="fadeIn first my-5">
-              <img src="{{ asset('assets/images/icons/logo.png') }}" id="icon" alt="Store Logo" />
+                <img src="{{ asset('assets/images/icons/logo.png') }}" id="icon" alt="Store Logo" />
             </div>
 
             @if(!empty($errors->first('email')))
@@ -27,23 +27,24 @@
             <!-- Login Form -->
             <form method="POST" action="{{ route('register') }}">
                 {{ csrf_field() }}
-              <input type="text" class="fadeIn second" name="email" autocomplete="off" placeholder="email" required>
-              <input type="text" class="fadeIn second" name="name" autocomplete="off" placeholder="name" required>
-              <input type="password" class="fadeIn third" name="password" autocomplete="off" placeholder="password" required>
-              <input type="password" class="fadeIn third" name="password_confirmation" autocomplete="off" placeholder="confirm password" required>
-              <button type="submit" class="fadeIn fourth btn-black mt-3">Register</button>
-              <br>
-              <a href="{{ route('login') }}" class="my-4 hov-border-black">Login</a>
+                <input type="text" class="fadeIn second" name="email" autocomplete="off" placeholder="Email" required>
+                <input type="text" class="fadeIn second" name="name" autocomplete="off" placeholder="Name" required>
+                <input type="text" class="fadeIn second" name="phone_number" autocomplete="off" placeholder="Phone Number" required>
+                <input type="password" class="fadeIn third" name="password" autocomplete="off" placeholder="Passowrd" required>
+                <input type="password" class="fadeIn third" name="password_confirmation" autocomplete="off" placeholder="Confirm Password" required>
+                <button type="submit" class="fadeIn fourth btn-black mt-3">Register</button>
+                <br>
+                <a href="{{ route('login') }}" class="my-4 hov-border-black">Login</a>
             </form>
 
             <!-- Remind Passowrd -->
             <div id="formFooter">
-              <a class="underlineHover text-black hov-text-black" href="{{ route('home') }}">Go to the Site</a>
+                <a class="underlineHover text-black hov-text-black" href="{{ route('home') }}">Go to the Site</a>
             </div>
 
-          </div>
         </div>
+    </div>
 
-        <script src="{{ asset('js/app.js') }}"></script>
-    </body>
+    <script src="{{ asset('js/app.js') }}"></script>
+</body>
 </html>
