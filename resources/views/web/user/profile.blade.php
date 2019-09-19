@@ -56,11 +56,31 @@
                             </div>
                             <div class="row">
                                 <div class="col-sm-12 col-md-3">
+                                    <p for="">Phone Number</p>
+                                </div>
+                                <div class="col-sm-12 col-md-8 mb-3">
+                                    <div class="w-100 p-2 bo4 m-b-12">
+            							<input class="sizefull s-text7 p-l-15 p-r-15" type="text" name="phone_number" autocomplete="off" value="{{ auth()->user()->phone_number }}" required>
+            						</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3">
                                     <p for="">Email</p>
                                 </div>
                                 <div class="col-sm-12 col-md-8 mb-3">
                                     <div class="w-100 p-2 bo4 m-b-12">
             							<input class="sizefull s-text7 p-l-15 p-r-15" type="email" name="email" autocomplete="off" value="{{ auth()->user()->email }}" required>
+            						</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-3">
+                                    <p for="">Address</p>
+                                </div>
+                                <div class="col-sm-12 col-md-8 mb-3">
+                                    <div class="w-100 p-2 bo4 m-b-12">
+            							<textarea class="sizefull s-text7 p-l-15 p-r-15" name="address" style="border: none;" autocomplete="off">{{ auth()->user()->address }}</textarea>
             						</div>
                                     <div class="text-right">
                                         <button type="submit" class="btn btn-black">

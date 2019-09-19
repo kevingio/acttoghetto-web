@@ -41,7 +41,7 @@ class HomeController extends Controller
      */
     public function landing()
     {
-        if(auth()->check()) {
+        if(auth()->check() && in_array(auth()->user()->role_id, [1,2])) {
             return redirect('/admin/transaction');
         }
         return view('web.landing');
