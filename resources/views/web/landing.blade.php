@@ -30,7 +30,7 @@
             position: absolute;
             left: 50%;
             transform: translate(-50%, -50%);
-            bottom: 25%;
+            bottom: 15%;
             width: 200px;
             height: auto;
         }

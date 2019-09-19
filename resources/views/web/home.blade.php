@@ -34,7 +34,7 @@
                     </span>
 
                     <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="lightSpeedIn">
-                        Man Collection
+                        Acttoghetto Collection
                     </h2>
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="slideInUp">
@@ -53,7 +53,7 @@
                     </span>
 
                     <h2 class="caption2-slide1 xl-text1 t-center animated visible-false m-b-37" data-appear="rotateInUpRight">
-                        Woman Collection
+                        Acttoghetto Collection
                     </h2>
 
                     <div class="wrap-btn-slide1 w-size1 animated visible-false" data-appear="rotateIn">

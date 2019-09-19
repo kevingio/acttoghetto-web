@@ -60,25 +60,25 @@
                     @endforeach
                 </li>
                 <li @if(request()->is('home')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-dark" @endif>Home</a>
+                    <a href="{{ route('home') }}" @if(!request()->is('home')) class="text-dark" @endif>HOME</a>
                 </li>
 
                 <li @if(request()->is('product') || request()->is('product/*')) class="item-menu-mobile" @endif>
-                    <a href="{{ route('product.index') }}" @if(!request()->is('product') && !request()->is('product/*')) class="text-dark" @endif>Products</a>
+                    <a href="{{ route('product.index') }}" @if(!request()->is('product') && !request()->is('product/*')) class="text-dark" @endif>PRODUCTS</a>
                 </li>
 
                 @if(auth()->check())
                 <li @if(request()->is('profile')) class="item-menu-mobile" @endif>
                     <a href="{{ route('show-profile') }}"
                         @if(!request()->is('profile')) class="text-dark" @endif>
-                        Profile
+                        PROFILE
                     </a>
                 </li>
 
                 <li @if(request()->is('transaction')) class="item-menu-mobile" @endif>
                     <a href="{{ route('transaction.index') }}"
                         @if(!request()->is('transaction')) class="text-dark" @endif>
-                        My Transactions
+                        MY TRANSACTIONS
                     </a>
                 </li>
 
@@ -87,7 +87,7 @@
                         onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();"
                         class="text-dark">
-                        Logout
+                        LOGOUT
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -98,7 +98,7 @@
                 @else
                 <li class="mb-1">
                     <a href="{{ route('login') }}" class="text-dark font-weight-bold">
-                        Login
+                        LOGIN
                     </a>
                 </li>
                 @endif
