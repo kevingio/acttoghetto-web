@@ -6,7 +6,7 @@
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.png') }}"/>
         <title>@yield('title')</title>
         <link rel="stylesheet" type="text/css" href="{{ asset(mix('css/admin.css')) }}">
   </head>
