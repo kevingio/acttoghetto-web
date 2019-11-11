@@ -96,7 +96,7 @@ My Cart
 
                 <div class="w-size20 w-full-sm">
                     <p class="s-text8 p-b-23">
-                        Free shipping around the world
+                        Exclude shipping
                     </p>
                 </div>
             </div>
