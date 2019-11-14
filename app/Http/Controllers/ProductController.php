@@ -39,7 +39,7 @@ class ProductController extends Controller
 
         $products = $products->paginate(9);
         foreach($products as $product) {
-            $product->before_discount = $product->price * 100/89;
+            $product->before_discount = $product->price * 100/78;
         }
         $products->appends(request()->input())->links();
         $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
@@ -76,7 +76,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $product = $product->with(['category.sizes'])->find($product->id);
-        $product->before_discount = $product->price * 100/89;
+        $product->before_discount = $product->price * 100/78;
         return view('web.product.detail', compact('product'));
     }
 

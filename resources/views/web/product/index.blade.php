@@ -94,7 +94,7 @@
                                             <span class="block2-price p-r-5" style="text-decoration: line-through;">
                                                 Rp {{ number_format($product->before_discount,0,',','.') }}
                                             </span>
-                                            <small class="badge badge-danger text-white ml-2">11% off</small>
+                                            <small class="badge badge-danger text-white ml-2">22% off</small>
                                         </div>
 
                                         <p class="text-danger block2-price p-r-5">
