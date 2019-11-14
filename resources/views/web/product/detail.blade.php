@@ -58,7 +58,7 @@
 					<span class="product-detail-price m-text17" style="text-decoration: line-through;">
 						Rp {{ number_format($product->before_discount,0,',','.') }}
 					</span>
-					<span class="badge badge-danger text-white ml-3">11% off</span>
+					<span class="badge badge-danger text-white ml-3">22% off</span>
 				</div>
 
 				<p class="product-detail-price text-danger m-text17">
