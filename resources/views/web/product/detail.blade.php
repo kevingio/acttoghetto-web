@@ -54,10 +54,16 @@
 				<h4 class="product-detail-name m-text16 p-b-13">
 					{{ $product->name }}
 				</h4>
+				<div style="display: flex; align-items: center;">
+					<span class="product-detail-price m-text17" style="text-decoration: line-through;">
+						Rp {{ number_format($product->before_discount,0,',','.') }}
+					</span>
+					<span class="badge badge-danger text-white ml-3">11% off</span>
+				</div>
 
-				<span class="product-detail-price text-danger m-text17">
+				<p class="product-detail-price text-danger m-text17">
 					Rp {{ number_format($product->price,0,',','.') }}
-				</span>
+				</p>
 
 				<p class="s-text8 p-t-10">
 					{{ $product->description }}
