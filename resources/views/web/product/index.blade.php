@@ -89,10 +89,17 @@
                                         <a href="{{ route('product.show',[$product->id]) }}" class="block2-name dis-block s-text3 p-b-5">
                                             {{ $product->name }}
                                         </a>
+                                        
+                                        <div style="display: flex; align-items: center;">
+                                            <span class="block2-price p-r-5" style="text-decoration: line-through;">
+                                                Rp {{ number_format($product->before_discount,0,',','.') }}
+                                            </span>
+                                            <small class="badge badge-danger text-white ml-2">11% off</small>
+                                        </div>
 
-                                        <span class="text-danger block2-price p-r-5">
+                                        <p class="text-danger block2-price p-r-5">
                                             Rp {{ number_format($product->price,0,',','.') }}
-                                        </span>
+                                        </p>
                                     </div>
                                 </div>
                             </div>

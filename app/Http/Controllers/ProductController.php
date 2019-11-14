@@ -33,9 +33,14 @@ class ProductController extends Controller
         }
         if(!empty($request->sort) && in_array(strtolower($request->sort), ['asc', 'desc'])) {
             $products = $products->orderBy('price', strtolower($request->sort));
+        } else {
+            $products = $products->orderBy('price', 'asc');
         }
 
         $products = $products->paginate(9);
+        foreach($products as $product) {
+            $product->before_discount = $product->price * 100/89;
+        }
         $products->appends(request()->input())->links();
         $categories = $this->category->groupBy('name')->orderBy('name')->get(['name']);
         return view('web.product.index', compact('categories', 'products'));
@@ -71,6 +76,7 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $product = $product->with(['category.sizes'])->find($product->id);
+        $product->before_discount = $product->price * 100/89;
         return view('web.product.detail', compact('product'));
     }
 
